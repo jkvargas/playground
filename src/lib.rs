@@ -16,6 +16,7 @@ mod besttimetobuyandsellstock;
 mod rottingoranges;
 mod longestpalyndromic;
 mod countcompletetreenodes;
+mod kclosestpoint;
 
 pub struct Leetcode;
 
