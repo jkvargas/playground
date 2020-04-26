@@ -15,6 +15,7 @@ mod validparenthesis;
 mod besttimetobuyandsellstock;
 mod rottingoranges;
 mod longestpalyndromic;
+mod countcompletetreenodes;
 
 pub struct Leetcode;
 
