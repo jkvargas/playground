@@ -1,3 +1,5 @@
+use std::collections::VecDeque;
+
 pub struct Solution;
 
 const FRESH_ORANGE: i32 = 1;
@@ -8,15 +10,15 @@ impl Solution {
         let len_x = grid.len();
         let len_y = grid[0].len();
 
-        let mut rotten_positions : Vec<(usize, usize)> = Vec::new();
-        let mut for_next_round_positions : Vec<(usize, usize)> = Vec::new();
+        let mut rotten_positions : VecDeque<(usize, usize)> = VecDeque::new();
+        let mut for_next_round_positions : VecDeque<(usize, usize)> = VecDeque::new();
         let mut clean_oranges = 0;
         let mut rounds = 0;
 
         for x in 0..len_x {
             for y in 0..len_y {
                 if grid[x][y] == ROTTEN_ORANGE {
-                    rotten_positions.push((x, y));
+                    rotten_positions.push_back((x, y));
                 } else if grid[x][y] == FRESH_ORANGE {
                     clean_oranges += 1;
                 }
@@ -27,10 +29,9 @@ impl Solution {
             let mut add_round = false;
 
             while rotten_positions.len() > 0 {
-                dbg!(&rotten_positions);
-
-                let to_act = rotten_positions[0];
-                rotten_positions.remove(0);
+                let to_act = rotten_positions.pop_back().unwrap();
+                //let to_act = rotten_positions[0];
+                //rotten_positions.remove(0);
 
                 let to_add = Self::stamp_around(&mut grid, to_act.0, to_act.1, len_x, len_y);
 
@@ -41,7 +42,7 @@ impl Solution {
                 clean_oranges -= to_add.len();
 
                 for new_pos in to_add {
-                    for_next_round_positions.push(new_pos);
+                    for_next_round_positions.push_back(new_pos);
                 }
             }
 
@@ -86,6 +87,7 @@ impl Solution {
     }
 }
 
+
 // PODRE - BOA - BOA
 // BOA   - BOA - NENHUMA
 // NENHU - BOA - BOA
@@ -100,8 +102,8 @@ impl Solution {
 // TURNOS + 1
 
 // PODRE - (PODRE) - BOA
-// PODRE - BOA - NENHUM
-// NEN   - BOA -- BOA
+// (PODRE) - BOA   - NENHUM
+// NEN    - NENHUM  -- BOA
 
 //       NENHUM
 // PODRE - PODRE - BOA
