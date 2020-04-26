@@ -14,6 +14,7 @@ mod rotatedsortedarray;
 mod validparenthesis;
 mod besttimetobuyandsellstock;
 mod rottingoranges;
+mod longestpalyndromic;
 
 pub struct Leetcode;
 
