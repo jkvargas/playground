@@ -19,6 +19,7 @@ mod countcompletetreenodes;
 mod kclosestpoint;
 mod lrucache;
 mod longestsubstringwithoutrepat;
+mod gameoflife;
 
 pub struct Leetcode;
 

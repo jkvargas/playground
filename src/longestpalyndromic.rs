@@ -9,7 +9,7 @@ impl Solution {
         let letters = s.chars().collect::<Vec<char>>();
         let vec_size = letters.len();
         let mut result : String = "".to_string();
-        let mut size_end = 0;
+        let size_end = 0;
 
         for i in 0..vec_size {
             let slice = Self::search_on_string(&letters, vec_size, i);
