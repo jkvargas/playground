@@ -17,6 +17,8 @@ mod rottingoranges;
 mod longestpalyndromic;
 mod countcompletetreenodes;
 mod kclosestpoint;
+mod lrucache;
+mod longestsubstringwithoutrepat;
 
 pub struct Leetcode;
 
