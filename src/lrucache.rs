@@ -43,6 +43,9 @@
 //     pub fn put(&mut self, key: i32, value: i32) {
 //         let llnode = RefCell::new(Rc::new(LinkedListNode::new((key, value))));
 //         self.map.insert(key, llnode);
-//         self.list.push_front(llnode);
+//
+//         let borrow = llnode.borrow();
+//
+//         self.list.push_front(RefCell::new(Rc::downgrade(&borrow)));
 //     }
 // }

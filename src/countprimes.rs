@@ -29,38 +29,16 @@ impl Solution {
     }
 
     pub fn sieveoferatosthenes(n: i32) -> i32{
-        let mut result : Vec<bool> = vec![true; n as usize];
-        let mut p = 2;
-
-        loop {
-            if p * p > n {
-                break;
-            }
-
-            if result[(p - 1)as usize] {
-                let mut i = p * p;
-
-                loop {
-                    if i > n {
-                        break;
-                    }
-                    result[(i - 1) as usize] = false;
-
-                    i += p;
-                }
-            }
-
-            p += 1;
-        }
-
+        let mut not_prime: Vec<bool> = vec![false; n as usize];
         let mut count = 0;
-
-        for (i, val) in result.iter().enumerate() {
-            if i > 0 && *val {
-                count += 1;
+        for i in 2..n as usize {
+            if !not_prime[i] { count += 1; }
+            let mut j = 2;
+            while j*i < n as usize {
+                not_prime[j*i] = true;
+                j += 1;
             }
         }
-
         count
     }
 }
@@ -77,10 +55,5 @@ mod tests {
     #[test]
     fn count_primes_2() {
         assert_eq!(Solution::sieveoferatosthenes(10), 4);
-    }
-
-    #[test]
-    fn count_primes_3() {
-        assert_eq!(Solution::sieveoferatosthenes(2), 1);
     }
 }
