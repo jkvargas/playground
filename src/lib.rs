@@ -20,6 +20,7 @@ mod kclosestpoint;
 mod lrucache;
 mod longestsubstringwithoutrepat;
 mod gameoflife;
+mod countprimes;
 
 pub struct Leetcode;
 
