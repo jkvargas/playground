@@ -21,6 +21,7 @@ mod lrucache;
 mod longestsubstringwithoutrepat;
 mod gameoflife;
 mod countprimes;
+mod coinchange;
 
 pub struct Leetcode;
 
