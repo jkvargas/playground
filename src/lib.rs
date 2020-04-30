@@ -22,6 +22,7 @@ mod longestsubstringwithoutrepat;
 mod gameoflife;
 mod countprimes;
 mod coinchange;
+mod reversedlinkedlist;
 
 pub struct Leetcode;
 
