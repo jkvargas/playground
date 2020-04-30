@@ -23,6 +23,7 @@ mod gameoflife;
 mod countprimes;
 mod coinchange;
 mod reversedlinkedlist;
+mod reverseint;
 
 pub struct Leetcode;
 

@@ -3,7 +3,6 @@ use std::rc::Rc;
 
 mod binarydiameter;
 mod rangesumbst;
-mod lrucache;
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
