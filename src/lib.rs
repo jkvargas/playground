@@ -24,6 +24,7 @@ mod countprimes;
 mod coinchange;
 mod reversedlinkedlist;
 mod reverseint;
+mod trackpath;
 
 pub struct Leetcode;
 
