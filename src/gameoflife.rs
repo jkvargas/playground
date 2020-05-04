@@ -4,7 +4,7 @@ const ALIVE: i32 = 1;
 const DEAD: i32 = 0;
 
 impl Solution {
-    pub fn game_of_life(mut board: &mut Vec<Vec<i32>>) {
+    pub fn game_of_life(board: &mut Vec<Vec<i32>>) {
         let i_size = board.len();
         let j_size = board[0].len();
 
