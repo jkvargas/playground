@@ -27,6 +27,7 @@ mod reverseint;
 mod trackpath;
 mod threesumclosest;
 mod nextpermutation;
+mod insertdeleterandom;
 
 pub struct Leetcode;
 
