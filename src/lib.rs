@@ -30,6 +30,7 @@ mod nextpermutation;
 mod insertdeleterandom;
 mod uniquepaths;
 mod courseschedule;
+mod coursescheduleii;
 
 pub struct Leetcode;
 
