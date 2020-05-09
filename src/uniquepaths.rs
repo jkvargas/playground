@@ -1,5 +1,6 @@
 struct Solution;
 // https://leetcode.com/problems/unique-paths/
+// (m+n)!/(m! * n!)
 
 impl Solution {
     pub fn unique_paths_l(m: i32, n: i32) -> i32 {

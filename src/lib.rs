@@ -29,6 +29,7 @@ mod threesumclosest;
 mod nextpermutation;
 mod insertdeleterandom;
 mod uniquepaths;
+mod courseschedule;
 
 pub struct Leetcode;
 

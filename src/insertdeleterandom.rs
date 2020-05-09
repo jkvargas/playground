@@ -33,6 +33,17 @@ impl RandomizedSet {
         false
     }
 
+    // map(5) -> 2
+    // map(3) -> 1
+
+    // 1 3 5 -> 1 5 3 pop
+    // 0 1 2 -> 0 1 2
+    //   | |
+
+    // last_pos = 2
+    // last_key = 5
+
+
     /** Removes a value from the set. Returns true if the set contained the specified element. */
     fn remove(&mut self, val: i32) -> bool {
         if self.map.contains_key(&val) {
@@ -59,6 +70,9 @@ impl RandomizedSet {
 
     /** Get a random element from the set. */
     fn get_random(&self) -> i32 {
+        ///
+        /// if no elements is going to panic!!!
+        ///
         let mut rng = rand::thread_rng();
         let index : usize = rng.gen::<usize>() % self.vec.len() - 1;
 
