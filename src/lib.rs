@@ -31,6 +31,7 @@ mod insertdeleterandom;
 mod uniquepaths;
 mod courseschedule;
 mod coursescheduleii;
+mod wordsearch;
 
 pub struct Leetcode;
 
