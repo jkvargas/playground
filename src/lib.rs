@@ -32,6 +32,8 @@ mod uniquepaths;
 mod courseschedule;
 mod coursescheduleii;
 mod wordsearch;
+mod worldladder;
+mod cracking;
 
 pub struct Leetcode;
 
