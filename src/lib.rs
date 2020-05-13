@@ -34,6 +34,7 @@ mod coursescheduleii;
 mod wordsearch;
 mod worldladder;
 mod cracking;
+mod decodestring;
 
 pub struct Leetcode;
 
