@@ -6,6 +6,7 @@ struct Solution;
 
 impl Solution {
     // O(num_courses^2 + prerequisites.len())
+    // O(num_courses^2)
     pub fn can_finish(num_courses: i32, prerequisites: Vec<Vec<i32>>) -> bool {
         let mut visited: Vec<bool> = vec![false; num_courses as usize];
         let mut adj: HashMap<i32, Vec<i32>> = HashMap::new();
@@ -21,7 +22,7 @@ impl Solution {
 
         for i in 0..num_courses {
             if !visited[i as usize] {
-                if Self::is_cyclic_pos_order(i as usize, &mut adj, &mut checked, &mut visited) {
+                if Self::is_cyclic(i as usize, &mut adj, &mut visited) {
                     return false;
                 }
             }
@@ -29,6 +30,22 @@ impl Solution {
 
         true
     }
+
+    // DFS <- Visitado
+    //
+    //           H
+    //          /
+    //      B -- C
+    //   < /       \
+    // A <         F - G
+    //    \
+    //     D -- E
+    //
+    //     D
+    //   /
+    //  A - B - C
+    //  \      /
+    //   \____/
 
     fn is_cyclic(course: usize, adj: &HashMap<i32, Vec<i32>>, visited: &mut Vec<bool>) -> bool {
         if visited[course] {

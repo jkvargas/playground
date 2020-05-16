@@ -3,6 +3,18 @@ use std::collections::VecDeque;
 struct Solution;
 
 impl Solution {
+    // S <- multiplicador
+    // P <- tamannho maior de string
+    // O(S + P)
+    // 4[3[3[4[5[6[7[3[AAAAAAAAAAAAAAAAAAA]]]]]]] -> ...7[AAA AAA AAA] ->  S+N*(S*P)
+    // N -> numero de multiplicador
+    // 3[AAAABBBBBAAAAAAA]2[AAAAAAAAAAAAAA] => O(1)
+    // 3*2^3
+    // O( N ) + (S*P)^T <- Numero de multiplicadores
+    // 3[3[3[AA]]]
+    // O(N)
+    // O(N) + S * O(N)
+    // S[N] ONDE N = S[Y]
     pub fn decode_string(s: String) -> String {
         let str_len = s.len();
         let str_chars : Vec<char> = s.chars().collect();
@@ -87,6 +99,24 @@ impl Solution {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    // a3[a]2[bc]
+    // string result <- a
+
+    // a
+
+
+    // decode expression
+    // stack <- 3  1
+    // open_expr = true
+    // internal_string <- a
+    // 3 [ a 2 ] -> decode_expression
+    // for i in 0..3 { result += internal_string; }
+    // return internal_string
+
+    // 3[a2[c]]
+    // 3[acc]
+    // accaccacc
 
     #[test]
     pub fn decode_string_1() {
