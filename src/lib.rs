@@ -36,6 +36,7 @@ mod worldladder;
 mod cracking;
 mod decodestring;
 mod longestincreasingsubsequence;
+mod wordbreak;
 
 pub struct Leetcode;
 
