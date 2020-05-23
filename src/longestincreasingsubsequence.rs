@@ -1,21 +1,65 @@
 struct Solution;
 
 impl Solution {
+    /// nlogn
     pub fn length_of_lis(nums: Vec<i32>) -> i32 {
-        Self::len_lis(&nums, i32::min_value(), 0)
+        if nums.len() <= 1 {
+            return nums.len() as i32;
+        }
+
+        let mut lis = Vec::new();
+        lis.push(nums[0]);
+
+        for n in nums {
+            lis.binary_search(&n).map_err(|x| {
+                if x >= lis.len() {
+                    lis.push(n);
+                } else {
+                    lis[x] = n;
+                }
+            });
+        }
+
+        lis.len() as i32
     }
 
-    fn len_lis(nums: &Vec<i32>, prev: i32, cur_pos: usize) -> i32 {
-        if cur_pos == nums.len() {
+    pub fn lldynamic_programming(nums: Vec<i32>) -> i32 {
+        if nums.len() <= 1 { return nums.len() as i32; }
+
+        let mut dp = vec![1; nums.len()];
+        let mut max_lis = 1;
+
+        for i in 1..nums.len() {
+            let mut tmp_max = 0;
+            for j in 0..i {
+                if nums[i] > nums[j] {
+                    tmp_max = std::cmp::max(tmp_max, dp[j]);
+                }
+                dp[i] = tmp_max + 1;
+            }
+            max_lis = std::cmp::max(max_lis, dp[i]);
+        }
+        max_lis
+    }
+
+    pub fn length_of_lis_s(nums: Vec<i32>) -> i32 {
+        Self::ls(&nums, i32::min_value(), 0)
+    }
+
+    pub fn ls(nums: &Vec<i32>, prev: i32, cur: usize) -> i32 {
+        if cur == nums.len() {
             return 0;
         }
 
-        let mut taken = 0;
-        if nums[cur_pos] > prev {
-            taken = 1 + Self::len_lis(nums, nums[cur_pos], cur_pos +1);
+        let mut temp = 0;
+
+        if nums[cur] > prev {
+            temp = 1 + Self::ls(nums, nums[cur], cur + 1);
         }
-        let mut not_taken = Self::len_lis(nums, prev, cur_pos + 1);
-        std::cmp::max(taken, not_taken)
+
+        let not = Self::ls(nums, prev, cur + 1);
+
+        return std::cmp::max(not, temp);
     }
 }
 
@@ -48,5 +92,15 @@ mod tests {
     #[test]
     fn last_stone_weight_1() {
         assert_eq!(Solution::length_of_lis(vec![10,9,2,5,3,7,101,18]), 4);
+    }
+
+    #[test]
+    fn last_stone_weight_2() {
+        assert_eq!(Solution::length_of_lis(vec![2, 2]), 1);
+    }
+
+    #[test]
+    fn last_stone_weight_3() {
+        assert_eq!(Solution::length_of_lis(vec![1,3,6,7,9,4,10,5,6]), 6);
     }
 }
