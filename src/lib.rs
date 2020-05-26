@@ -38,6 +38,7 @@ mod decodestring;
 mod longestincreasingsubsequence;
 mod wordbreak;
 mod longestvalidparenthesis;
+mod criticalconnetwork;
 
 pub struct Leetcode;
 
