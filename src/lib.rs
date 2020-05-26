@@ -39,6 +39,7 @@ mod longestincreasingsubsequence;
 mod wordbreak;
 mod longestvalidparenthesis;
 mod criticalconnetwork;
+mod isgraphbipartite;
 
 pub struct Leetcode;
 
