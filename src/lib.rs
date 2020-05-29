@@ -40,6 +40,7 @@ mod wordbreak;
 mod longestvalidparenthesis;
 mod criticalconnetwork;
 mod isgraphbipartite;
+mod containermostwater;
 
 pub struct Leetcode;
 
