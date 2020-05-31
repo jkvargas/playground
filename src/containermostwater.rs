@@ -4,28 +4,31 @@ use std::collections::HashMap;
 struct Solution;
 
 impl Solution {
-    pub fn max_area(mut height: Vec<i32>) -> i32 {
-        let mut map : HashMap<i32, Vec<usize>> = HashMap::new();
+    pub fn max_area(height: Vec<i32>) -> i32 {
+        let mut begin = 0;
+        let mut end = height.len() - 1;
+        let mut max_result = 0;
 
-        for i in 0..height.len() {
-            if map.contains_key(&height[i]) {
-                map.insert(height[i], Vec::new());
+        while begin != end {
+            let max = (end - begin) as i32 *
+                std::cmp::min(height[begin], height[end]);
+
+            if max > max_result {
+                max_result = max;
             }
-            map.get_mut(&height[i]).unwrap().push(i);
+
+            if height[begin] > height[end] {
+                end -= 1;
+            } else {
+                begin += 1;
+            }
         }
 
-        height.sort();
-
-        let mut highest = 0;
-        let mut lowest = 0;
-
-        for i in height.reverse() {
-
-        }
-
-        2
+        max_result
     }
 }
+
+
 
 #[cfg(test)]
 mod tests {
@@ -44,5 +47,15 @@ mod tests {
     #[test]
     fn max_area_3() {
         assert_eq!(Solution::max_area(vec![3,6,9,12,4,15,0,4,6]), 42);
+    }
+
+    #[test]
+    fn max_area_4() {
+        assert_eq!(Solution::max_area(vec![1,2,1]), 2);
+    }
+
+    #[test]
+    fn max_area_5() {
+        assert_eq!(Solution::max_area(vec![2,3,4,5,18,17,6]), 17);
     }
 }
