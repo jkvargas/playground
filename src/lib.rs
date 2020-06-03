@@ -41,6 +41,7 @@ mod longestvalidparenthesis;
 mod criticalconnetwork;
 mod isgraphbipartite;
 mod containermostwater;
+mod wildcard;
 
 pub struct Leetcode;
 
