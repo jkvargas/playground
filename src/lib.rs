@@ -42,6 +42,18 @@ mod criticalconnetwork;
 mod isgraphbipartite;
 mod containermostwater;
 mod wildcard;
+mod spiralmatrix;
+mod timebasedkeyvaluestore;
+mod basiccalculator;
+mod mergeintervals;
+mod generateparenthesis;
+mod worldladder2;
+mod permutations;
+mod firstandlastsortedarray;
+mod reversewordsinastring;
+mod trappingrainwater;
+mod maxprofitassignment;
+mod regularexpressionmatching;
 
 pub struct Leetcode;
 

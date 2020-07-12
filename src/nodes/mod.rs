@@ -3,6 +3,7 @@ use std::rc::Rc;
 
 mod binarydiameter;
 mod rangesumbst;
+mod binarytreezigzag;
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
