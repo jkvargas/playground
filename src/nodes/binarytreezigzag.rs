@@ -1,8 +1,8 @@
 use std::cell::RefCell;
 use std::rc::Rc;
-use std::collections::VecDeque;
 use std::borrow::Borrow;
 use crate::nodes::TreeNode;
+use std::collections::VecDeque;
 
 struct Solution;
 
@@ -10,41 +10,48 @@ impl Solution {
     pub fn zigzag_level_order(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {
         let mut result: Vec<Vec<i32>> = Vec::new();
 
-        if !root.is_some() {
+        if root.is_none() {
             return result;
         }
 
+        let mut level = VecDeque::new();
         let mut queue = VecDeque::new();
 
-        queue.push_back((root.unwrap(), 0));
+        queue.push_front(Some(root.unwrap()));
+        queue.push_front(None);
+
+        let mut from_left = true;
 
         while !queue.is_empty() {
-            let (node, lvl) = queue.pop_front().unwrap();
-            let borrowed: &RefCell<TreeNode> = node.borrow();
-            let val = borrowed.borrow();
-            let right = val.right.clone();
-            let left = val.left.clone();
+            if let Some(node) = queue.pop_back().unwrap() {
+                let borrowed: &RefCell<TreeNode> = node.borrow();
+                let val = borrowed.borrow();
 
-            if result.len() < lvl + 1 {
-                result.push(Vec::new());
-            }
-
-            result[lvl].push(val.val);
-
-            if let Some(l) = left {
-                if (lvl + 1) % 2 == 0 {
-                    queue.push_back((l, lvl + 1));
+                if from_left {
+                    level.push_front(val.val);
                 } else {
-                    queue.push_front((l, lvl + 1));
+                    level.push_back(val.val);
                 }
-            }
 
-            if let Some(r) = right {
-                if (lvl + 1) % 2 == 0 {
-                    queue.push_back((r, lvl + 1));
-                } else {
-                    queue.push_front((r, lvl + 1));
+                if val.left.is_some() {
+                    queue.push_front(val.left.clone());
                 }
+                if val.right.is_some() {
+                    queue.push_front(val.right.clone());
+                }
+            } else {
+                let mut vec_result = Vec::new();
+                while !level.is_empty() {
+                    vec_result.push(level.pop_back().unwrap());
+                }
+                result.push(vec_result);
+
+                level = VecDeque::new();
+
+                if !queue.is_empty() {
+                    queue.push_front(None);
+                }
+                from_left = !from_left;
             }
         }
 
@@ -67,6 +74,6 @@ mod tests {
     pub fn zigzag_level_order_2()
     {
         let tree_node = TreeNode::from(vec![Some(1), Some(2), Some(3), Some(4), None, None, Some(5)]);
-        assert_eq!(Solution::zigzag_level_order(tree_node), vec![vec![1], vec![3, 2], vec![5, 4]]);
+        assert_eq!(Solution::zigzag_level_order(tree_node), vec![vec![1], vec![3, 2], vec![4, 5]]);
     }
 }
