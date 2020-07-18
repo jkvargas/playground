@@ -1,5 +1,7 @@
 use std::collections::HashMap;
 
+mod orderedmap;
+mod permutationsinstring;
 mod backspacecompare;
 mod minstack;
 mod nodes;
