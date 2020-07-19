@@ -2,6 +2,8 @@ use std::collections::HashMap;
 
 struct Solution;
 
+const SIZE: usize = 26; // Only a-z ASCII characters.
+
 impl Solution {
     pub fn check_inclusion_jho(s1: String, s2: String) -> bool {
         let mut letter_check = LetterCheck::new(s1.chars().collect());
@@ -17,84 +19,30 @@ impl Solution {
         false
     }
 
-    pub fn check_inclusion_user(s1: String, s2: String) -> bool {
-        // Closure to (hopefully, elegantly) convert char into its counter position:
+    // time complexity = O(s1len + (s2len - s1len))
+    pub fn check_inclusion(s1: String, s2: String) -> bool {
         let idx = |c: u8| { (c - 'a' as u8) as usize };
 
-        // Create s1's counter:
-        let mut c1 = [0u8; SIZE];
+        let mut d1 = [0u8; SIZE];
+        let mut d2 = [0u8; SIZE];
+
         for c in s1.chars() {
-            c1[idx(c as u8)] += 1;
+            d1[idx(c as u8)] += 1;
         }
 
-        // Create the counter for the sliding window on s2:
-        let mut c2 = [0u8; SIZE];
-        // Convert to byte array for direct access and no more Option<char>:
-        let s2: &[u8] = s2.as_bytes();
+        let s : &[u8] = s2.as_bytes();
 
-        // Maintain a sliding window of size len(s1) over s2.
-        // If at any point, the counter c2 for the sliding window is equal to c1,
-        // the counter for s1, then we have found a valid permutation.
-        for i in 0..s2.len() {
-            c2[idx(s2[i])] += 1;
-            if i >= s1.len() - 1 {
-                if c1 == c2 {
-                    return true;
-                }
-                c2[idx(s2[i - s1.len() + 1])] -= 1;
+        for (i, c) in s.iter().enumerate() {
+            d2[idx(*c)] += 1;
+            if i >= s1.len() {
+                d2[idx(s[i - s1.len()])] -= 1;
+            }
+            if d1 == d2 {
+                return true;
             }
         }
+
         false
-    }
-
-    pub fn check_inclusion(s1: String, s2: String) -> bool {
-        let s1_array : Vec<char> = s1.chars().collect();
-        let s2_array : Vec<char> = s2.chars().collect();
-
-        if s1_array.len() > s2_array.len() {
-            return false;
-        }
-
-        let mut s1map : Vec<usize> = vec![0; 26];
-        let mut s2map : Vec<usize> = vec![0; 26];
-
-        for i in 0..s1.len() {
-            s1map[s1_array[i] as usize - 'a' as usize] += 1;
-            s2map[s2_array[i] as usize - 'a' as usize] += 1;
-        }
-
-        let mut count = 0;
-
-        for i in 0..26 {
-            if s1map[i] == s2map[i] {
-                count += 1;
-            }
-        }
-
-        for i in 0..(s2map.len() - s1map.len()) {
-            let r = s2map[i + s1map.len()] - 'a' as usize;
-            let l = s2map[i] - 'a' as usize;
-
-            if count == 26 {
-                continue;
-            }
-
-            s2map[r] += 1;
-
-            if s2map[r] == s1map[r] {
-                count += 1;
-            } else if s2map[r] == s1map[r] + 1 {
-                count -= 1;
-            }
-            s2map[l] -= 1;
-            if s2map[l] == s1map[l] {
-                count += 1;
-            } else if s2map[l] == s1map[l] - 1 {
-                count -= 1;
-            }
-        }
-
-        count == 26
     }
 }
 
