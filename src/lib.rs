@@ -1,3 +1,6 @@
+mod roadsandlibraries;
+mod mergesortcountinversions;
+
 use std::collections::HashMap;
 
 mod orderedmap;
@@ -56,6 +59,7 @@ mod reversewordsinastring;
 mod trappingrainwater;
 mod maxprofitassignment;
 mod regularexpressionmatching;
+mod expressivewords;
 
 pub struct Leetcode;
 
