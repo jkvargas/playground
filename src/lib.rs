@@ -1,65 +1,66 @@
-mod roadsandlibraries;
+mod freqstack;
 mod mergesortcountinversions;
+mod roadsandlibraries;
 
 use std::collections::HashMap;
 
-mod orderedmap;
-mod permutationsinstring;
 mod backspacecompare;
-mod minstack;
-mod nodes;
-mod laststone;
-mod contiguousarray;
-mod productarray;
-mod kthlargest;
+mod basiccalculator;
 mod battleships;
-mod minimumpathsum;
-mod threesum;
-mod rotatedsortedarray;
-mod validparenthesis;
 mod besttimetobuyandsellstock;
-mod rottingoranges;
-mod longestpalyndromic;
-mod countcompletetreenodes;
-mod kclosestpoint;
-mod lrucache;
-mod longestsubstringwithoutrepat;
-mod gameoflife;
-mod countprimes;
 mod coinchange;
-mod reversedlinkedlist;
-mod reverseint;
-mod trackpath;
-mod threesumclosest;
-mod nextpermutation;
-mod insertdeleterandom;
-mod uniquepaths;
+mod containermostwater;
+mod contiguousarray;
+mod countcompletetreenodes;
+mod countprimes;
 mod courseschedule;
 mod coursescheduleii;
+mod cracking;
+mod criticalconnetwork;
+mod decodestring;
+mod expressivewords;
+mod firstandlastsortedarray;
+mod gameoflife;
+mod generateparenthesis;
+mod insertdeleterandom;
+mod isgraphbipartite;
+mod kclosestpoint;
+mod kthlargest;
+mod laststone;
+mod longestincreasingsubsequence;
+mod longestpalyndromic;
+mod longestsubstringwithoutrepat;
+mod longestvalidparenthesis;
+mod lrucache;
+mod maxprofitassignment;
+mod mergeintervals;
+mod minimumpathsum;
+mod minstack;
+mod nextpermutation;
+mod nodes;
+mod orderedmap;
+mod permutations;
+mod permutationsinstring;
+mod productarray;
+mod regularexpressionmatching;
+mod reversedlinkedlist;
+mod reverseint;
+mod reversewordsinastring;
+mod rotatedsortedarray;
+mod rottingoranges;
+mod spiralmatrix;
+mod threesum;
+mod threesumclosest;
+mod timebasedkeyvaluestore;
+mod trackpath;
+mod trappingrainwater;
+mod uniquepaths;
+mod validparenthesis;
+mod wildcard;
+mod wordbreak;
 mod wordsearch;
 mod worldladder;
-mod cracking;
-mod decodestring;
-mod longestincreasingsubsequence;
-mod wordbreak;
-mod longestvalidparenthesis;
-mod criticalconnetwork;
-mod isgraphbipartite;
-mod containermostwater;
-mod wildcard;
-mod spiralmatrix;
-mod timebasedkeyvaluestore;
-mod basiccalculator;
-mod mergeintervals;
-mod generateparenthesis;
 mod worldladder2;
-mod permutations;
-mod firstandlastsortedarray;
-mod reversewordsinastring;
-mod trappingrainwater;
-mod maxprofitassignment;
-mod regularexpressionmatching;
-mod expressivewords;
 
 pub struct Leetcode;
 
@@ -133,8 +134,7 @@ impl Leetcode {
 
             if !hash.contains_key(&arr[i]) {
                 hash.insert(arr[i], 1);
-            }
-            else {
+            } else {
                 *hash.get_mut(&arr[i]).unwrap() += 1;
             }
         }
@@ -160,7 +160,7 @@ mod tests {
 
     #[test]
     fn count_elements_6() {
-        let result = Leetcode::count_elements(vec![1,1,2]);
+        let result = Leetcode::count_elements(vec![1, 1, 2]);
 
         assert_eq!(result, 2);
     }
@@ -188,7 +188,7 @@ mod tests {
 
     #[test]
     fn count_elements_5() {
-        let result = Leetcode::count_elements(vec![1,3,2,3,5,0]);
+        let result = Leetcode::count_elements(vec![1, 3, 2, 3, 5, 0]);
 
         assert_eq!(result, 3);
     }
