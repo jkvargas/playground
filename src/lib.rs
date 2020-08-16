@@ -1,6 +1,8 @@
+mod foursum;
 mod freqstack;
 mod mergesortcountinversions;
 mod roadsandlibraries;
+mod swapnodesinpairs;
 
 use std::collections::HashMap;
 
