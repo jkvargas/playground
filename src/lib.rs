@@ -1,7 +1,12 @@
+mod flattenbinarytree;
 mod foursum;
 mod freqstack;
+mod groupanagrams;
 mod mergesortcountinversions;
+mod remove_nth_node_from_end_of_list;
 mod roadsandlibraries;
+mod simplifypath;
+mod slidingwindowmaximum;
 mod swapnodesinpairs;
 
 use std::collections::HashMap;
