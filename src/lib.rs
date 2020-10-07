@@ -25,6 +25,7 @@ mod coursescheduleii;
 mod cracking;
 mod criticalconnetwork;
 mod decodestring;
+mod editdistance;
 mod expressivewords;
 mod firstandlastsortedarray;
 mod gameoflife;
