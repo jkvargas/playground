@@ -18,7 +18,7 @@ impl TrieT for Trie {
         Ok(self
             .children
             .entry(letters[0])
-            .or_insert(TrieNode::from(&letters).unwrap()))
+            .or_insert(TrieNode::from(&letters)?))
     }
 
     fn contains(&self, key: String) -> bool {
