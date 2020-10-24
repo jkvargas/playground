@@ -1,7 +1,9 @@
+use crate::datastructs::trienode::NodeType;
 use std::error::Error;
 use std::fmt;
 use std::fmt::{Display, Formatter};
 
+mod trie;
 mod trienode;
 
 #[derive(Debug)]
@@ -22,5 +24,7 @@ impl Display for TrieError {
 impl Error for TrieError {}
 
 pub trait TrieT {
-    fn insert(&mut self, key: String) -> TrieResult<()>;
+    fn insert(&mut self, key: String) -> TrieResult<&mut NodeType>;
+
+    fn contains(&self, key: String) -> bool;
 }
