@@ -2,13 +2,13 @@ pub struct Solution;
 
 impl Solution {
     pub fn three_sum(mut nums: Vec<i32>) -> Vec<Vec<i32>> {
-        if nums.is_empty() {
-            return Vec::<Vec::<i32>>::new();
+        if nums.is_empty() || nums.len() < 3 {
+            return Vec::<Vec<i32>>::new();
         }
 
         nums.sort();
 
-        let mut result = Vec::<Vec::<i32>>::new();
+        let mut result = Vec::<Vec<i32>>::new();
 
         for i in 0..(nums.len() - 2) {
             if i > 0 && nums[i] == nums[i - 1] {
@@ -34,11 +34,11 @@ impl Solution {
                 if sum == 0 {
                     result.push(vec![nums[i], nums[start], nums[end]]);
 
-                    while start + 1 < end && nums[start] == nums[start+1] {
+                    while start + 1 < end && nums[start] == nums[start + 1] {
                         start += 1;
                     }
 
-                    while end - 1 > start && nums[end] == nums[end-1] {
+                    while end - 1 > start && nums[end] == nums[end - 1] {
                         end -= 1;
                     }
 
@@ -68,5 +68,12 @@ mod tests {
         let result = Solution::three_sum(vec![0, 0, 0, 0]);
 
         assert_eq!(result, vec![vec![0, 0, 0]]);
+    }
+
+    #[test]
+    fn three_sum_3() {
+        let result = Solution::three_sum(vec![0]);
+
+        assert_eq!(result, Vec::<Vec<i32>>::new());
     }
 }
