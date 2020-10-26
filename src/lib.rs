@@ -39,6 +39,7 @@ mod mergeintervals;
 mod mergesortcountinversions;
 mod minimumpathsum;
 mod minstack;
+mod mostcommonword;
 mod nextpermutation;
 mod nodes;
 mod orderedmap;
