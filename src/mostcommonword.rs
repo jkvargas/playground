@@ -39,14 +39,10 @@ impl WordDictionary {
         self.word_to_add.clear();
 
         for letter in paragraph.chars() {
-            if letter == ' ' {
-                self.add_word_if_not_empty();
+            if letter.is_alphabetic() {
+                self.word_to_add.push(letter);
             } else {
-                if letter.is_alphabetic() {
-                    self.word_to_add.push(letter);
-                } else {
-                    self.add_word_if_not_empty();
-                }
+                self.add_word_if_not_empty();
             }
         }
 

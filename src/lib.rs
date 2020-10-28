@@ -66,6 +66,7 @@ mod trackpath;
 mod trappingrainwater;
 mod uniquepaths;
 mod validparenthesis;
+mod wigglesort;
 mod wildcard;
 mod wordbreak;
 mod wordsearch;
