@@ -37,7 +37,6 @@ impl Codec {
         self.clear();
 
         self.queue.push_back(root);
-        let mut last_number = 0;
 
         while !self.queue.is_empty() {
             let node = self.queue.pop_front().unwrap();
@@ -47,54 +46,54 @@ impl Codec {
                 Some(content) => {
                     let borrow = content.borrow();
                     self.vec_str.push(borrow.val.to_string());
-                    last_number = self.vec_str.len();
                     self.queue.push_back(borrow.left.clone());
                     self.queue.push_back(borrow.right.clone());
                 }
             }
         }
 
-        self.vec_str.truncate(last_number);
         self.vec_str.join("|")
     }
 
     fn deserialize(&self, data: String) -> TreeNodeOption {
-        let temp: Vec<Option<i32>> = data
+        if data.is_empty() {
+            return None;
+        }
+
+        let lst: Vec<Option<i32>> = data
             .split("|")
             .map(|x| {
                 if x == "None" {
                     None
                 } else {
-                    Some(FromStr::from_str(x).unwrap())
+                    Some(x.parse::<i32>().unwrap())
                 }
             })
             .collect();
 
-        Self::get_node_from_numbers(0, &temp)
-    }
+        let root = match lst[0] {
+            Some(a) => Rc::new(RefCell::new(TreeNode::new(a))),
+            None => return None,
+        };
 
-    fn get_node_from_numbers(index: usize, data: &Vec<Option<i32>>) -> TreeNodeOption {
-        if let Some(val) = data[index] {
-            let mut node = Some(Rc::new(RefCell::new(TreeNode::new(val))));
-
-            if index * 2 + 1 < data.len() {
-                if let Some(inherited) = &node {
-                    let mut borrow = inherited.borrow_mut();
-                    borrow.left = Self::get_node_from_numbers(index * 2 + 1, data);
-                }
+        let mut cur = 1;
+        let mut queue = std::collections::VecDeque::new();
+        queue.push_back(root.clone());
+        while let Some(node) = queue.pop_front() {
+            if let Some(a) = lst[cur] {
+                let l = Rc::new(RefCell::new(TreeNode::new(a)));
+                node.borrow_mut().left = Some(l.clone());
+                queue.push_back(l);
             }
-
-            if index * 2 + 2 < data.len() {
-                if let Some(inherited) = &node {
-                    let mut borrow = inherited.borrow_mut();
-                    borrow.right = Self::get_node_from_numbers(index * 2 + 2, data);
-                }
+            cur += 1;
+            if let Some(a) = lst[cur] {
+                let r = Rc::new(RefCell::new(TreeNode::new(a)));
+                node.borrow_mut().right = Some(r.clone());
+                queue.push_back(r);
             }
-
-            return node;
+            cur += 1;
         }
-
-        None
+        Some(root)
     }
 }
 
@@ -108,6 +107,40 @@ impl Codec {
 mod tests {
     use super::*;
     use crate::nodes::TreeNode;
+
+    #[test]
+    fn path_2() {
+        let to_serialize = TreeNode::from(vec![
+            Some(1),
+            Some(2),
+            Some(3),
+            None,
+            None,
+            Some(4),
+            Some(5),
+            Some(6),
+            Some(7),
+        ]);
+
+        dbg!(&to_serialize);
+
+        let expect = TreeNode::from(vec![
+            Some(1),
+            Some(2),
+            Some(3),
+            None,
+            None,
+            Some(4),
+            Some(5),
+            Some(6),
+            Some(7),
+        ]);
+
+        let mut obj = Codec::new();
+        let data = obj.serialize(to_serialize);
+
+        dbg!(data);
+    }
 
     #[test]
     fn simplify_path_1() {
