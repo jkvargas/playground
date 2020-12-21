@@ -2,8 +2,9 @@ use std::cell::RefCell;
 use std::rc::Rc;
 
 mod binarydiameter;
-mod rangesumbst;
 mod binarytreezigzag;
+mod rangesumbst;
+mod serializeanddeserializebinarytree;
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
