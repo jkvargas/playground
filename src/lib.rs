@@ -15,6 +15,7 @@ mod cracking;
 mod criticalconnetwork;
 mod datastructs;
 mod decodestring;
+mod decodeways;
 mod editdistance;
 mod expressivewords;
 mod findmedianfromdatastream;
