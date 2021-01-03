@@ -3,6 +3,7 @@ mod backspacecompare;
 mod basiccalculator;
 mod battleships;
 mod besttimetobuyandsellstock;
+mod climbingstair;
 mod coinchange;
 mod concatenatedwords;
 mod containermostwater;

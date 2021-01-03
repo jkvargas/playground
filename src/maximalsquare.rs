@@ -37,5 +37,5 @@ impl Solution {
 pub fn test_one() {
     let matrix = vec![vec!['0', '1'], vec!['1', '0']];
 
-    assert_eq!(3, Solution::maximal_square(matrix));
+    assert_eq!(1, Solution::maximal_square(matrix));
 }
