@@ -36,6 +36,7 @@ mod longestpalyndromic;
 mod longestsubstringwithoutrepat;
 mod longestvalidparenthesis;
 mod lrucache;
+mod maximalsquare;
 mod maxprofitassignment;
 mod mergeintervals;
 mod mergesortcountinversions;
