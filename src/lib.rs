@@ -27,6 +27,8 @@ mod freqstack;
 mod gameoflife;
 mod generateparenthesis;
 mod groupanagrams;
+mod houserobber;
+mod houserobberii;
 mod insertdeleterandom;
 mod isgraphbipartite;
 mod kclosestpoint;

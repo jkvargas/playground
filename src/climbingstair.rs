@@ -20,7 +20,11 @@ impl Solution {
             return memo[i as usize];
         }
 
-        memo[i as usize] = Self::check_stairs(i + 1, n, memo) + Self::check_stairs(i + 2, n, memo);
+        let a = Self::check_stairs(i + 1, n, memo);
+        let b = Self::check_stairs(i + 2, n, memo);
+        memo[i as usize] = a + b;
+
+        dbg!(&memo);
 
         memo[i as usize]
     }
@@ -28,7 +32,7 @@ impl Solution {
 
 #[test]
 pub fn checks() {
-    //assert_eq!(2, Solution::climb_stairs(2));
-    //assert_eq!(3, Solution::climb_stairs(3));
-    assert_eq!(4, Solution::climb_stairs(5));
+    assert_eq!(2, Solution::climb_stairs(2));
+    assert_eq!(3, Solution::climb_stairs(3));
+    assert_eq!(5, Solution::climb_stairs(4));
 }
