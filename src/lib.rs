@@ -48,6 +48,7 @@ mod minstack;
 mod mostcommonword;
 mod nextpermutation;
 mod nodes;
+mod onesandzeroes;
 mod orderedmap;
 mod permutations;
 mod permutationsinstring;
