@@ -65,6 +65,7 @@ mod simplifypath;
 mod slidingwindowmaximum;
 mod spiralmatrix;
 mod swapnodesinpairs;
+mod targetsum;
 mod threesum;
 mod threesumclosest;
 mod tictactoe;
