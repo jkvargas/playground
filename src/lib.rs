@@ -61,6 +61,7 @@ mod reversewordsinastring;
 mod roadsandlibraries;
 mod rotatedsortedarray;
 mod rottingoranges;
+mod shoppingoffers;
 mod simplifypath;
 mod slidingwindowmaximum;
 mod spiralmatrix;
