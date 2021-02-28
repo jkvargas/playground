@@ -74,6 +74,7 @@ mod timebasedkeyvaluestore;
 mod toomanylinkedlists;
 mod trackpath;
 mod trappingrainwater;
+mod twokeykeyboard;
 mod uniquepaths;
 mod validparenthesis;
 mod wigglesort;
