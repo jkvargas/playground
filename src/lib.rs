@@ -34,6 +34,7 @@ mod isgraphbipartite;
 mod kclosestpoint;
 mod kthlargest;
 mod laststone;
+mod lettercombinationsofaphonenumber;
 mod longestincreasingsubsequence;
 mod longestpalyndromic;
 mod longestsubstringwithoutrepat;
