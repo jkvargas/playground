@@ -5,6 +5,7 @@ mod battleships;
 mod besttimetobuyandsellstock;
 mod climbingstair;
 mod coinchange;
+mod combinationsum;
 mod concatenatedwords;
 mod containermostwater;
 mod contiguousarray;
