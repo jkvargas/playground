@@ -61,6 +61,7 @@ mod reversedlinkedlist;
 mod reverseint;
 mod reversewordsinastring;
 mod roadsandlibraries;
+mod robotboundedincircle;
 mod rotatedsortedarray;
 mod rottingoranges;
 mod shoppingoffers;
