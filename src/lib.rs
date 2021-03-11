@@ -55,6 +55,7 @@ mod orderedmap;
 mod permutations;
 mod permutationsinstring;
 mod productarray;
+mod randompickwithweight;
 mod regularexpressionmatching;
 mod remove_nth_node_from_end_of_list;
 mod reversedlinkedlist;
