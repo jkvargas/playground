@@ -25,6 +25,7 @@ mod firstandlastsortedarray;
 mod flattenbinarytree;
 mod foursum;
 mod freqstack;
+mod frogjump;
 mod gameoflife;
 mod generateparenthesis;
 mod groupanagrams;

@@ -37,12 +37,7 @@ impl Solution {
             .weight
             .range(self.get_random_number()..)
             .next()
-            .unwrap().1
+            .unwrap()
+            .1
     }
 }
-
-/**
- * Your Solution object will be instantiated and called as such:
- * let obj = Solution::new(w);
- * let ret_1: i32 = obj.pick_index();
- */
