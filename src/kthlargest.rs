@@ -14,7 +14,7 @@ mod tests {
 
     #[test]
     pub fn find_kth_largest_1() {
-        let result = vec![3,2,3,1,2,4,5,5,6];
+        let result = vec![3, 2, 3, 1, 2, 4, 5, 5, 6];
 
         assert_eq!(Solution::find_kth_largest(result, 4), 4);
     }

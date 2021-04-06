@@ -41,16 +41,25 @@ mod tests {
 
     #[test]
     fn reverse_words_1() {
-        assert_eq!(Solution::reverse_words("the sky is blue".to_string()), "blue is sky the".to_string());
+        assert_eq!(
+            Solution::reverse_words("the sky is blue".to_string()),
+            "blue is sky the".to_string()
+        );
     }
 
     #[test]
     fn reverse_words_2() {
-        assert_eq!(Solution::reverse_words("  hello world!  ".to_string()), "world! hello".to_string());
+        assert_eq!(
+            Solution::reverse_words("  hello world!  ".to_string()),
+            "world! hello".to_string()
+        );
     }
 
     #[test]
     fn reverse_words_3() {
-        assert_eq!(Solution::reverse_words("a good   example".to_string()), "example good a".to_string());
+        assert_eq!(
+            Solution::reverse_words("a good   example".to_string()),
+            "example good a".to_string()
+        );
     }
 }

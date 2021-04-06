@@ -28,10 +28,10 @@ impl Solution {
     }
 
     pub fn calculate_second(s: String) -> i32 {
-        let mut new_s : Vec<char> = format!("+{}", s).chars().collect();
+        let mut new_s: Vec<char> = format!("+{}", s).chars().collect();
         let mut ans = 0;
         let mut last = 0;
-        let mut n : i32 = 0;
+        let mut n: i32 = 0;
 
         while !new_s.is_empty() {
             let op = new_s.pop().unwrap();
@@ -43,19 +43,11 @@ impl Solution {
             };
 
             if op == '+' || op == '-' {
-                n = if op == '+' {
-                    n
-                } else {
-                    -n
-                };
+                n = if op == '+' { n } else { -n };
 
                 ans += n;
             } else {
-                n = if op == '*' {
-                    last * n
-                } else {
-                    last / n
-                };
+                n = if op == '*' { last * n } else { last / n };
 
                 ans = ans - last + n;
             }
@@ -67,8 +59,8 @@ impl Solution {
     }
 
     pub fn calculate(mut s: String) -> i32 {
-        let mut letters : VecDeque<char> = s.chars().collect();
-        let mut sums : Vec<i32> = Vec::new();
+        let mut letters: VecDeque<char> = s.chars().collect();
+        let mut sums: Vec<i32> = Vec::new();
         sums.push(Self::number(&mut letters).unwrap() as i32);
 
         while !letters.is_empty() {
@@ -180,7 +172,10 @@ mod tests {
 
     #[test]
     pub fn calculate_4() {
-        assert_eq!(18, Solution::calculate_second(" 3   +   5*4/2/2     +     10 ".to_string()));
+        assert_eq!(
+            18,
+            Solution::calculate_second(" 3   +   5*4/2/2     +     10 ".to_string())
+        );
     }
 
     #[test]
@@ -195,7 +190,10 @@ mod tests {
 
     #[test]
     pub fn calculate_7() {
-        assert_eq!(26, Solution::calculate_second("30 - 12 / 2 + 20 / 10   ".to_string()));
+        assert_eq!(
+            26,
+            Solution::calculate_second("30 - 12 / 2 + 20 / 10   ".to_string())
+        );
     }
 
     #[test]

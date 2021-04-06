@@ -3,18 +3,15 @@ struct Solution;
 // Definition for singly-linked list.
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
-  pub val: i32,
-  pub next: Option<Box<ListNode>>
+    pub val: i32,
+    pub next: Option<Box<ListNode>>,
 }
 
 impl ListNode {
-  #[inline]
-  fn new(val: i32) -> Self {
-    ListNode {
-      next: None,
-      val
+    #[inline]
+    fn new(val: i32) -> Self {
+        ListNode { next: None, val }
     }
-  }
 }
 
 impl Solution {
@@ -43,30 +40,27 @@ mod tests {
                     val: 3,
                     next: Some(Box::new(ListNode {
                         val: 4,
-                        next: Some(Box::new(ListNode {
-                            val: 5,
-                            next: None
-                        }))
-                    }))
-                }))
-            }))
+                        next: Some(Box::new(ListNode { val: 5, next: None })),
+                    })),
+                })),
+            })),
         })));
 
-        assert_eq!(result, Some(Box::new(ListNode {
-            val: 5,
-            next: Some(Box::new(ListNode {
-                val: 4,
+        assert_eq!(
+            result,
+            Some(Box::new(ListNode {
+                val: 5,
                 next: Some(Box::new(ListNode {
-                    val: 3,
+                    val: 4,
                     next: Some(Box::new(ListNode {
-                        val: 2,
+                        val: 3,
                         next: Some(Box::new(ListNode {
-                            val: 1,
-                            next: None
+                            val: 2,
+                            next: Some(Box::new(ListNode { val: 1, next: None }))
                         }))
                     }))
                 }))
             }))
-        })));
+        );
     }
 }

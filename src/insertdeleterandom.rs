@@ -1,10 +1,10 @@
+use rand::prelude::*;
 use std::collections::HashMap;
 use std::time::{SystemTime, UNIX_EPOCH};
-use rand::prelude::*;
 
 struct RandomizedSet {
     map: HashMap<i32, usize>,
-    vec: Vec<i32>
+    vec: Vec<i32>,
 }
 
 /**
@@ -12,12 +12,11 @@ struct RandomizedSet {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl RandomizedSet {
-
     /** Initialize your data structure here. */
     fn new() -> Self {
         Self {
             map: HashMap::new(),
-            vec: Vec::new()
+            vec: Vec::new(),
         }
     }
 
@@ -42,7 +41,6 @@ impl RandomizedSet {
 
     // last_pos = 2
     // last_key = 5
-
 
     /** Removes a value from the set. Returns true if the set contained the specified element. */
     fn remove(&mut self, val: i32) -> bool {
@@ -74,7 +72,7 @@ impl RandomizedSet {
         /// if no elements is going to panic!!!
         ///
         let mut rng = rand::thread_rng();
-        let index : usize = rng.gen::<usize>() % self.vec.len() - 1;
+        let index: usize = rng.gen::<usize>() % self.vec.len() - 1;
 
         self.vec[index]
     }
@@ -115,10 +113,7 @@ mod tests {
         assert_eq!(true, randomSet.insert(2));
 
         // getRandom should return either 1 or 2 randomly.
-        let range = std::ops::Range {
-            start: 1,
-            end: 2
-        };
+        let range = std::ops::Range { start: 1, end: 2 };
 
         assert!(range.contains(&randomSet.get_random()));
 
@@ -129,6 +124,6 @@ mod tests {
         assert_eq!(false, randomSet.insert(2));
 
         // Since 2 is the only number in the set, getRandom always return 2.
-       assert_eq!(2, randomSet.get_random());
+        assert_eq!(2, randomSet.get_random());
     }
 }

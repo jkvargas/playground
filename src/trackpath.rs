@@ -11,11 +11,10 @@ pub struct Maze {
     size_i: usize,
     size_j: usize,
     maze: Vec<Vec<i32>>,
-    end_found: bool
+    end_found: bool,
 }
 
-impl Maze
-{
+impl Maze {
     pub fn find_best_path(&mut self) -> Vec<Vec<i32>> {
         self.queue.push_back((0, 0, vec![vec![0, 0]]));
         self.visited.insert((0, 0), true);
@@ -35,11 +34,10 @@ impl Maze
             if self.nodes_left == 0 {
                 self.nodes_left = self.nodes_next;
                 self.nodes_next = 0;
-
             }
         }
 
-        Vec::<Vec::<i32>>::new()
+        Vec::<Vec<i32>>::new()
     }
 
     pub fn new(vec: Vec<Vec<i32>>) -> Self {
@@ -51,7 +49,7 @@ impl Maze
             size_i: vec.len(),
             size_j: vec[0].len(),
             maze: vec,
-            end_found: false
+            end_found: false,
         }
     }
 
@@ -86,7 +84,7 @@ impl Maze
             self.visited.insert(new_pos, true);
             self.nodes_next += 1;
             let mut newvec = pos.2.clone();
-            let mut temp : Vec<i32> = Vec::new();
+            let mut temp: Vec<i32> = Vec::new();
             temp.push(new_pos.0 as i32);
             temp.push(new_pos.1 as i32);
             newvec.push(temp);
@@ -118,11 +116,13 @@ mod tests {
 
     #[test]
     fn find_path_2() {
-        let mut matrix_origin = vec![vec![2,1,0,1,0,1,0,0,0,1],
-                                     vec![0,1,0,0,0,1,0,1,0,0],
-                                     vec![0,0,0,0,0,1,0,0,1,0],
-                                     vec![0,1,0,1,1,1,1,0,1,0],
-                                     vec![0,1,0,0,0,0,0,0,1,3]];
+        let mut matrix_origin = vec![
+            vec![2, 1, 0, 1, 0, 1, 0, 0, 0, 1],
+            vec![0, 1, 0, 0, 0, 1, 0, 1, 0, 0],
+            vec![0, 0, 0, 0, 0, 1, 0, 0, 1, 0],
+            vec![0, 1, 0, 1, 1, 1, 1, 0, 1, 0],
+            vec![0, 1, 0, 0, 0, 0, 0, 0, 1, 3],
+        ];
 
         let result = Solution::find_path(matrix_origin.clone());
 
@@ -140,11 +140,13 @@ mod tests {
 
     #[test]
     fn find_path_1() {
-        let mut matrix_origin = vec![vec![2,0,1,0,0,0,0,1,0,0],
-                                     vec![0,0,0,0,1,0,0,0,0,0],
-                                     vec![0,0,0,0,1,0,0,0,0,0],
-                                     vec![0,0,0,0,1,0,0,0,0,0],
-                                     vec![0,0,0,0,1,0,0,0,0,3]];
+        let mut matrix_origin = vec![
+            vec![2, 0, 1, 0, 0, 0, 0, 1, 0, 0],
+            vec![0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+            vec![0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+            vec![0, 0, 0, 0, 1, 0, 0, 0, 0, 0],
+            vec![0, 0, 0, 0, 1, 0, 0, 0, 0, 3],
+        ];
 
         let result = Solution::find_path(matrix_origin.clone());
 

@@ -2,14 +2,14 @@ use std::collections::HashMap;
 
 pub struct OrderedMap {
     map: HashMap<usize, usize>,
-    vec: Vec<usize>
+    vec: Vec<usize>,
 }
 
 impl OrderedMap {
     pub fn new() -> OrderedMap {
         Self {
             map: HashMap::new(),
-            vec: Vec::new()
+            vec: Vec::new(),
         }
     }
 

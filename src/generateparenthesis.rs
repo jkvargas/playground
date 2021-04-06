@@ -2,7 +2,7 @@ struct Solution;
 
 impl Solution {
     pub fn generate_parenthesis(n: i32) -> Vec<String> {
-        let mut result : Vec<String> = Vec::new();
+        let mut result: Vec<String> = Vec::new();
         Self::backtrack(&mut result, "".to_string(), 0, 0, n);
         result
     }
@@ -18,7 +18,7 @@ impl Solution {
         }
 
         if close < open {
-            Self::backtrack(list, format!("{})", cur), open, close+1, max);
+            Self::backtrack(list, format!("{})", cur), open, close + 1, max);
         }
     }
 }
@@ -29,12 +29,15 @@ mod tests {
 
     #[test]
     pub fn generate_parenthesis_1() {
-        assert_eq!(Solution::generate_parenthesis(3), vec![
-            "((()))".to_string(),
-            "(()())".to_string(),
-            "(())()".to_string(),
-            "()(())".to_string(),
-            "()()()".to_string()
-        ])
+        assert_eq!(
+            Solution::generate_parenthesis(3),
+            vec![
+                "((()))".to_string(),
+                "(()())".to_string(),
+                "(())()".to_string(),
+                "()(())".to_string(),
+                "()()()".to_string()
+            ]
+        )
     }
 }

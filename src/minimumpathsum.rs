@@ -24,4 +24,3 @@ impl Solution {
         temp[y_size - 1][x_size - 1]
     }
 }
-

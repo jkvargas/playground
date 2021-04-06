@@ -3,7 +3,10 @@ struct Solution;
 impl Solution {
     pub fn expressive_words(s: String, words: Vec<String>) -> i32 {
         let (letter_s, ocurrences_s) = Self::map_word_to_ocurrences(s);
-        let map_words : Vec<(Vec<char>, Vec<u32>)> = words.into_iter().map(|x| Self::map_word_to_ocurrences(x)).collect();
+        let map_words: Vec<(Vec<char>, Vec<u32>)> = words
+            .into_iter()
+            .map(|x| Self::map_word_to_ocurrences(x))
+            .collect();
 
         let mut count = 0;
         for (letters, ocurrences) in map_words {
@@ -15,7 +18,12 @@ impl Solution {
         count
     }
 
-    fn compare_maps(letters_s: &Vec<char>, ocurrences_s: &Vec<u32>, letters: &Vec<char>, ocurrences: &Vec<u32>) -> bool {
+    fn compare_maps(
+        letters_s: &Vec<char>,
+        ocurrences_s: &Vec<u32>,
+        letters: &Vec<char>,
+        ocurrences: &Vec<u32>,
+    ) -> bool {
         if letters.len() != letters_s.len() {
             return false;
         }
@@ -56,18 +64,26 @@ impl Solution {
     }
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
 
     #[test]
     pub fn expressive_words_1() {
-        assert_eq!(Solution::expressive_words("heeellooo".to_string(), vec!["hello".to_string(), "hi".to_string(), "helo".to_string()]), 1);
+        assert_eq!(
+            Solution::expressive_words(
+                "heeellooo".to_string(),
+                vec!["hello".to_string(), "hi".to_string(), "helo".to_string()]
+            ),
+            1
+        );
     }
 
     #[test]
     pub fn expressive_words_2() {
-        assert_eq!(Solution::expressive_words("aaa".to_string(), vec!["aaaa".to_string()]), 0);
+        assert_eq!(
+            Solution::expressive_words("aaa".to_string(), vec!["aaaa".to_string()]),
+            0
+        );
     }
 }

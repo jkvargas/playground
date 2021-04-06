@@ -2,13 +2,14 @@ pub struct Solution;
 
 impl Solution {
     pub fn coin_change(coins: Vec<i32>, amount: i32) -> i32 {
-        let mut amountvec : Vec<i32> = vec![amount + 1; (amount + 1) as usize];
+        let mut amountvec: Vec<i32> = vec![amount + 1; (amount + 1) as usize];
         amountvec[0] = 0;
 
-        for i in 0..amount + 1{
+        for i in 0..amount + 1 {
             for j in &coins {
                 if *j <= i {
-                    amountvec[i as usize] = std::cmp::min(amountvec[i as usize], 1 + amountvec[(i - *j) as usize])
+                    amountvec[i as usize] =
+                        std::cmp::min(amountvec[i as usize], 1 + amountvec[(i - *j) as usize])
                 }
             }
         }
@@ -37,6 +38,6 @@ mod tests {
 
     #[test]
     pub fn coin_change_3() {
-        assert_eq!(Solution::coin_change(vec![186,419,83,408], 6249), 20);
+        assert_eq!(Solution::coin_change(vec![186, 419, 83, 408], 6249), 20);
     }
 }

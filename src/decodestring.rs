@@ -17,7 +17,7 @@ impl Solution {
     // S[N] ONDE N = S[Y]
     pub fn decode_string(s: String) -> String {
         let str_len = s.len();
-        let str_chars : Vec<char> = s.chars().collect();
+        let str_chars: Vec<char> = s.chars().collect();
         let mut result = String::new();
         let mut pos = 0;
 
@@ -44,7 +44,7 @@ impl Solution {
 
     fn decode_expr(vec: &Vec<char>, mut pos: usize) -> (String, usize) {
         let mut is_open = false;
-        let mut base_stack : VecDeque<u32> = VecDeque::new();
+        let mut base_stack: VecDeque<u32> = VecDeque::new();
         let mut base_word = String::new();
 
         loop {
@@ -69,12 +69,11 @@ impl Solution {
                 continue;
             }
             if vec[pos] == '[' {
-               is_open = true;
+                is_open = true;
                 pos += 1;
                 continue;
             }
-            if vec[pos] == ']'
-            {
+            if vec[pos] == ']' {
                 pos += 1;
                 break;
             }
@@ -105,7 +104,6 @@ mod tests {
 
     // a
 
-
     // decode expression
     // stack <- 3  1
     // open_expr = true
@@ -120,21 +118,33 @@ mod tests {
 
     #[test]
     pub fn decode_string_1() {
-        assert_eq!(Solution::decode_string("3[a]2[bc]".to_string()), "aaabcbc".to_string());
+        assert_eq!(
+            Solution::decode_string("3[a]2[bc]".to_string()),
+            "aaabcbc".to_string()
+        );
     }
 
     #[test]
     pub fn decode_string_2() {
-        assert_eq!(Solution::decode_string("3[a2[c]]".to_string()), "accaccacc".to_string());
+        assert_eq!(
+            Solution::decode_string("3[a2[c]]".to_string()),
+            "accaccacc".to_string()
+        );
     }
 
     #[test]
     pub fn decode_string_3() {
-        assert_eq!(Solution::decode_string("2[abc]3[cd]ef".to_string()), "abcabccdcdcdef".to_string());
+        assert_eq!(
+            Solution::decode_string("2[abc]3[cd]ef".to_string()),
+            "abcabccdcdcdef".to_string()
+        );
     }
 
     #[test]
     pub fn decode_string_4() {
-        assert_eq!(Solution::decode_string("at2[abc]3[cd]ef".to_string()), "atabcabccdcdcdef".to_string());
+        assert_eq!(
+            Solution::decode_string("at2[abc]3[cd]ef".to_string()),
+            "atabcabccdcdcdef".to_string()
+        );
     }
 }

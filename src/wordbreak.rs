@@ -1,4 +1,4 @@
-use std::collections::{HashMap, VecDeque, HashSet};
+use std::collections::{HashMap, HashSet, VecDeque};
 use std::iter::FromIterator;
 
 struct Solution;
@@ -6,7 +6,7 @@ struct Solution;
 impl Solution {
     pub fn word_break(s: String, word_dict: Vec<String>) -> bool {
         let word: Vec<char> = s.chars().collect();
-        let mut memo : Vec<Option<bool>> = vec![None; word.len()];
+        let mut memo: Vec<Option<bool>> = vec![None; word.len()];
 
         let mut map: HashMap<char, Vec<Vec<char>>> = HashMap::new();
 
@@ -20,14 +20,13 @@ impl Solution {
             map.get_mut(&i[0]).unwrap().push(i);
         }
 
-
         Self::wb(word.len(), 0, &word, &map, &mut memo)
     }
 
     pub fn work_break_bfs(s: String, word_dict: Vec<String>) -> bool {
-        let hs : HashSet<String> = HashSet::from_iter(word_dict);
-        let mut queue : VecDeque<i32> = VecDeque::new();
-        let mut visited : Vec<bool> = vec![false; s.len()];
+        let hs: HashSet<String> = HashSet::from_iter(word_dict);
+        let mut queue: VecDeque<i32> = VecDeque::new();
+        let mut visited: Vec<bool> = vec![false; s.len()];
         queue.push_back(0);
 
         while !queue.is_empty() {
@@ -70,7 +69,13 @@ impl Solution {
         true
     }
 
-    fn wb(wlen: usize, pos: usize, word: &Vec<char>, map: &HashMap<char, Vec<Vec<char>>>, memo: &mut Vec<Option<bool>>) -> bool {
+    fn wb(
+        wlen: usize,
+        pos: usize,
+        word: &Vec<char>,
+        map: &HashMap<char, Vec<Vec<char>>>,
+        memo: &mut Vec<Option<bool>>,
+    ) -> bool {
         if pos == wlen {
             return true;
         }
@@ -107,27 +112,63 @@ mod tests {
 
     #[test]
     fn word_break_1() {
-        assert!(Solution::word_break("leetcode".to_string(), vec!["leet".to_string(), "code".to_string()]));
+        assert!(Solution::word_break(
+            "leetcode".to_string(),
+            vec!["leet".to_string(), "code".to_string()]
+        ));
     }
 
     #[test]
     fn word_break_2() {
-        assert!(Solution::word_break("applepenapple".to_string(), vec!["apple".to_string(), "pen".to_string()]));
+        assert!(Solution::word_break(
+            "applepenapple".to_string(),
+            vec!["apple".to_string(), "pen".to_string()]
+        ));
     }
 
     #[test]
     fn word_break_3() {
-        assert_eq!(Solution::word_break("catsandog".to_string(), vec!["cats".to_string(), "dog".to_string(), "sand".to_string(), "and".to_string(), "cat".to_string()]), false);
+        assert_eq!(
+            Solution::word_break(
+                "catsandog".to_string(),
+                vec![
+                    "cats".to_string(),
+                    "dog".to_string(),
+                    "sand".to_string(),
+                    "and".to_string(),
+                    "cat".to_string()
+                ]
+            ),
+            false
+        );
     }
 
     #[test]
     fn word_break_4() {
-        assert_eq!(Solution::word_break("aaaaaaa".to_string(), vec!["aaaa".to_string(),"aa".to_string()]), false);
+        assert_eq!(
+            Solution::word_break(
+                "aaaaaaa".to_string(),
+                vec!["aaaa".to_string(), "aa".to_string()]
+            ),
+            false
+        );
     }
 
     #[test]
     fn word_break_6() {
-        assert_eq!(Solution::work_break_bfs("catsanddog".to_string(), vec!["cat".to_string(), "cats".to_string(), "sand".to_string(), "and".to_string(), "dog".to_string()]), false);
+        assert_eq!(
+            Solution::work_break_bfs(
+                "catsanddog".to_string(),
+                vec![
+                    "cat".to_string(),
+                    "cats".to_string(),
+                    "sand".to_string(),
+                    "and".to_string(),
+                    "dog".to_string()
+                ]
+            ),
+            false
+        );
     }
 
     #[test]

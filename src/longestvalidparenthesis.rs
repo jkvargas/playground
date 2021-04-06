@@ -3,7 +3,7 @@ struct Solution;
 impl Solution {
     pub fn longest_valid_parentheses_sec(s: String) -> i32 {
         let mut vec: Vec<bool> = vec![false; s.len()];
-        let mut stack : Vec<usize> = Vec::new(); // stack
+        let mut stack: Vec<usize> = Vec::new(); // stack
 
         if s.len() < 2 {
             return 0;
@@ -24,11 +24,7 @@ impl Solution {
             }
         }
 
-        let mut count = if vec[0] {
-            1
-        } else {
-            0
-        };
+        let mut count = if vec[0] { 1 } else { 0 };
 
         let mut max = count;
 
@@ -59,11 +55,7 @@ impl Solution {
         for i in 1..vec.len() {
             if vec[i] == ')' {
                 if vec[i - 1] == '(' {
-                    arr[i] = if i >= 2 {
-                        arr[i - 2]
-                    } else {
-                        0
-                    } + 2;
+                    arr[i] = if i >= 2 { arr[i - 2] } else { 0 } + 2;
                 } else if i as i32 - arr[i - 1] > 0 && vec[i - arr[i - 1] as usize - 1] == '(' {
                     arr[i] = if arr[i - 1] + (i as i32 - arr[i - 1]) >= 2 {
                         arr[i - arr[i - 1] as usize - 2]
@@ -91,27 +83,42 @@ mod tests {
 
     #[test]
     fn longest_valid_parentheses_1() {
-        assert_eq!(Solution::longest_valid_parentheses_sec("(()".to_string()), 2);
+        assert_eq!(
+            Solution::longest_valid_parentheses_sec("(()".to_string()),
+            2
+        );
     }
 
     #[test]
     fn longest_valid_parentheses_2() {
-        assert_eq!(Solution::longest_valid_parentheses_sec(")()())".to_string()), 4);
+        assert_eq!(
+            Solution::longest_valid_parentheses_sec(")()())".to_string()),
+            4
+        );
     }
 
     #[test]
     fn longest_valid_parentheses_3() {
-        assert_eq!(Solution::longest_valid_parentheses_sec("))()()))(()()())".to_string()), 8);
+        assert_eq!(
+            Solution::longest_valid_parentheses_sec("))()()))(()()())".to_string()),
+            8
+        );
     }
 
     #[test]
     fn longest_valid_parentheses_4() {
-        assert_eq!(Solution::longest_valid_parentheses_sec("()(()".to_string()), 2);
+        assert_eq!(
+            Solution::longest_valid_parentheses_sec("()(()".to_string()),
+            2
+        );
     }
 
     #[test]
     fn longest_valid_parentheses_5() {
-        assert_eq!(Solution::longest_valid_parentheses_sec("()(())".to_string()), 6);
+        assert_eq!(
+            Solution::longest_valid_parentheses_sec("()(())".to_string()),
+            6
+        );
     }
 
     #[test]

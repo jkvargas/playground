@@ -6,7 +6,7 @@ impl Solution {
         let i_len = board.len();
         let j_len = board[0].len();
 
-        let letters = word.chars().into_iter().collect::<Vec::<char>>();
+        let letters = word.chars().into_iter().collect::<Vec<char>>();
         let mut letter_pos = 0;
 
         for i in 0..i_len {
@@ -20,30 +20,33 @@ impl Solution {
         false
     }
 
-    fn check_around(letters: &Vec<char>,
-                    letter_pos: usize,
-                    board: &mut Vec<Vec<char>>,
-                    i: i32,
-                    j: i32) -> bool {
+    fn check_around(
+        letters: &Vec<char>,
+        letter_pos: usize,
+        board: &mut Vec<Vec<char>>,
+        i: i32,
+        j: i32,
+    ) -> bool {
         if letter_pos == letters.len() {
             return true;
         }
 
-        if i < 0 ||
-            j < 0 ||
-            i as usize >= board.len() ||
-            j as usize >= board[0].len() ||
-            board[i as usize][j as usize] != letters[letter_pos] {
+        if i < 0
+            || j < 0
+            || i as usize >= board.len()
+            || j as usize >= board[0].len()
+            || board[i as usize][j as usize] != letters[letter_pos]
+        {
             return false;
         }
 
         board[i as usize][j as usize] == '#';
 
-
         if Self::check_around(letters, letter_pos + 1, board, i + 1, j)
             || Self::check_around(letters, letter_pos + 1, board, i - 1, j)
             || Self::check_around(letters, letter_pos + 1, board, i, j + 1)
-            || Self::check_around(letters, letter_pos + 1, board, i, j - 1) {
+            || Self::check_around(letters, letter_pos + 1, board, i, j - 1)
+        {
             return true;
         }
 
@@ -59,25 +62,46 @@ mod tests {
 
     #[test]
     fn exist_1() {
-        assert_eq!(Solution::exist(vec![
-            vec!['A','B','C','E'],
-            vec!['S','F','C','S'],
-            vec!['A','D','E','E']], "ABCCED".to_string()), true);
+        assert_eq!(
+            Solution::exist(
+                vec![
+                    vec!['A', 'B', 'C', 'E'],
+                    vec!['S', 'F', 'C', 'S'],
+                    vec!['A', 'D', 'E', 'E']
+                ],
+                "ABCCED".to_string()
+            ),
+            true
+        );
     }
 
     #[test]
     fn exist_2() {
-        assert_eq!(Solution::exist(vec![
-            vec!['A','B','C','E'],
-            vec!['S','F','C','S'],
-            vec!['A','D','E','E']], "SEE".to_string()), true);
+        assert_eq!(
+            Solution::exist(
+                vec![
+                    vec!['A', 'B', 'C', 'E'],
+                    vec!['S', 'F', 'C', 'S'],
+                    vec!['A', 'D', 'E', 'E']
+                ],
+                "SEE".to_string()
+            ),
+            true
+        );
     }
 
     #[test]
     fn exist_3() {
-        assert_eq!(Solution::exist(vec![
-            vec!['A','B','C','E'],
-            vec!['S','F','C','S'],
-            vec!['A','D','E','E']], "ABCB".to_string()), false);
+        assert_eq!(
+            Solution::exist(
+                vec![
+                    vec!['A', 'B', 'C', 'E'],
+                    vec!['S', 'F', 'C', 'S'],
+                    vec!['A', 'D', 'E', 'E']
+                ],
+                "ABCB".to_string()
+            ),
+            false
+        );
     }
 }

@@ -36,7 +36,7 @@ impl Solution {
         }
 
         -1
-     }
+    }
 }
 
 #[cfg(test)]
@@ -70,12 +70,12 @@ mod tests {
 
     #[test]
     fn search_1() {
-        assert_eq!(Solution::search(vec![4,5,6,7,0,1,2], 0), 4);
+        assert_eq!(Solution::search(vec![4, 5, 6, 7, 0, 1, 2], 0), 4);
     }
 
     #[test]
     fn search_2() {
-        assert_eq!(Solution::search(vec![4,5,6,7,0,1,2], 3), -1);
+        assert_eq!(Solution::search(vec![4, 5, 6, 7, 0, 1, 2], 3), -1);
     }
 
     #[test]
@@ -92,5 +92,4 @@ mod tests {
     fn search_10() {
         assert_eq!(Solution::search(vec![5, 1, 3], 3), 2);
     }
-
 }

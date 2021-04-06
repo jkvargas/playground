@@ -50,7 +50,7 @@ mod tests {
 
     #[test]
     fn next_permutation_1() {
-        let mut vec = vec![1,2,3];
+        let mut vec = vec![1, 2, 3];
 
         Solution::next_permutation(&mut vec);
 
@@ -59,7 +59,7 @@ mod tests {
 
     #[test]
     fn next_permutation_2() {
-        let mut vec = vec![3,2,1];
+        let mut vec = vec![3, 2, 1];
 
         Solution::next_permutation(&mut vec);
 
@@ -68,7 +68,7 @@ mod tests {
 
     #[test]
     fn next_permutation_3() {
-        let mut vec = vec![1,1,5];
+        let mut vec = vec![1, 1, 5];
 
         Solution::next_permutation(&mut vec);
 
@@ -77,7 +77,7 @@ mod tests {
 
     #[test]
     fn next_permutation_4() {
-        let mut vec = vec![1,3,2];
+        let mut vec = vec![1, 3, 2];
 
         Solution::next_permutation(&mut vec);
 
@@ -86,10 +86,10 @@ mod tests {
 
     #[test]
     fn next_permutation_5() {
-        let mut vec = vec![1,5,8,4,7,6,5,3,1];
+        let mut vec = vec![1, 5, 8, 4, 7, 6, 5, 3, 1];
 
         Solution::next_permutation(&mut vec);
 
-        assert_eq!(vec![1,5,8,5,1,3,4,6,7], vec);
+        assert_eq!(vec![1, 5, 8, 5, 1, 3, 4, 6, 7], vec);
     }
 }

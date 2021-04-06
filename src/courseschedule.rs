@@ -70,7 +70,12 @@ impl Solution {
     }
 
     // O(course + adj)
-    fn is_cyclic_pos_order(course: usize, adj: &HashMap<i32, Vec<i32>>, visited: &mut Vec<bool>, path: &mut Vec<bool>) -> bool {
+    fn is_cyclic_pos_order(
+        course: usize,
+        adj: &HashMap<i32, Vec<i32>>,
+        visited: &mut Vec<bool>,
+        path: &mut Vec<bool>,
+    ) -> bool {
         if visited[course] {
             return false;
         }

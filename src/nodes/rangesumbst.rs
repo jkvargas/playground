@@ -1,6 +1,6 @@
-use std::rc::Rc;
-use std::cell::RefCell;
 use crate::nodes::TreeNode;
+use std::cell::RefCell;
+use std::rc::Rc;
 
 pub struct Solution;
 
@@ -17,9 +17,8 @@ impl Solution {
                 borrowed.val
             } else {
                 0
-            } +
-                Self::go_though(&borrowed.left, l, r) +
-                Self::go_though(&borrowed.right, l, r);
+            } + Self::go_though(&borrowed.left, l, r)
+                + Self::go_though(&borrowed.right, l, r);
         }
 
         0

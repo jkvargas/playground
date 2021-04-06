@@ -12,7 +12,10 @@ impl Solution {
 
         for x in 0..size_x {
             for y in 0..size_y {
-                if board[x][y] == 'X' && !(x + 1 < size_x && board[x+1][y] == 'X' || y + 1 < size_y && board[x][y + 1] == 'X'){
+                if board[x][y] == 'X'
+                    && !(x + 1 < size_x && board[x + 1][y] == 'X'
+                        || y + 1 < size_y && board[x][y + 1] == 'X')
+                {
                     ship_count += 1;
                 }
             }
@@ -28,6 +31,13 @@ mod tests {
 
     #[test]
     fn middle_node_1() {
-        assert_eq!(Solution::count_battleships(vec![vec!['X','.','.','X'],vec!['.','.','.','X'],vec!['.','.','.','X']]), 2);
+        assert_eq!(
+            Solution::count_battleships(vec![
+                vec!['X', '.', '.', 'X'],
+                vec!['.', '.', '.', 'X'],
+                vec!['.', '.', '.', 'X']
+            ]),
+            2
+        );
     }
 }

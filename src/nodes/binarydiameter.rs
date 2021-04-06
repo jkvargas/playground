@@ -5,14 +5,12 @@ use std::rc::Rc;
 pub struct Solution;
 
 pub struct Max {
-    max: i32
+    max: i32,
 }
 
 impl Max {
     pub fn new(init_val: i32) -> Self {
-        Self {
-            max: init_val
-        }
+        Self { max: init_val }
     }
 
     pub fn diameter_of_binary_tree(&mut self, root: Option<Rc<RefCell<TreeNode>>>) -> i32 {

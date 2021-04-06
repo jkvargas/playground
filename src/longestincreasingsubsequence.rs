@@ -24,7 +24,9 @@ impl Solution {
     }
 
     pub fn lldynamic_programming(nums: Vec<i32>) -> i32 {
-        if nums.len() <= 1 { return nums.len() as i32; }
+        if nums.len() <= 1 {
+            return nums.len() as i32;
+        }
 
         let mut dp = vec![1; nums.len()];
         let mut max_lis = 1;
@@ -91,7 +93,7 @@ mod tests {
 
     #[test]
     fn last_stone_weight_1() {
-        assert_eq!(Solution::length_of_lis(vec![10,9,2,5,3,7,101,18]), 4);
+        assert_eq!(Solution::length_of_lis(vec![10, 9, 2, 5, 3, 7, 101, 18]), 4);
     }
 
     #[test]
@@ -101,6 +103,6 @@ mod tests {
 
     #[test]
     fn last_stone_weight_3() {
-        assert_eq!(Solution::length_of_lis(vec![1,3,6,7,9,4,10,5,6]), 6);
+        assert_eq!(Solution::length_of_lis(vec![1, 3, 6, 7, 9, 4, 10, 5, 6]), 6);
     }
 }

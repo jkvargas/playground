@@ -11,11 +11,7 @@ impl Solution {
         let mut count = 0;
 
         for (i, val) in nums.iter().enumerate() {
-            count = count + if *val == 1 {
-                1
-            } else {
-                -1
-            };
+            count = count + if *val == 1 { 1 } else { -1 };
 
             if map.contains_key(&count) {
                 max_length = std::cmp::max(max_length, (i as i32) - map.get(&count).unwrap());
@@ -44,7 +40,7 @@ mod tests {
 
     #[test]
     fn find_max_length_4() {
-        assert_eq!(Solution::find_max_length(vec![0,1,0,1]), 4);
+        assert_eq!(Solution::find_max_length(vec![0, 1, 0, 1]), 4);
     }
 
     #[test]

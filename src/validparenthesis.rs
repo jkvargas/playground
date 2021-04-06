@@ -14,10 +14,19 @@ impl Solution {
                 '(' => opening = true,
                 '{' => opening = true,
                 '[' => opening = true,
-                ')' => { close_letter = '('; opening = false; },
-                ']' => { close_letter = '['; opening = false; },
-                '}' => { close_letter = '{'; opening = false; },
-                _ => ()
+                ')' => {
+                    close_letter = '(';
+                    opening = false;
+                }
+                ']' => {
+                    close_letter = '[';
+                    opening = false;
+                }
+                '}' => {
+                    close_letter = '{';
+                    opening = false;
+                }
+                _ => (),
             }
 
             if !Self::validate_letter(i, close_letter, opening, &mut vec_deque) {
@@ -28,7 +37,12 @@ impl Solution {
         vec_deque.is_empty()
     }
 
-    fn validate_letter(letter: char, close_letter: char, opening: bool, vec: &mut VecDeque<char>) -> bool {
+    fn validate_letter(
+        letter: char,
+        close_letter: char,
+        opening: bool,
+        vec: &mut VecDeque<char>,
+    ) -> bool {
         if opening {
             vec.push_front(letter);
             return true;

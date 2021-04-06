@@ -5,8 +5,8 @@ struct Solution;
 
 impl Solution {
     pub fn find_order(num_courses: i32, prerequisites: Vec<Vec<i32>>) -> Vec<i32> {
-        let mut stack : VecDeque<i32> = VecDeque::new();
-        let mut map : HashMap<i32, Vec<i32>> = HashMap::new();
+        let mut stack: VecDeque<i32> = VecDeque::new();
+        let mut map: HashMap<i32, Vec<i32>> = HashMap::new();
         let mut visited = vec![false; num_courses as usize];
         let mut path = vec![false; num_courses as usize];
 
@@ -26,11 +26,16 @@ impl Solution {
             }
         }
 
-        stack.into_iter().collect::<Vec::<i32>>()
+        stack.into_iter().collect::<Vec<i32>>()
     }
 
-    fn go_through(map: &HashMap<i32, Vec<i32>>, stack: &mut VecDeque<i32>, num: i32, visited: &mut Vec<bool>, path: &mut Vec<bool>) -> bool
-    {
+    fn go_through(
+        map: &HashMap<i32, Vec<i32>>,
+        stack: &mut VecDeque<i32>,
+        num: i32,
+        visited: &mut Vec<bool>,
+        path: &mut Vec<bool>,
+    ) -> bool {
         if visited[num as usize] {
             return false;
         }
@@ -71,11 +76,11 @@ impl Solution {
                 )
             }),
         )
-            .into_iter()
-            .flatten()
-            .map(TryInto::try_into)
-            .collect::<Result<_, _>>()
-            .unwrap()
+        .into_iter()
+        .flatten()
+        .map(TryInto::try_into)
+        .collect::<Result<_, _>>()
+        .unwrap()
     }
 
     /// idiomatic entry point.
@@ -136,6 +141,9 @@ mod tests {
 
     #[test]
     fn find_order_2() {
-        assert_eq!(Solution::find_order(4, vec![vec![1,0], vec![2,0], vec![3,1], vec![3,2]]), vec![0, 1, 2, 3]);
+        assert_eq!(
+            Solution::find_order(4, vec![vec![1, 0], vec![2, 0], vec![3, 1], vec![3, 2]]),
+            vec![0, 1, 2, 3]
+        );
     }
 }

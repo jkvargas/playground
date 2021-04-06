@@ -3,7 +3,11 @@ use std::collections::HashMap;
 struct Solution;
 
 impl Solution {
-    pub fn max_profit_assignment(difficulty: Vec<i32>, profit: Vec<i32>, mut worker: Vec<i32>) -> i32 {
+    pub fn max_profit_assignment(
+        difficulty: Vec<i32>,
+        profit: Vec<i32>,
+        mut worker: Vec<i32>,
+    ) -> i32 {
         let mut cost_profit: Vec<(i32, i32)> = Vec::new();
 
         for i in 0..difficulty.len() {
@@ -35,6 +39,13 @@ mod tests {
 
     #[test]
     fn max_profit_assignment_1() {
-        assert_eq!(Solution::max_profit_assignment(vec![2, 4, 6, 8, 10], vec![10, 20, 30, 40, 50], vec![4, 5, 6, 7]), 100);
+        assert_eq!(
+            Solution::max_profit_assignment(
+                vec![2, 4, 6, 8, 10],
+                vec![10, 20, 30, 40, 50],
+                vec![4, 5, 6, 7]
+            ),
+            100
+        );
     }
 }

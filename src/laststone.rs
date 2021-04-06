@@ -32,10 +32,10 @@ mod tests {
 
     #[test]
     fn last_stone_weight_1() {
-        assert_eq!(Solution::last_stone_weight(vec![2,7,4,1,8,1]), 1);
+        assert_eq!(Solution::last_stone_weight(vec![2, 7, 4, 1, 8, 1]), 1);
     }
 
     fn last_stone_weight_2() {
-        assert_eq!(Solution::last_stone_weight(vec![9,3,2,10]), 2);
+        assert_eq!(Solution::last_stone_weight(vec![9, 3, 2, 10]), 2);
     }
 }

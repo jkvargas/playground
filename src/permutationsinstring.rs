@@ -21,7 +21,7 @@ impl Solution {
 
     // time complexity = O(s1len + (s2len - s1len))
     pub fn check_inclusion(s1: String, s2: String) -> bool {
-        let idx = |c: u8| { (c - 'a' as u8) as usize };
+        let idx = |c: u8| (c - 'a' as u8) as usize;
 
         let mut d1 = [0u8; SIZE];
         let mut d2 = [0u8; SIZE];
@@ -30,7 +30,7 @@ impl Solution {
             d1[idx(c as u8)] += 1;
         }
 
-        let s : &[u8] = s2.as_bytes();
+        let s: &[u8] = s2.as_bytes();
 
         for (i, c) in s.iter().enumerate() {
             d2[idx(*c)] += 1;
@@ -50,7 +50,7 @@ struct LetterCheck {
     needs: HashMap<char, u32>,
     has: HashMap<char, u32>,
     letters_completed: usize,
-    start_pos: i32
+    start_pos: i32,
 }
 
 impl LetterCheck {
@@ -70,7 +70,7 @@ impl LetterCheck {
             needs,
             has,
             letters_completed: 0,
-            start_pos: -1
+            start_pos: -1,
         }
     }
 
@@ -81,7 +81,10 @@ impl LetterCheck {
     pub fn try_consume_letter(&mut self, letter: char, index: usize) -> bool {
         if self.needs.contains_key(&letter) {
             if self.has.contains_key(&letter) {
-                *self.has.get_mut(&letter).unwrap() = std::cmp::min(*self.has.get(&letter).unwrap() + 1, *self.needs.get(&letter).unwrap());
+                *self.has.get_mut(&letter).unwrap() = std::cmp::min(
+                    *self.has.get(&letter).unwrap() + 1,
+                    *self.needs.get(&letter).unwrap(),
+                );
             } else {
                 self.has.insert(letter, 1);
             }
@@ -110,21 +113,33 @@ mod tests {
 
     #[test]
     fn check_inclusion_1() {
-        assert_eq!(Solution::check_inclusion("ab".to_string(), "eidbaooo".to_string()), true);
+        assert_eq!(
+            Solution::check_inclusion("ab".to_string(), "eidbaooo".to_string()),
+            true
+        );
     }
 
     #[test]
     fn check_inclusion_2() {
-        assert_eq!(Solution::check_inclusion("ab".to_string(), "eidboaoo".to_string()), false);
+        assert_eq!(
+            Solution::check_inclusion("ab".to_string(), "eidboaoo".to_string()),
+            false
+        );
     }
 
     #[test]
     fn check_inclusion_3() {
-        assert_eq!(Solution::check_inclusion("adc".to_string(), "dcda".to_string()), true);
+        assert_eq!(
+            Solution::check_inclusion("adc".to_string(), "dcda".to_string()),
+            true
+        );
     }
 
     #[test]
     fn check_inclusion_4() {
-        assert_eq!(Solution::check_inclusion("hello".to_string(), "ooolleoooleh".to_string()), false);
+        assert_eq!(
+            Solution::check_inclusion("hello".to_string(), "ooolleoooleh".to_string()),
+            false
+        );
     }
 }

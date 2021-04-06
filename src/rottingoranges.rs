@@ -10,8 +10,8 @@ impl Solution {
         let len_x = grid.len();
         let len_y = grid[0].len();
 
-        let mut rotten_positions : VecDeque<(usize, usize)> = VecDeque::new();
-        let mut for_next_round_positions : VecDeque<(usize, usize)> = VecDeque::new();
+        let mut rotten_positions: VecDeque<(usize, usize)> = VecDeque::new();
+        let mut for_next_round_positions: VecDeque<(usize, usize)> = VecDeque::new();
         let mut clean_oranges = 0;
         let mut rounds = 0;
 
@@ -60,8 +60,14 @@ impl Solution {
         }
     }
 
-    fn stamp_around(grid: &mut Vec<Vec<i32>>, posx: usize, posy: usize, lenx: usize, leny: usize) -> Vec<(usize, usize)> {
-        let mut positions : Vec<(usize, usize)> = Vec::new();
+    fn stamp_around(
+        grid: &mut Vec<Vec<i32>>,
+        posx: usize,
+        posy: usize,
+        lenx: usize,
+        leny: usize,
+    ) -> Vec<(usize, usize)> {
+        let mut positions: Vec<(usize, usize)> = Vec::new();
 
         if posx + 1 < lenx && grid[posx + 1][posy] == FRESH_ORANGE {
             grid[posx + 1][posy] = ROTTEN_ORANGE;
@@ -86,7 +92,6 @@ impl Solution {
         positions
     }
 }
-
 
 // PODRE - BOA - BOA
 // BOA   - BOA - NENHUMA
@@ -115,7 +120,10 @@ mod tests {
 
     #[test]
     fn oranges_rotting_1() {
-        assert_eq!(Solution::oranges_rotting(vec![vec![2,1,1],vec![1,1,0],vec![0,1,1]]), 4);
+        assert_eq!(
+            Solution::oranges_rotting(vec![vec![2, 1, 1], vec![1, 1, 0], vec![0, 1, 1]]),
+            4
+        );
     }
 
     #[test]
@@ -125,6 +133,9 @@ mod tests {
 
     #[test]
     fn oranges_rotting_3() {
-        assert_eq!(Solution::oranges_rotting(vec![vec![1],vec![2],vec![1],vec![2]]), 1);
+        assert_eq!(
+            Solution::oranges_rotting(vec![vec![1], vec![2], vec![1], vec![2]]),
+            1
+        );
     }
 }

@@ -4,11 +4,11 @@ pub struct Solution;
 
 impl Solution {
     pub fn count_primes(n: i32) -> i32 {
-        let mut map : HashMap<i32, bool> = HashMap::new();
+        let mut map: HashMap<i32, bool> = HashMap::new();
         let mut count_prime = 0;
 
-        'next: for i in 2..n-1 {
-            for j in 2..n-1 {
+        'next: for i in 2..n - 1 {
+            for j in 2..n - 1 {
                 let temp = i * j;
 
                 if temp > n {
@@ -28,14 +28,16 @@ impl Solution {
         count_prime
     }
 
-    pub fn sieveoferatosthenes(n: i32) -> i32{
+    pub fn sieveoferatosthenes(n: i32) -> i32 {
         let mut not_prime: Vec<bool> = vec![false; n as usize];
         let mut count = 0;
         for i in 2..n as usize {
-            if !not_prime[i] { count += 1; }
+            if !not_prime[i] {
+                count += 1;
+            }
             let mut j = 2;
-            while j*i < n as usize {
-                not_prime[j*i] = true;
+            while j * i < n as usize {
+                not_prime[j * i] = true;
                 j += 1;
             }
         }

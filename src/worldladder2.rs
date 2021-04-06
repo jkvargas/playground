@@ -1,21 +1,31 @@
-use std::collections::{HashSet, HashMap};
+use std::collections::{HashMap, HashSet};
 
 struct Solution;
 
 impl Solution {
-    pub fn find_ladders_jho(begin_word: String, end_word: String, word_list: Vec<String>) -> Vec<Vec<String>> {
-        let result : Vec<Vec<String>> = Vec::new();
+    pub fn find_ladders_jho(
+        begin_word: String,
+        end_word: String,
+        word_list: Vec<String>,
+    ) -> Vec<Vec<String>> {
+        let result: Vec<Vec<String>> = Vec::new();
 
         result
     }
 
-    pub fn find_ladders(begin_word: String, end_word: String, word_list: Vec<String>) -> Vec<Vec<String>> {
+    pub fn find_ladders(
+        begin_word: String,
+        end_word: String,
+        word_list: Vec<String>,
+    ) -> Vec<Vec<String>> {
         let mut ans = Vec::<Vec<String>>::new();
         let mut dict: HashSet<String> = HashSet::new();
         for s in word_list {
             dict.insert(s);
         }
-        if !dict.contains(&end_word) { return ans; }
+        if !dict.contains(&end_word) {
+            return ans;
+        }
         let mut set1 = HashSet::<String>::new();
         let mut set2 = HashSet::<String>::new();
 
@@ -25,11 +35,25 @@ impl Solution {
         bfs(&mut map, &set1, &set2, &mut dict, false);
         let mut path = Vec::<String>::new();
         path.push(begin_word.clone());
-        dfs(&mut ans, &mut path, &mut map, begin_word.clone(), end_word.clone());
+        dfs(
+            &mut ans,
+            &mut path,
+            &mut map,
+            begin_word.clone(),
+            end_word.clone(),
+        );
         return ans;
 
-        fn bfs(map: &mut HashMap<String, Vec<String>>, set1: &HashSet<String>, set2: &HashSet<String>, dict: &mut HashSet<String>, flip: bool) {
-            if set1.is_empty() { return; }
+        fn bfs(
+            map: &mut HashMap<String, Vec<String>>,
+            set1: &HashSet<String>,
+            set2: &HashSet<String>,
+            dict: &mut HashSet<String>,
+            flip: bool,
+        ) {
+            if set1.is_empty() {
+                return;
+            }
 
             if set1.len() > set2.len() {
                 bfs(map, set2, set1, dict, !flip);
@@ -37,8 +61,12 @@ impl Solution {
             }
 
             let mut done = false;
-            for s in set1 { dict.remove(s); }
-            for s in set2 { dict.remove(s); }
+            for s in set1 {
+                dict.remove(s);
+            }
+            for s in set2 {
+                dict.remove(s);
+            }
             let mut next = HashSet::<String>::new();
             for str in set1 {
                 let mut chs = str.chars().collect::<Vec<char>>();
@@ -72,16 +100,26 @@ impl Solution {
                     chs[i] = t;
                 }
             }
-            if !done { bfs(map, set2, &next, dict, !flip) }
+            if !done {
+                bfs(map, set2, &next, dict, !flip)
+            }
         }
 
-        fn dfs(ans: &mut Vec<Vec<String>>, path: &mut Vec<String>, map: &mut HashMap<String, Vec<String>>, start: String, end: String) {
+        fn dfs(
+            ans: &mut Vec<Vec<String>>,
+            path: &mut Vec<String>,
+            map: &mut HashMap<String, Vec<String>>,
+            start: String,
+            end: String,
+        ) {
             if start == end {
                 ans.push(path.clone());
                 return;
             }
 
-            if !map.contains_key(&start) { return; }
+            if !map.contains_key(&start) {
+                return;
+            }
 
             let x = map.get(&start).cloned().unwrap();
             for next in x {
@@ -99,14 +137,35 @@ mod tests {
 
     #[test]
     fn find_ladders_1() {
-        assert_eq!(Solution::find_ladders("hit".to_string(),
-                                          "cog".to_string(),
-                                          vec!["hot".to_string(),
-                                               "dot".to_string(),
-                                               "dog".to_string(),
-                                               "lot".to_string(),
-                                               "log".to_string(),
-                                               "cog".to_string()]), vec![vec!["hit".to_string(), "hot".to_string(), "dot".to_string(), "dog".to_string(), "cog".to_string()],
-                                                                         vec!["hit".to_string(), "hot".to_string(), "lot".to_string(), "log".to_string(), "cog".to_string()]]);
+        assert_eq!(
+            Solution::find_ladders(
+                "hit".to_string(),
+                "cog".to_string(),
+                vec![
+                    "hot".to_string(),
+                    "dot".to_string(),
+                    "dog".to_string(),
+                    "lot".to_string(),
+                    "log".to_string(),
+                    "cog".to_string()
+                ]
+            ),
+            vec![
+                vec![
+                    "hit".to_string(),
+                    "hot".to_string(),
+                    "dot".to_string(),
+                    "dog".to_string(),
+                    "cog".to_string()
+                ],
+                vec![
+                    "hit".to_string(),
+                    "hot".to_string(),
+                    "lot".to_string(),
+                    "log".to_string(),
+                    "cog".to_string()
+                ]
+            ]
+        );
     }
 }

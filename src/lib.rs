@@ -79,6 +79,7 @@ mod timebasedkeyvaluestore;
 mod toomanylinkedlists;
 mod trackpath;
 mod trappingrainwater;
+mod triangle;
 mod twokeykeyboard;
 mod uniquepaths;
 mod validparenthesis;

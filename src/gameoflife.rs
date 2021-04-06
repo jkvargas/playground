@@ -8,8 +8,8 @@ impl Solution {
         let i_size = board.len();
         let j_size = board[0].len();
 
-        let mut killed : Vec<(usize, usize)> = Vec::new();
-        let mut ressu : Vec<(usize, usize)> = Vec::new();
+        let mut killed: Vec<(usize, usize)> = Vec::new();
+        let mut ressu: Vec<(usize, usize)> = Vec::new();
 
         for i in 0..i_size {
             for j in 0..j_size {
@@ -85,15 +85,9 @@ mod tests {
 
     #[test]
     pub fn game_of_life_1() {
-        let mut vec = vec![vec![0, 1, 0],
-                       vec![0, 0, 1],
-                       vec![1, 1, 1],
-                       vec![0, 0, 0]];
+        let mut vec = vec![vec![0, 1, 0], vec![0, 0, 1], vec![1, 1, 1], vec![0, 0, 0]];
 
-        let result = vec![vec![0, 0, 0],
-                          vec![1, 0, 1],
-                          vec![0, 1, 1],
-                          vec![0, 1, 0]];
+        let result = vec![vec![0, 0, 0], vec![1, 0, 1], vec![0, 1, 1], vec![0, 1, 0]];
 
         Solution::game_of_life(&mut vec);
 

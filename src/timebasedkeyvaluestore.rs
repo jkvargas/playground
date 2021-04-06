@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 struct TimeMap {
-    map: HashMap<String, Vec<(i32, String)>>
+    map: HashMap<String, Vec<(i32, String)>>,
 }
 
 /// marco // joga tenis // 1
@@ -14,11 +14,10 @@ struct TimeMap {
  * If you need a mutable reference, change it to `&mut self` instead.
  */
 impl TimeMap {
-
     /** Initialize your data structure here. */
     fn new() -> Self {
         Self {
-            map: HashMap::new()
+            map: HashMap::new(),
         }
     }
 
@@ -32,19 +31,22 @@ impl TimeMap {
 
     fn get(&self, key: String, timestamp: i32) -> String {
         if self.map.contains_key(&key) {
-            return match self.map.get(&key).unwrap().binary_search_by(|x| (*x).0.cmp(&timestamp)) {
+            return match self
+                .map
+                .get(&key)
+                .unwrap()
+                .binary_search_by(|x| (*x).0.cmp(&timestamp))
+            {
                 Ok(found) => self.map.get(&key).unwrap()[found].1.clone(),
                 Err(not_found) => {
                     let reference = self.map.get(&key).unwrap();
                     if not_found > 0 {
-                        return reference[not_found - 1].1
-                            .clone();
+                        return reference[not_found - 1].1.clone();
+                    } else {
+                        return "".to_string();
                     }
-                    else {
-                        return "".to_string()
-                    }
-                },
-            }
+                }
+            };
         }
 
         "".to_string()

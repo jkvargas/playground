@@ -4,8 +4,8 @@ struct Solution;
 
 impl Solution {
     // 1.1 PG 90
-    pub fn is_unique(word: String) -> bool{
-        let mut map : HashMap<char, bool> = HashMap::new();
+    pub fn is_unique(word: String) -> bool {
+        let mut map: HashMap<char, bool> = HashMap::new();
 
         for i in word.chars() {
             if map.contains_key(&i) {

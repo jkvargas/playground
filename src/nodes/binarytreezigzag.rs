@@ -1,8 +1,8 @@
-use std::cell::RefCell;
-use std::rc::Rc;
-use std::borrow::Borrow;
 use crate::nodes::TreeNode;
+use std::borrow::Borrow;
+use std::cell::RefCell;
 use std::collections::VecDeque;
+use std::rc::Rc;
 
 struct Solution;
 
@@ -64,16 +64,36 @@ mod tests {
     use super::*;
 
     #[test]
-    pub fn zigzag_level_order_1()
-    {
-        let tree_node = TreeNode::from(vec![Some(3), Some(9), Some(20), None, None, Some(15), Some(7)]);
-        assert_eq!(Solution::zigzag_level_order(tree_node), vec![vec![3], vec![20, 9], vec![15, 7]]);
+    pub fn zigzag_level_order_1() {
+        let tree_node = TreeNode::from(vec![
+            Some(3),
+            Some(9),
+            Some(20),
+            None,
+            None,
+            Some(15),
+            Some(7),
+        ]);
+        assert_eq!(
+            Solution::zigzag_level_order(tree_node),
+            vec![vec![3], vec![20, 9], vec![15, 7]]
+        );
     }
 
     #[test]
-    pub fn zigzag_level_order_2()
-    {
-        let tree_node = TreeNode::from(vec![Some(1), Some(2), Some(3), Some(4), None, None, Some(5)]);
-        assert_eq!(Solution::zigzag_level_order(tree_node), vec![vec![1], vec![3, 2], vec![4, 5]]);
+    pub fn zigzag_level_order_2() {
+        let tree_node = TreeNode::from(vec![
+            Some(1),
+            Some(2),
+            Some(3),
+            Some(4),
+            None,
+            None,
+            Some(5),
+        ]);
+        assert_eq!(
+            Solution::zigzag_level_order(tree_node),
+            vec![vec![1], vec![3, 2], vec![4, 5]]
+        );
     }
 }

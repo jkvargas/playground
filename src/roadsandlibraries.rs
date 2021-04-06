@@ -5,7 +5,7 @@ type RoadMap = HashMap<usize, Vec<usize>>;
 struct Roads {
     visited: Vec<bool>,
     map: RoadMap,
-    n: usize
+    n: usize,
 }
 
 impl Roads {
@@ -24,7 +24,7 @@ impl Roads {
         Self {
             visited: vec![false; n],
             map,
-            n
+            n,
         }
     }
 
@@ -62,13 +62,17 @@ impl Roads {
 struct Solution;
 
 impl Solution {
-    pub fn roads_and_libraries(n: usize, c_lib: i32, c_road: i32, cities: Vec<Vec<usize>>) -> usize {
+    pub fn roads_and_libraries(
+        n: usize,
+        c_lib: i32,
+        c_road: i32,
+        cities: Vec<Vec<usize>>,
+    ) -> usize {
         let mut roads = Roads::new(n, cities);
 
         roads.roads_and_libraries(c_lib, c_road)
     }
 }
-
 
 #[cfg(test)]
 mod tests {
@@ -76,6 +80,9 @@ mod tests {
 
     #[test]
     pub fn roads_and_libraries_1() {
-        assert_eq!(Solution::roads_and_libraries(3, 2, 1, vec![vec![1, 2], vec![3, 1], vec![2, 3]]), 4);
+        assert_eq!(
+            Solution::roads_and_libraries(3, 2, 1, vec![vec![1, 2], vec![3, 1], vec![2, 3]]),
+            4
+        );
     }
 }

@@ -60,8 +60,8 @@ impl Solution {
         if l < r {
             let m = l + ((r - l) >> 1);
 
-            let lower =  Self::merge_sort(arr, l, m);
-            let high =  Self::merge_sort(arr, m + 1, r);
+            let lower = Self::merge_sort(arr, l, m);
+            let high = Self::merge_sort(arr, m + 1, r);
 
             result = lower + high + Self::merge(arr, l, m, r);
         }
