@@ -90,3 +90,4 @@ mod wordsearch;
 mod worldladder;
 mod worldladder2;
 mod combinationsum_iv;
+mod outofbondarypaths;
