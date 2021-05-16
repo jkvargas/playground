@@ -37,6 +37,7 @@ mod insertdeleterandom;
 mod isgraphbipartite;
 mod kclosestpoint;
 mod kthlargest;
+mod largestsumofaverages;
 mod laststone;
 mod lettercombinationsofaphonenumber;
 mod longestincreasingsubsequence;
