@@ -49,6 +49,7 @@ mod maximalsquare;
 mod maxprofitassignment;
 mod mergeintervals;
 mod mergesortcountinversions;
+mod minimumfallingpathsum;
 mod minimumpathsum;
 mod minstack;
 mod mostcommonword;
