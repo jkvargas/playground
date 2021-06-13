@@ -1,8 +1,10 @@
 use std::cell::RefCell;
+use std::hash::{Hash, Hasher};
 use std::rc::Rc;
 
 mod binarydiameter;
 mod binarytreezigzag;
+mod houserobberiii;
 mod rangesumbst;
 mod serializeanddeserializebinarytree;
 
@@ -11,6 +13,26 @@ pub struct TreeNode {
     pub val: i32,
     pub left: Option<Rc<RefCell<TreeNode>>>,
     pub right: Option<Rc<RefCell<TreeNode>>>,
+}
+
+impl Hash for TreeNode {
+    fn hash<H: Hasher>(&self, state: &mut H) {
+        self.val.hash(state);
+
+        if let Some(l) = self.left.as_ref() {
+            let lbor = l.borrow();
+            lbor.hash(state);
+        } else {
+            None::<&TreeNode>.hash(state);
+        }
+
+        if let Some(r) = self.right.as_ref() {
+            let rbor = r.borrow();
+            rbor.hash(state);
+        } else {
+            None::<&TreeNode>.hash(state);
+        }
+    }
 }
 
 impl TreeNode {
