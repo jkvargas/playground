@@ -4,6 +4,7 @@ use std::rc::Rc;
 
 mod binarydiameter;
 mod binarytreezigzag;
+mod bstiterator;
 mod houserobberiii;
 mod rangesumbst;
 mod serializeanddeserializebinarytree;
