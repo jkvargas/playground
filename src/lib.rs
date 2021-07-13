@@ -55,6 +55,7 @@ mod minimumfallingpathsum;
 mod minimumpathsum;
 mod minstack;
 mod mostcommonword;
+mod movingaveragedatastream;
 mod nextpermutation;
 mod nodes;
 mod onesandzeroes;
