@@ -44,6 +44,7 @@ mod laststone;
 mod lettercombinationsofaphonenumber;
 mod longestincreasingsubsequence;
 mod longestpalyndromic;
+mod longestsubstringwithatmosttwodistinctcharacters;
 mod longestsubstringwithoutrepat;
 mod longestvalidparenthesis;
 mod lrucache;
