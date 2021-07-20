@@ -37,6 +37,7 @@ mod houserobberii;
 mod insertdeleterandom;
 mod insertdeleterandom_ii;
 mod isgraphbipartite;
+mod jumpgameii;
 mod kclosestpoint;
 mod kthlargest;
 mod largestsumofaverages;
