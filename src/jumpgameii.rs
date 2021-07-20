@@ -33,7 +33,7 @@ impl Solution {
         let mut min_jumps = None;
 
         if nums[pos] > 0 {
-            for jump_size in 1..=nums[pos] {
+            for jump_size in (1..=nums[pos]).rev() {
                 match Self::try_jump(nums, pos + jump_size as usize, jump_count) {
                     None => {
                         continue;
