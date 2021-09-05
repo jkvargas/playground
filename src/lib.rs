@@ -21,6 +21,7 @@ pub mod datastructs;
 pub mod decodestring;
 pub mod decodeways;
 pub mod designtwitter;
+pub mod designundergroundsystem;
 pub mod editdistance;
 pub mod expressivewords;
 pub mod findmedianfromdatastream;
