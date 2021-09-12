@@ -12,14 +12,14 @@ struct UndergroundSystem {
 
 struct CheckIn {
     when: i32,
-    station_name: StationName
+    station_name: StationName,
 }
 
 impl CheckIn {
     fn new(time: i32, station_name: StationName) -> CheckIn {
         Self {
             when: time,
-            station_name
+            station_name,
         }
     }
 }
@@ -54,20 +54,16 @@ impl TimeToTravel {
 
 impl StationTravel {
     fn new(start: StationName, end: StationName) -> Self {
-        Self {
-            start,
-            end
-        }
+        Self { start, end }
     }
 }
 
 /**
-  * `&self` means the method takes an immutable reference
-  * If you need a mutable reference, change it to `&mut self` instead
-  */
+ * `&self` means the method takes an immutable reference
+ * If you need a mutable reference, change it to `&mut self` instead
+ */
 
 impl UndergroundSystem {
-
     fn new() -> Self {
         Self {
             times: HashMap::new(),
@@ -87,7 +83,8 @@ impl UndergroundSystem {
         if let Some(st) = self.times.get_mut(&station_travel) {
             st.new_time(t - departed_from.when);
         } else {
-            self.times.insert(station_travel, TimeToTravel::new(t - departed_from.when));
+            self.times
+                .insert(station_travel, TimeToTravel::new(t - departed_from.when));
         }
 
         self.got_in.remove(&id);
@@ -103,11 +100,3 @@ impl UndergroundSystem {
         0.0
     }
 }
-
-/**
- * Your UndergroundSystem object will be instantiated and called as such:
- * let obj = UndergroundSystem::new();
- * obj.check_in(id, stationName, t);
- * obj.check_out(id, stationName, t);
- * let ret_3: f64 = obj.get_average_time(startStation, endStation);
- */

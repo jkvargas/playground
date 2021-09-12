@@ -3,6 +3,7 @@ use std::hash::{Hash, Hasher};
 use std::rc::Rc;
 
 mod binarydiameter;
+mod binarytreeinordertraversal;
 mod binarytreezigzag;
 mod bstiterator;
 mod houserobberiii;
