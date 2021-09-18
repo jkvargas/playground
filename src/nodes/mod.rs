@@ -6,6 +6,8 @@ mod binarydiameter;
 mod binarytreeinordertraversal;
 mod binarytreezigzag;
 mod bstiterator;
+mod constructbinarypreorder;
+mod constructbinarytree;
 mod houserobberiii;
 mod rangesumbst;
 mod serializeanddeserializebinarytree;
@@ -16,6 +18,8 @@ pub struct TreeNode {
     pub left: Option<Rc<RefCell<TreeNode>>>,
     pub right: Option<Rc<RefCell<TreeNode>>>,
 }
+
+type TreeResult = Option<Rc<RefCell<TreeNode>>>;
 
 impl Hash for TreeNode {
     fn hash<H: Hasher>(&self, state: &mut H) {
