@@ -26,7 +26,6 @@ pub mod editdistance;
 pub mod expressivewords;
 pub mod findmedianfromdatastream;
 pub mod firstandlastsortedarray;
-pub mod flattenbinarytree;
 pub mod foursum;
 pub mod freqstack;
 pub mod frogjump;

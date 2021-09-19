@@ -8,8 +8,11 @@ mod binarytreezigzag;
 mod bstiterator;
 mod constructbinarypreorder;
 mod constructbinarytree;
+mod flattenbinarytree;
 mod houserobberiii;
+mod maximumdepthbinarytree;
 mod rangesumbst;
+mod sametree;
 mod serializeanddeserializebinarytree;
 
 #[derive(Debug, PartialEq, Eq)]
