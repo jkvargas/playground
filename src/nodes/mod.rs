@@ -10,6 +10,7 @@ mod constructbinarypreorder;
 mod constructbinarytree;
 mod flattenbinarytree;
 mod houserobberiii;
+mod lca;
 mod maximumdepthbinarytree;
 mod rangesumbst;
 mod sametree;
