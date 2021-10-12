@@ -15,6 +15,51 @@ mod maximumdepthbinarytree;
 mod rangesumbst;
 mod sametree;
 mod serializeanddeserializebinarytree;
+mod removeduplicatessortedlisttwo;
+
+#[derive(PartialEq, Eq, Clone, Debug)]
+pub struct ListNode {
+    pub val: i32,
+    pub next: Option<Box<ListNode>>
+}
+
+impl ListNode {
+    #[inline]
+    fn new(val: i32) -> Self {
+        ListNode {
+            next: None,
+            val
+        }
+    }
+}
+
+impl ListNode {
+    pub fn from(vec: Vec<i32>) -> Option<Box<ListNode>> {
+        let mut next = None;
+
+        for i in (0..vec.len()).rev() {
+            let node = ListNode {
+                next,
+                val: vec[i]
+            };
+
+            next = Some(Box::new(node));
+        }
+
+        next
+    }
+
+    pub fn flat_it(mut node: Option<Box<ListNode>>) -> Vec<i32> {
+        let mut vec = Vec::new();
+
+        while let Some(n) = node {
+            vec.push(n.val);
+            node = n.next;
+        }
+
+        vec
+    }
+}
 
 #[derive(Debug, PartialEq, Eq)]
 pub struct TreeNode {
