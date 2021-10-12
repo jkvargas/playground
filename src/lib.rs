@@ -102,3 +102,4 @@ pub mod wordsearch;
 pub mod worldladder;
 pub mod worldladder2;
 pub mod validanagram;
+mod strobogrammaticnumber;
