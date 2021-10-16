@@ -13,23 +13,21 @@ mod houserobberiii;
 mod lca;
 mod maximumdepthbinarytree;
 mod rangesumbst;
+mod removeduplicatessortedlisttwo;
 mod sametree;
 mod serializeanddeserializebinarytree;
-mod removeduplicatessortedlisttwo;
+mod symmetrictree;
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
     pub val: i32,
-    pub next: Option<Box<ListNode>>
+    pub next: Option<Box<ListNode>>,
 }
 
 impl ListNode {
     #[inline]
     fn new(val: i32) -> Self {
-        ListNode {
-            next: None,
-            val
-        }
+        ListNode { next: None, val }
     }
 }
 
@@ -38,10 +36,7 @@ impl ListNode {
         let mut next = None;
 
         for i in (0..vec.len()).rev() {
-            let node = ListNode {
-                next,
-                val: vec[i]
-            };
+            let node = ListNode { next, val: vec[i] };
 
             next = Some(Box::new(node));
         }
