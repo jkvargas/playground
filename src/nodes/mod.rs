@@ -17,6 +17,7 @@ mod removeduplicatessortedlisttwo;
 mod sametree;
 mod serializeanddeserializebinarytree;
 mod symmetrictree;
+mod binarytreeordertraversal;
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
