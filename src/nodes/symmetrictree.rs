@@ -1,36 +1,32 @@
 use crate::nodes::TreeNode;
 use std::cell::RefCell;
+use std::collections::VecDeque;
 use std::rc::Rc;
 
 struct Solution;
 
+type TreeNodeType = Option<Rc<RefCell<TreeNode>>>;
+
 impl Solution {
     pub fn is_symmetric(root: Option<Rc<RefCell<TreeNode>>>) -> bool {
-        if root.is_none() {
-            return false;
-        }
-
-        let mut queue_right = Vec::new();
-        let mut queue_left = Vec::new();
+        if root.is_none() { return false; }
 
         let r = root.unwrap();
         let r_bor = r.borrow();
 
-        queue_right.push(r_bor.right.clone());
-        queue_left.push(r_bor.left.clone());
+        Self::is_mirror(r_bor.left.clone(), r_bor.right.clone())
+    }
 
-        while !queue_left.is_empty() && !queue_right.is_empty() {
-            let mut right_vec = Vec::new();
-            let mut left_vec = Vec::new();
+    fn is_mirror(left: TreeNodeType, right: TreeNodeType) -> bool {
+        if left.is_none() && right.is_none() { return true; }
+        if left.is_none() ^ right.is_none() { return false; }
 
-            let right_pop = queue_right.pop();
-            let left_pop = queue_left.pop();
+        let l = left.unwrap();
+        let r = right.unwrap();
 
-            if let Some(rp) = right_pop {}
+        let l_bor = l.borrow();
+        let r_bor = r.borrow();
 
-            if let Some(lp) = left_pop {}
-        }
-
-        queue_left.is_empty() && queue_right.is_empty()
+        l_bor.val == r_bor.val && Self::is_mirror(l_bor.left.clone(), r_bor.right.clone()) && Self::is_mirror(l_bor.right.clone(), r_bor.left.clone())
     }
 }
