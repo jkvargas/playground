@@ -66,6 +66,8 @@ const LEFT_TO_RIGHT: i32 = 1;
 impl Solution {
     pub fn zigzag_level_order(root: Option<Rc<RefCell<TreeNode>>>) -> Vec<Vec<i32>> {
         let mut queue = Vec::new();
+        let mut col = VecDeque::new();
+        let mut last_level = None;
         let mut result = Vec::new();
 
         queue.push((root.clone(), 0, LEFT_TO_RIGHT));
@@ -75,24 +77,27 @@ impl Solution {
 
             if let Some(n) = node {
                 let bor = n.borrow();
+                let node_val = bor.val;
 
-                if result.len() < level + 1 {
-                    result.push(vec![]);
+                if let Some(ll) = last_level {
+                    if level != ll {
+                        result.push(col.clone().into());
+                        col.clear();
+
+                        dbg!(&result);
+                    } else {
+                        if dir == RIGHT_TO_LEFT {
+                            col.push_back(node_val);
+                        } else {
+                            col.push_front(node_val);
+                        }
+                    }
+                } else {
+                    last_level = Some(level);
+                    col.push_front(node_val);
                 }
 
-                match dir {
-                    LEFT_TO_RIGHT => {
-                        queue.push((bor.left.clone(), level + 1, RIGHT_TO_LEFT));
-                        queue.push((bor.right.clone(), level + 1, RIGHT_TO_LEFT));
-                    }
-                    RIGHT_TO_LEFT => {
-                        queue.push((bor.right.clone(), level + 1, LEFT_TO_RIGHT));
-                        queue.push((bor.left.clone(), level + 1, LEFT_TO_RIGHT));
-                    }
-                    _ => {}
-                }
-
-                result[level].push(bor.val);
+                queue.push((bor.left.clone(), level + 1, if dir == RIGHT_TO_LEFT { LEFT_TO_RIGHT } else { RIGHT_TO_LEFT }));
             }
         }
 
