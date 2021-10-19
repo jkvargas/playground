@@ -4,10 +4,12 @@ use std::rc::Rc;
 
 mod binarydiameter;
 mod binarytreeinordertraversal;
+mod binarytreeordertraversal;
 mod binarytreezigzag;
 mod bstiterator;
 mod constructbinarypreorder;
 mod constructbinarytree;
+mod designsearchautocompletesystem;
 mod flattenbinarytree;
 mod houserobberiii;
 mod lca;
@@ -17,7 +19,6 @@ mod removeduplicatessortedlisttwo;
 mod sametree;
 mod serializeanddeserializebinarytree;
 mod symmetrictree;
-mod binarytreeordertraversal;
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
