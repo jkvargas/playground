@@ -1,39 +1,44 @@
-use std::collections::HashSet;
-use std::hash::{Hash, Hasher};
+/// https://leetcode.com/problems/design-search-autocomplete-system/
+use std::{
+    collections::{BinaryHeap, HashMap, HashSet},
+    hash::{Hash, Hasher},
+};
+
+type Trie = HashMap<char, TrieNode>;
 
 #[derive(Eq, PartialEq, Debug)]
 struct TrieNode {
-    letter: char,
+    number_of_occurrences: i32,
     is_sentence: bool,
-    how_many_times_searched: i32,
-    neighbors: HashSet<TrieNode>,
+    neighbors: Trie,
 }
 
 impl TrieNode {
-    fn new(letter: char) -> Self {
+    fn new(number_of_occurrences: i32, is_sentence: bool) -> TrieNode {
         Self {
-            letter,
-            is_sentence: false,
-            how_many_times_searched: 0,
-            neighbors: HashSet::new(),
+            neighbors: HashMap::new(),
+            number_of_occurrences,
+            is_sentence,
         }
     }
 }
 
-impl Hash for TrieNode {
-    fn hash<H: Hasher>(&self, state: &mut H) {
-        self.letter.hash(state)
+struct Statement {
+    occurrence: String,
+    times: i32,
+}
+
+impl Statement {
+    fn new(occurrence: String, times: i32) -> Self {
+        Self { occurrence, times }
     }
 }
 
-impl From<char> for TrieNode {
-    fn from(letter: char) -> Self {
-        TrieNode::new(letter)
-    }
-}
-
-struct AutocompleteSystem {
-    trie: HashSet<TrieNode>,
+struct AutocompleteSystem<'a> {
+    trie: Trie,
+    sentence: Vec<char>,
+    last_trie: Option<&'a Trie>,
+    sentences_so_far: BinaryHeap<Statement>,
 }
 
 /**
@@ -41,27 +46,98 @@ struct AutocompleteSystem {
  * If you need a mutable reference, change it to `&mut self` instead
  */
 
-impl AutocompleteSystem {
-    fn insert_word(&mut self, word: String, times: i32) {
+impl<'a> AutocompleteSystem {
+    fn insert_word(&mut self, word: &String, times: i32) {
         let mut trie_ref = &mut self.trie;
+        let letters: Vec<char> = word.chars().collect();
 
-        for i in word.chars().map(|x| TrieNode::from(x)) {
-            if let Some(node) = trie_ref.get(&i) {
-                trie_ref = node.neighbors;
+        for (ind, i) in letters.iter().enumerate() {
+            if let Some(node) = trie_ref.get_mut(&i) {
+                if letters.len() - 1 == ind {
+                    node.is_sentence = true;
+                    node.number_of_occurrences = times;
+                }
+
+                trie_ref = &mut node.neighbors;
             } else {
-                trie_ref.insert(i);
+                if letters.len() - 1 == ind {
+                    trie_ref.insert(*i, TrieNode::new(times, true));
+                } else {
+                    trie_ref.insert(*i, TrieNode::new(0, false));
+                }
             }
         }
     }
 
     fn new(sentences: Vec<String>, times: Vec<i32>) -> Self {
-        Self {
-            trie: HashSet::new(),
+        let mut result = Self {
+            trie: HashMap::new(),
+            sentence: Vec::new(),
+            last_trie: None,
+            sentences_so_far: BinaryHeap::new(),
+        };
+
+        for (ind, word) in sentences.iter().enumerate() {
+            result.insert_word(word, times[ind]);
+        }
+
+        result
+    }
+
+    fn input(&mut self, c: char) -> Vec<String> {
+        self.add_to_sentence(c);
+
+        if self.sentence.is_empty() {
+            vec![]
+        } else {
+            let mut result = Vec::new();
+            self.set_last_node(c);
+            if let Some(lt) = self.last_trie {
+                Self::get_words(&lt, self.sentence.clone(), &mut result);
+
+                result
+            } else {
+                vec![]
+            }
         }
     }
 
-    fn input(&self, c: char) -> Vec<String> {
-        vec![]
+    fn get_words(trie: &Trie, letters: Vec<char>, result: &mut Vec<String>) {
+        if trie.is_empty() {
+            result.push(letters.into());
+            return;
+        }
+
+        for (letter, node) in trie.iter() {
+            let mut with_new_letter = letters.clone();
+            with_new_letter.push(*letter);
+
+            Self::get_words(&node.neighbors, with_new_letter, result);
+        }
+    }
+
+    fn add_to_sentence(&mut self, c: char) {
+        if c == '#' {
+            self.insert_word(self.sentence.into(), 1);
+            self.sentence.clear();
+            return;
+        }
+
+        self.sentence.push(c);
+    }
+
+    fn set_last_node(&mut self, c: char) {
+        if let Some(lt) = self.last_trie {
+            if let Some(node) = lt.get(&c) {
+                self.last_trie = Some(&node.neighbors);
+            } else {
+                self.last_trie = None;
+            }
+        } else {
+            if let Some(node) = self.trie.get(&c) {
+                self.last_trie = Some(&node.neighbors);
+            }
+        }
     }
 }
 
@@ -76,7 +152,7 @@ mod test {
 
     #[test]
     fn test_one() {
-        let ac = AutocompleteSystem::new(
+        let mut ac = AutocompleteSystem::new(
             vec![
                 "i love you.".to_string(),
                 "island".to_string(),
