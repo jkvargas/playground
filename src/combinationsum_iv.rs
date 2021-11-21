@@ -6,7 +6,7 @@ impl Solution {
     pub fn combination_sum4(nums: Vec<i32>, target: i32) -> i32 {
         let mut res_map = HashMap::new();
 
-        Self::combs(&mut res_map, &nums, target) 
+        Self::combs(&mut res_map, &nums, target)
     }
 
     pub fn combs(memo: &mut HashMap<i32, i32>, nums: &Vec<i32>, remaining: i32) -> i32 {
@@ -30,7 +30,6 @@ impl Solution {
 
         result
     }
-
 }
 
 #[test]

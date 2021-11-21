@@ -27,7 +27,10 @@ impl Solution {
 
 #[test]
 fn test_one() {
-    assert!(Solution::is_anagram("anagram".to_string(), "nagaram".to_string()));
+    assert!(Solution::is_anagram(
+        "anagram".to_string(),
+        "nagaram".to_string()
+    ));
 }
 
 #[test]

@@ -1,6 +1,6 @@
-use std::rc::Rc;
-use std::cell::RefCell;
 use crate::nodes::TreeNode;
+use std::cell::RefCell;
+use std::rc::Rc;
 
 struct Solution;
 
@@ -38,8 +38,19 @@ mod tests {
 
     #[test]
     fn test_one() {
-        let node = TreeNode::from(vec![Some(3), Some(9), Some(20), None, None, Some(15), Some(7)]);
+        let node = TreeNode::from(vec![
+            Some(3),
+            Some(9),
+            Some(20),
+            None,
+            None,
+            Some(15),
+            Some(7),
+        ]);
 
-        assert_eq!(vec![vec![3], vec![9, 20], vec![15, 7]], Solution::level_order(node));
+        assert_eq!(
+            vec![vec![3], vec![9, 20], vec![15, 7]],
+            Solution::level_order(node)
+        );
     }
 }

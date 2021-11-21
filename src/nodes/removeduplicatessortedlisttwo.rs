@@ -1,5 +1,5 @@
-use std::collections::{BTreeSet, HashSet};
 use crate::nodes::ListNode;
+use std::collections::{BTreeSet, HashSet};
 
 struct Solution;
 
@@ -35,21 +35,36 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use crate::nodes::ListNode;
     use crate::nodes::removeduplicatessortedlisttwo::Solution;
+    use crate::nodes::ListNode;
 
     #[test]
     fn test_one() {
-        assert_eq!(vec![1, 2, 5], ListNode::flat_it(Solution::delete_duplicates(ListNode::from(vec![1, 2, 3, 3, 4, 4, 5]))));
+        assert_eq!(
+            vec![1, 2, 5],
+            ListNode::flat_it(Solution::delete_duplicates(ListNode::from(vec![
+                1, 2, 3, 3, 4, 4, 5
+            ])))
+        );
     }
 
     #[test]
     fn test_two() {
-        assert_eq!(vec![1, 2, 3, 6, 7], ListNode::flat_it(Solution::delete_duplicates(ListNode::from(vec![4, 6, 3, 4, 1, 2, 7]))));
+        assert_eq!(
+            vec![1, 2, 3, 6, 7],
+            ListNode::flat_it(Solution::delete_duplicates(ListNode::from(vec![
+                4, 6, 3, 4, 1, 2, 7
+            ])))
+        );
     }
 
     #[test]
     fn test_three() {
-        assert_eq!(vec![2, 3], ListNode::flat_it(Solution::delete_duplicates(ListNode::from(vec![1, 1, 1, 2, 3]))));
+        assert_eq!(
+            vec![2, 3],
+            ListNode::flat_it(Solution::delete_duplicates(ListNode::from(vec![
+                1, 1, 1, 2, 3
+            ])))
+        );
     }
 }

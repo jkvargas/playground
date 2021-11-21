@@ -1,5 +1,5 @@
-use std::collections::{HashMap, HashSet, VecDeque};
 use std::cmp::min;
+use std::collections::{HashMap, HashSet, VecDeque};
 
 struct Solution;
 

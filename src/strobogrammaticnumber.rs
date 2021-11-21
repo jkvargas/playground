@@ -5,7 +5,7 @@ struct Solution;
 impl Solution {
     pub fn is_strobogrammatic(num: String) -> bool {
         let mut map = HashMap::new();
-        let nums : Vec<char> = num.chars().collect();
+        let nums: Vec<char> = num.chars().collect();
 
         map.insert('1', '1');
         map.insert('0', '0');
