@@ -26,6 +26,7 @@ pub mod designundergroundsystem;
 pub mod editdistance;
 pub mod expressivewords;
 pub mod findmedianfromdatastream;
+pub mod first_and_last;
 pub mod firstandlastsortedarray;
 pub mod foursum;
 pub mod freqstack;
