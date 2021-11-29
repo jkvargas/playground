@@ -46,6 +46,7 @@ pub mod kthlargest;
 pub mod largestsumofaverages;
 pub mod laststone;
 pub mod lettercombinationsofaphonenumber;
+mod logger_rate_limiter;
 pub mod longestarithmeticsubsequence;
 pub mod longestincreasingsubsequence;
 pub mod longestpalyndromic;
