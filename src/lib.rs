@@ -86,6 +86,7 @@ mod segmenttree;
 pub mod shoppingoffers;
 pub mod simplifypath;
 pub mod slidingwindowmaximum;
+mod sortbyfrequency;
 pub mod spiralmatrix;
 mod strobogrammaticnumber;
 pub mod swapnodesinpairs;

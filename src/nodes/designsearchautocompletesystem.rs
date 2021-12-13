@@ -1,5 +1,8 @@
+// use std::{cell::RefCell, rc::Rc};
+//
 // /// https://leetcode.com/problems/design-search-autocomplete-system/
 // use std::{
+//     cmp::Ordering,
 //     collections::{BinaryHeap, HashMap, HashSet},
 //     hash::{Hash, Hasher},
 // };
@@ -10,13 +13,13 @@
 // struct TrieNode {
 //     number_of_occurrences: i32,
 //     is_sentence: bool,
-//     neighbors: Trie,
+//     neighbors: Rc<RefCell<Trie>>,
 // }
 //
 // impl TrieNode {
 //     fn new(number_of_occurrences: i32, is_sentence: bool) -> TrieNode {
 //         Self {
-//             neighbors: HashMap::new(),
+//             neighbors: Rc::new(RefCell::new(HashMap::new())),
 //             number_of_occurrences,
 //             is_sentence,
 //         }
@@ -34,10 +37,30 @@
 //     }
 // }
 //
-// struct AutocompleteSystem<'a> {
-//     trie: Trie,
+// impl Eq for Statement {}
+//
+// impl PartialEq<Self> for Statement {
+//     fn eq(&self, other: &Self) -> bool {
+//         self.occurrence.eq(&other.occurrence)
+//     }
+// }
+//
+// impl PartialOrd<Self> for Statement {
+//     fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+//         Some(self.cmp(other))
+//     }
+// }
+//
+// impl Ord for Statement {
+//     fn cmp(&self, other: &Self) -> Ordering {
+//         self.times.cmp(&other.times)
+//     }
+// }
+//
+// struct AutocompleteSystem {
+//     trie: Rc<RefCell<Trie>>,
 //     sentence: Vec<char>,
-//     last_trie: Option<&'a Trie>,
+//     last_trie: Option<Rc<RefCell<Trie>>>,
 //     sentences_so_far: BinaryHeap<Statement>,
 // }
 //
@@ -46,24 +69,25 @@
 //  * If you need a mutable reference, change it to `&mut self` instead
 //  */
 //
-// impl<'a> AutocompleteSystem {
+// impl AutocompleteSystem {
 //     fn insert_word(&mut self, word: &String, times: i32) {
-//         let mut trie_ref = &mut self.trie;
+//         let mut trie_ref = self.trie.clone();
 //         let letters: Vec<char> = word.chars().collect();
 //
 //         for (ind, i) in letters.iter().enumerate() {
-//             if let Some(node) = trie_ref.get_mut(&i) {
+//             let mut borrow_mut = self.trie.borrow_mut();
+//             if let Some(node) = borrow_mut.get_mut(&i) {
 //                 if letters.len() - 1 == ind {
 //                     node.is_sentence = true;
 //                     node.number_of_occurrences = times;
 //                 }
 //
-//                 trie_ref = &mut node.neighbors;
+//                 trie_ref = node.neighbors.clone();
 //             } else {
 //                 if letters.len() - 1 == ind {
-//                     trie_ref.insert(*i, TrieNode::new(times, true));
+//                     trie_ref.borrow_mut().insert(*i, TrieNode::new(times, true));
 //                 } else {
-//                     trie_ref.insert(*i, TrieNode::new(0, false));
+//                     trie_ref.borrow_mut().insert(*i, TrieNode::new(0, false));
 //                 }
 //             }
 //         }
@@ -71,7 +95,7 @@
 //
 //     fn new(sentences: Vec<String>, times: Vec<i32>) -> Self {
 //         let mut result = Self {
-//             trie: HashMap::new(),
+//             trie: Rc::new(RefCell::new(HashMap::new())),
 //             sentence: Vec::new(),
 //             last_trie: None,
 //             sentences_so_far: BinaryHeap::new(),
@@ -92,7 +116,8 @@
 //         } else {
 //             let mut result = Vec::new();
 //             self.set_last_node(c);
-//             if let Some(lt) = self.last_trie {
+//             if let Some(to_borrow) = self.last_trie.as_ref() {
+//                 let lt = to_borrow.borrow();
 //                 Self::get_words(&lt, self.sentence.clone(), &mut result);
 //
 //                 result
@@ -104,7 +129,7 @@
 //
 //     fn get_words(trie: &Trie, letters: Vec<char>, result: &mut Vec<String>) {
 //         if trie.is_empty() {
-//             result.push(letters.into());
+//             result.push(letters.iter().collect::<String>());
 //             return;
 //         }
 //
@@ -112,13 +137,16 @@
 //             let mut with_new_letter = letters.clone();
 //             with_new_letter.push(*letter);
 //
-//             Self::get_words(&node.neighbors, with_new_letter, result);
+//             let bor = node.neighbors.borrow();
+//
+//             Self::get_words(&bor, with_new_letter, result);
 //         }
 //     }
 //
 //     fn add_to_sentence(&mut self, c: char) {
 //         if c == '#' {
-//             self.insert_word(self.sentence.into(), 1);
+//             let word = self.sentence.iter().cloned().collect::<String>();
+//             self.insert_word(&word, 1);
 //             self.sentence.clear();
 //             return;
 //         }
@@ -127,17 +155,21 @@
 //     }
 //
 //     fn set_last_node(&mut self, c: char) {
-//         if let Some(lt) = self.last_trie {
-//             if let Some(node) = lt.get(&c) {
-//                 self.last_trie = Some(&node.neighbors);
-//             } else {
-//                 self.last_trie = None;
-//             }
-//         } else {
-//             if let Some(node) = self.trie.get(&c) {
-//                 self.last_trie = Some(&node.neighbors);
-//             }
-//         }
+//         let result = self.last_trie.as_ref().map_or_else(
+//             || {
+//                 self.trie
+//                     .borrow()
+//                     .get(&c)
+//                     .map_or_else(|| None, |y| Some(y.neighbors.clone()))
+//             },
+//             |x| {
+//                 x.borrow()
+//                     .get(&c)
+//                     .map_or_else(|| None, |y| Some(y.neighbors.clone()))
+//             },
+//         );
+//
+//         self.last_trie = result;
 //     }
 // }
 //
