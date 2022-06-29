@@ -113,3 +113,4 @@ pub mod worldladder2;
 mod sortcolors;
 mod sortingalgos;
 mod rangesumquery2dimmutable;
+mod minimumknightmoves;
