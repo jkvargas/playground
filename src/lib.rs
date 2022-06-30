@@ -114,3 +114,4 @@ mod sortcolors;
 mod sortingalgos;
 mod rangesumquery2dimmutable;
 mod minimumknightmoves;
+mod painthouseii;
