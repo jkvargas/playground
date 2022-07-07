@@ -116,3 +116,4 @@ mod rangesumquery2dimmutable;
 mod minimumknightmoves;
 mod painthouseii;
 mod sudoku;
+mod inttoroman;
