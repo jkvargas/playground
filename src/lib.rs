@@ -118,3 +118,4 @@ mod painthouseii;
 mod sudoku;
 mod inttoroman;
 mod rotatematrix;
+mod tossstrangecoins;
