@@ -119,3 +119,4 @@ mod sudoku;
 mod inttoroman;
 mod rotatematrix;
 mod tossstrangecoins;
+mod max_subarray_one_operation;
