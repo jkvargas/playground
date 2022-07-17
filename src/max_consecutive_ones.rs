@@ -1,6 +1,7 @@
 // https://leetcode.com/problems/max-consecutive-ones-ii/
 
 use std::cmp::max;
+use std::convert::TryInto;
 
 struct Solution;
 
@@ -47,7 +48,7 @@ impl Solution {
         let mut right = 0;
         let mut numZeroes = 0;
 
-        while right < nums.length {
+        while right < nums.len() {
             // add the right most element into our window
             if nums[right] == 0 {
                 numZeroes += 1;
@@ -68,7 +69,7 @@ impl Solution {
             right += 1;
         }
 
-        return longestSequence;
+        return longestSequence.try_into().unwrap();
     }
 }
 
