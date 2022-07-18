@@ -123,3 +123,4 @@ mod max_subarray_one_operation;
 mod minimal_cost_to_hire_k_workers;
 mod deleteandearn;
 mod max_consecutive_ones;
+mod reducing_dishes;
