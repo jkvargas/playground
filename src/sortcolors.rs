@@ -8,7 +8,6 @@ impl Solution {
     }
 }
 
-
 #[cfg(test)]
 mod test {
     use crate::sortcolors::Solution;

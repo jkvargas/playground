@@ -12,6 +12,7 @@ pub mod combinationsum_iv;
 pub mod concatenatedwords;
 pub mod containermostwater;
 pub mod contiguousarray;
+mod count_and_say;
 pub mod countcompletetreenodes;
 pub mod countprimes;
 mod countsmaller;

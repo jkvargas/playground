@@ -24,9 +24,7 @@ impl Eq for Worker {}
 
 impl PartialEq<Self> for Worker {
     fn eq(&self, other: &Self) -> bool {
-        self.wage == other.wage &&
-            self.quality == other.quality &&
-            self.ratio == other.ratio
+        self.wage == other.wage && self.quality == other.quality && self.ratio == other.ratio
     }
 }
 
@@ -55,7 +53,13 @@ impl Solution {
         Self::f(0, &quality, &wage, None, k).unwrap()
     }
 
-    fn f(i: usize, quality: &Vec<i32>, wage: &Vec<i32>, base_ratio: Option<f64>, k: i32) -> Option<f64> {
+    fn f(
+        i: usize,
+        quality: &Vec<i32>,
+        wage: &Vec<i32>,
+        base_ratio: Option<f64>,
+        k: i32,
+    ) -> Option<f64> {
         if i >= quality.len() {
             if k > 0 {
                 return None;
@@ -136,11 +140,21 @@ mod tests {
 
     #[test]
     fn test_one() {
-        assert_eq!(105.0, Solution::mincost_to_hire_workers_leetcode(vec![10, 20, 5], vec![70, 50, 30], 2));
+        assert_eq!(
+            105.0,
+            Solution::mincost_to_hire_workers_leetcode(vec![10, 20, 5], vec![70, 50, 30], 2)
+        );
     }
 
     #[test]
     fn test_two() {
-        assert_eq!(30.666666666666664, Solution::mincost_to_hire_workers_leetcode(vec![3, 1, 10, 10, 1], vec![4, 8, 2, 2, 7], 3));
+        assert_eq!(
+            30.666666666666664,
+            Solution::mincost_to_hire_workers_leetcode(
+                vec![3, 1, 10, 10, 1],
+                vec![4, 8, 2, 2, 7],
+                3
+            )
+        );
     }
 }

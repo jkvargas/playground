@@ -12,7 +12,10 @@ impl Solution {
         for i in 1..nums.len() {
             dp[i][0] = std::cmp::max(nums[i] + dp[i - 1][0], nums[i]);
             let squared = nums[i] * nums[i];
-            dp[i][1] = std::cmp::max(std::cmp::max(squared, squared + dp[i - 1][0]), nums[i] + dp[i - 1][1]);
+            dp[i][1] = std::cmp::max(
+                std::cmp::max(squared, squared + dp[i - 1][0]),
+                nums[i] + dp[i - 1][1],
+            );
             ans = std::cmp::max(ans, std::cmp::max(dp[i][0], dp[i][1]));
         }
 

@@ -19,7 +19,12 @@ impl Solution {
         Self::take(&sorted_unique_numbers, &map, 0, &mut memo)
     }
 
-    fn take(sorted_unique_numbers: &Vec<i32>, map: &HashMap<i32, i32>, i: usize, memo: &mut HashMap<usize, i32>) -> i32 {
+    fn take(
+        sorted_unique_numbers: &Vec<i32>,
+        map: &HashMap<i32, i32>,
+        i: usize,
+        memo: &mut HashMap<usize, i32>,
+    ) -> i32 {
         if i >= sorted_unique_numbers.len() {
             return 0;
         }
@@ -45,9 +50,10 @@ impl Solution {
 
         let mut without_take = i + 1;
 
-        let max_value = max(map.get(&n).unwrap()
-                                + Self::take(sorted_unique_numbers, map, with_take, memo),
-                            Self::take(sorted_unique_numbers, map, without_take, memo));
+        let max_value = max(
+            map.get(&n).unwrap() + Self::take(sorted_unique_numbers, map, with_take, memo),
+            Self::take(sorted_unique_numbers, map, without_take, memo),
+        );
 
         memo.insert(i, max_value);
 
@@ -58,7 +64,7 @@ impl Solution {
         let mut points = HashMap::new();
         let mut cache = HashMap::new();
 
-        let mut max_number = 0 ;
+        let mut max_number = 0;
         for num in &nums {
             let present = points.get(num).map_or(0, |x| *x);
             points.insert(*num, present + *num);
@@ -96,6 +102,9 @@ mod test {
 
     #[test]
     fn test_one() {
-        assert_eq!(9, Solution::delete_and_earn_leetcode(vec![2, 2, 3, 3, 3, 4]));
+        assert_eq!(
+            9,
+            Solution::delete_and_earn_leetcode(vec![2, 2, 3, 3, 3, 4])
+        );
     }
 }

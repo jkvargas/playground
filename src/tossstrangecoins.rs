@@ -9,7 +9,12 @@ impl Solution {
 
         for i in 1..prob.len() {
             for j in 0..=target as usize {
-                dp[i][j] = dp[i - 1][j] * (1.0 - prob[i]) + if j == 0 { 0.0 } else { dp[i - 1][j - 1] * prob[i] };
+                dp[i][j] = dp[i - 1][j] * (1.0 - prob[i])
+                    + if j == 0 {
+                        0.0
+                    } else {
+                        dp[i - 1][j - 1] * prob[i]
+                    };
             }
         }
 
@@ -28,6 +33,12 @@ mod tests {
 
     #[test]
     fn test_two() {
-        assert_eq!(0.0, Solution::probability_of_heads(vec![1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], 9));
+        assert_eq!(
+            0.0,
+            Solution::probability_of_heads(
+                vec![1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+                9
+            )
+        );
     }
 }

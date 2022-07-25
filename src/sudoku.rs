@@ -76,7 +76,9 @@ impl<'a> Sudoku<'a> {
         let letter = char::from_digit(number, 10).unwrap();
         let i = self.free_positions[pos][0];
         let j = self.free_positions[pos][1];
-        !self.lines[i].contains(&letter) && !self.cols[j].contains(&letter) && !self.boxes[i / BOX_SIZE][j / BOX_SIZE].contains(&letter)
+        !self.lines[i].contains(&letter)
+            && !self.cols[j].contains(&letter)
+            && !self.boxes[i / BOX_SIZE][j / BOX_SIZE].contains(&letter)
     }
 
     fn put(&mut self, number: u32, pos: usize) {

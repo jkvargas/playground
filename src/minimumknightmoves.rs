@@ -6,7 +6,17 @@ struct Solution;
 
 impl Solution {
     pub fn min_knight_moves(x: i32, y: i32) -> i32 {
-        let mut directions = vec![(1, 2), (2, 1), (2, -1), (1, -2), (1, -2), (-1, -2), (-2, -1), (-2, 1), (-1, 2)];
+        let mut directions = vec![
+            (1, 2),
+            (2, 1),
+            (2, -1),
+            (1, -2),
+            (1, -2),
+            (-1, -2),
+            (-2, -1),
+            (-2, 1),
+            (-1, 2),
+        ];
         let mut steps = 0;
         let mut dequeue = VecDeque::new();
         let mut hash_set: HashSet<(i32, i32)> = HashSet::new();

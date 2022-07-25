@@ -2,29 +2,29 @@ struct Solution;
 
 impl Solution {
     pub fn combination_sum2(mut candidates: Vec<i32>, target: i32) -> Vec<Vec<i32>> {
-            fn backtrack(sub: &[i32], candidates: &[i32], target: i32, res: &mut Vec<Vec<i32>>) {
-                let sum = sub.iter().sum::<i32>();
-                if sum == target {
-                    res.push(sub.to_vec());
-                    return;
-                } else if sum > target {
-                    return;
-                }
-
-                for (i, v) in candidates.iter().enumerate() {
-                    if i > 0 && candidates[i - 1] == *v {
-                        continue;
-                    }
-                    let mut s = sub.to_vec();
-                    s.push(*v);
-                    backtrack(&s, &candidates[i + 1..], target, res);
-                }
+        fn backtrack(sub: &[i32], candidates: &[i32], target: i32, res: &mut Vec<Vec<i32>>) {
+            let sum = sub.iter().sum::<i32>();
+            if sum == target {
+                res.push(sub.to_vec());
+                return;
+            } else if sum > target {
+                return;
             }
-            let mut candidates = candidates;
-            candidates.sort();
-            let mut res: Vec<Vec<i32>> = vec![];
-            backtrack(&vec![], &candidates, target, &mut res);
-            res
+
+            for (i, v) in candidates.iter().enumerate() {
+                if i > 0 && candidates[i - 1] == *v {
+                    continue;
+                }
+                let mut s = sub.to_vec();
+                s.push(*v);
+                backtrack(&s, &candidates[i + 1..], target, res);
+            }
+        }
+        let mut candidates = candidates;
+        candidates.sort();
+        let mut res: Vec<Vec<i32>> = vec![];
+        backtrack(&vec![], &candidates, target, &mut res);
+        res
     }
 }
 
@@ -34,12 +34,10 @@ mod tests {
 
     #[test]
     fn test_one() {
-        assert_eq!(vec![
-            vec![1,1,6],
-            vec![1,2,5],
-            vec![1,7],
-            vec![2,6]
-        ], Solution::combination_sum2(vec![10,1,2,7,6,1,5], 8));
+        assert_eq!(
+            vec![vec![1, 1, 6], vec![1, 2, 5], vec![1, 7], vec![2, 6]],
+            Solution::combination_sum2(vec![10, 1, 2, 7, 6, 1, 5], 8)
+        );
     }
 }
 

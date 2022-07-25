@@ -31,9 +31,15 @@ impl Solution {
     }
 
     fn cc(coins: &Vec<i32>, rem: i32, count: &mut Vec<i32>) -> i32 {
-        if rem < 0 { return -1; }
-        if rem == 0 { return 0; }
-        if count[rem as usize - 1] != 0 { return count[rem as usize - 1]; }
+        if rem < 0 {
+            return -1;
+        }
+        if rem == 0 {
+            return 0;
+        }
+        if count[rem as usize - 1] != 0 {
+            return count[rem as usize - 1];
+        }
         let mut min = i32::MAX;
         for &coin in coins {
             let res = Self::cc(coins, rem - coin, count);

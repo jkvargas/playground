@@ -39,7 +39,7 @@ mod tests {
 
     #[test]
     pub fn test_one() {
-        let mut mat = vec![vec![1,5,3],vec![2,9,4]];
+        let mut mat = vec![vec![1, 5, 3], vec![2, 9, 4]];
 
         let res = Solution::min_cost_ii(mat);
 

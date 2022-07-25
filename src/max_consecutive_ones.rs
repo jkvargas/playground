@@ -84,6 +84,9 @@ mod test {
 
     #[test]
     fn test_two() {
-        assert_eq!(4, Solution::find_max_consecutive_ones(vec![1, 0, 1, 1, 0, 1]));
+        assert_eq!(
+            4,
+            Solution::find_max_consecutive_ones(vec![1, 0, 1, 1, 0, 1])
+        );
     }
 }
