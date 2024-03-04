@@ -2,18 +2,20 @@ pub struct Solution;
 
 impl Solution {
     pub fn k_closest(points: Vec<Vec<i32>>, k: i32) -> Vec<Vec<i32>> {
-        let mut to_sort = points
-            .into_iter()
-            .map(|x| ((x[0] * x[0] + x[1] * x[1]) as u32, x))
-            .collect::<Vec<(u32, Vec<i32>)>>();
+        // let mut to_sort = points
+        //     .into_iter()
+        //     .map(|x| ((x[0] * x[0] + x[1] * x[1]) as u32, x))
+        //     .collect::<Vec<(u32, Vec<i32>)>>();
+        //
+        // to_sort.sort_by(|x, y| x.0.cmp(&y.0));
+        //
+        // to_sort
+        //     .iter()
+        //     .take(k as usize)
+        //     .map(|x| Vec::<i32>::from((&x.1).as_ref()))
+        //     .collect::<Vec<Vec<i32>>>()
 
-        to_sort.sort_by(|x, y| x.0.cmp(&y.0));
-
-        to_sort
-            .iter()
-            .take(k as usize)
-            .map(|x| Vec::<i32>::from((&x.1).as_ref()))
-            .collect::<Vec<Vec<i32>>>()
+        vec![vec![]]
     }
 }
 

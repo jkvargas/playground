@@ -126,4 +126,5 @@ pub mod wordbreak;
 pub mod wordsearch;
 pub mod worldladder;
 pub mod worldladder2;
-mod reorganizestrings;
+pub mod reorganizestrings;
+pub mod queens;
