@@ -19,6 +19,7 @@ mod removeduplicatessortedlisttwo;
 mod sametree;
 mod serializeanddeserializebinarytree;
 mod symmetrictree;
+mod in_order_successor_bst;
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
@@ -65,7 +66,7 @@ pub struct TreeNode {
     pub right: Option<Rc<RefCell<TreeNode>>>,
 }
 
-type TreeResult = Option<Rc<RefCell<TreeNode>>>;
+pub type TreeResult = Option<Rc<RefCell<TreeNode>>>;
 
 impl Hash for TreeNode {
     fn hash<H: Hasher>(&self, state: &mut H) {
