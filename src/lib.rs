@@ -133,3 +133,4 @@ pub mod search_in_rotated_sorted_array_2;
 mod kthfactorofn;
 mod optimal_partition_string;
 mod time_to_cross_the_door;
+mod minimum_swaps;
