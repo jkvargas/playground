@@ -134,3 +134,4 @@ mod kthfactorofn;
 mod optimal_partition_string;
 mod time_to_cross_the_door;
 mod minimum_swaps;
+mod longest_common_subsequence;
