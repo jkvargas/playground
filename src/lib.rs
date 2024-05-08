@@ -135,3 +135,4 @@ mod optimal_partition_string;
 mod time_to_cross_the_door;
 mod minimum_swaps;
 mod longest_common_subsequence;
+mod merge_operations_palindrome;
