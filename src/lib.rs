@@ -138,3 +138,5 @@ mod longest_common_subsequence;
 mod merge_operations_palindrome;
 mod jump_game;
 mod palindrome_partitioning;
+mod insertion_sort_list;
+mod furthest_building_you_can_reach;
