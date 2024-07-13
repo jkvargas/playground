@@ -140,3 +140,4 @@ mod jump_game;
 mod palindrome_partitioning;
 mod insertion_sort_list;
 mod furthest_building_you_can_reach;
+mod maximum_average_subarray_i;
