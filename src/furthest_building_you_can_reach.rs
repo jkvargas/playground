@@ -32,17 +32,23 @@ mod tests {
 
     #[test]
     fn test_one() {
-        assert_eq!(4, Solution::furthest_building(vec![4,2,7,6,9,14,12], 5, 1));
+        assert_eq!(
+            4,
+            Solution::furthest_building(vec![4, 2, 7, 6, 9, 14, 12], 5, 1)
+        );
     }
 
     #[test]
     fn test_two() {
-        assert_eq!(7, Solution::furthest_building(vec![4,12,2,7,3,18,20,3,19], 10, 2));
+        assert_eq!(
+            7,
+            Solution::furthest_building(vec![4, 12, 2, 7, 3, 18, 20, 3, 19], 10, 2)
+        );
     }
 
     #[test]
     fn test_three() {
-        assert_eq!(3, Solution::furthest_building(vec![14,3,19,3], 17, 0));
+        assert_eq!(3, Solution::furthest_building(vec![14, 3, 19, 3], 17, 0));
     }
 
     #[test]

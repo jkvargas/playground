@@ -21,7 +21,7 @@ impl Solution {
         }
 
         if nums[i] == target {
-            return true
+            return true;
         }
 
         if nums[j] == target {
@@ -64,11 +64,11 @@ mod test {
 
     #[test]
     fn test_one() {
-        assert!(!Solution::search(vec![2,5,6,0,0,1,2], 3));
+        assert!(!Solution::search(vec![2, 5, 6, 0, 0, 1, 2], 3));
     }
 
     #[test]
     fn test_two() {
-        assert!(!Solution::search(vec![2,5,6,0,0,1,2], 6));
+        assert!(!Solution::search(vec![2, 5, 6, 0, 0, 1, 2], 6));
     }
 }

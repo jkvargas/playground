@@ -63,27 +63,3 @@ impl NewAttempt {
         result[m as usize - 1][n as usize - 1]
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

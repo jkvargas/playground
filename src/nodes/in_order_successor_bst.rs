@@ -16,9 +16,9 @@
 //     }
 //   }
 // }
-use std::rc::Rc;
-use std::cell::RefCell;
 use crate::nodes::{TreeNode, TreeResult};
+use std::cell::RefCell;
+use std::rc::Rc;
 // https://leetcode.com/problems/inorder-successor-in-bst/
 struct Solution;
 
@@ -51,8 +51,15 @@ impl Solution {
             return None;
         }
 
-
-        let mut sucessor = Solution::inorder_successor(root.as_ref().unwrap().borrow().left.as_ref().map_or(None, |x| Some(x.clone())), p.as_ref().map_or(None, |x| Some(x.clone())));
+        let mut sucessor = Solution::inorder_successor(
+            root.as_ref()
+                .unwrap()
+                .borrow()
+                .left
+                .as_ref()
+                .map_or(None, |x| Some(x.clone())),
+            p.as_ref().map_or(None, |x| Some(x.clone())),
+        );
 
         if sucessor.is_some() {
             return sucessor;
@@ -62,6 +69,14 @@ impl Solution {
             return root;
         }
 
-        Self::inorder_successor(root.as_ref().unwrap().borrow().right.as_ref().map_or(None, |x| Some(x.clone())), p.as_ref().map_or(None, |x| Some(x.clone())))
+        Self::inorder_successor(
+            root.as_ref()
+                .unwrap()
+                .borrow()
+                .right
+                .as_ref()
+                .map_or(None, |x| Some(x.clone())),
+            p.as_ref().map_or(None, |x| Some(x.clone())),
+        )
     }
 }

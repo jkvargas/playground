@@ -36,13 +36,25 @@ impl Solution {
     }
 
     pub fn min_distance(word1: String, word2: String) -> i32 {
-        let word1_vec : Vec<char> = word1.chars().collect();
-        let word2_vec : Vec<char> = word2.chars().collect();
+        let word1_vec: Vec<char> = word1.chars().collect();
+        let word2_vec: Vec<char> = word2.chars().collect();
         let mut memo = vec![vec![-1; word2_vec.len() + 1]; word1_vec.len() + 1];
-        Self::min_distance_recur(&word1_vec, &word2_vec, word1_vec.len(), word2_vec.len(), &mut memo)
+        Self::min_distance_recur(
+            &word1_vec,
+            &word2_vec,
+            word1_vec.len(),
+            word2_vec.len(),
+            &mut memo,
+        )
     }
 
-    fn min_distance_recur(word_one: &Vec<char>, word_two: &Vec<char>, word_one_index: usize, word_two_index: usize, memo: &mut Vec<Vec<i32>>) -> i32 {
+    fn min_distance_recur(
+        word_one: &Vec<char>,
+        word_two: &Vec<char>,
+        word_one_index: usize,
+        word_two_index: usize,
+        memo: &mut Vec<Vec<i32>>,
+    ) -> i32 {
         if word_one_index == 0 {
             return word_two_index as i32;
         }
@@ -57,18 +69,41 @@ impl Solution {
 
         let mut min_edit_distance = 0;
         if word_one[word_one_index - 1] == word_two[word_two_index - 1] {
-            min_edit_distance = Self::min_distance_recur(word_one, word_two, word_one_index - 1, word_two_index - 1, memo);
+            min_edit_distance = Self::min_distance_recur(
+                word_one,
+                word_two,
+                word_one_index - 1,
+                word_two_index - 1,
+                memo,
+            );
         } else {
-            let insert_op = Self::min_distance_recur(word_one, word_two, word_one_index, word_two_index - 1, memo);
-            let delete_op = Self::min_distance_recur(word_one, word_two, word_one_index - 1, word_two_index, memo);
-            let replace_op = Self::min_distance_recur(word_one, word_two, word_one_index - 1, word_two_index - 1, memo);
+            let insert_op = Self::min_distance_recur(
+                word_one,
+                word_two,
+                word_one_index,
+                word_two_index - 1,
+                memo,
+            );
+            let delete_op = Self::min_distance_recur(
+                word_one,
+                word_two,
+                word_one_index - 1,
+                word_two_index,
+                memo,
+            );
+            let replace_op = Self::min_distance_recur(
+                word_one,
+                word_two,
+                word_one_index - 1,
+                word_two_index - 1,
+                memo,
+            );
             min_edit_distance = insert_op.min(delete_op).min(replace_op) + 1;
         }
 
         memo[word_one_index][word_two_index] = min_edit_distance;
         return min_edit_distance;
     }
-
 }
 
 #[cfg(test)]

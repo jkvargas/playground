@@ -47,11 +47,14 @@ mod tests {
 
     #[test]
     fn test_one() {
-        assert_eq!(1, Solution::min_swaps(vec![1,0,1,0,1]));
+        assert_eq!(1, Solution::min_swaps(vec![1, 0, 1, 0, 1]));
     }
 
     #[test]
     fn test_two() {
-        assert_eq!(3, Solution::min_swaps(vec![1,0,1,0,1,0,0,1,1,0,1]));
+        assert_eq!(
+            3,
+            Solution::min_swaps(vec![1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1])
+        );
     }
 }

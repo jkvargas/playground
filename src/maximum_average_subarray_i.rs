@@ -30,7 +30,10 @@ mod tests {
 
     #[test]
     fn test_one() {
-        assert_eq!(12.7500, Solution::find_max_average(vec![1,12,-5,-6,50,3], 4));
+        assert_eq!(
+            12.7500,
+            Solution::find_max_average(vec![1, 12, -5, -6, 50, 3], 4)
+        );
     }
 
     #[test]
@@ -40,6 +43,6 @@ mod tests {
 
     #[test]
     fn test_three() {
-        assert_eq!(4.0, Solution::find_max_average(vec![0,4,0,3,2], 1))
+        assert_eq!(4.0, Solution::find_max_average(vec![0, 4, 0, 3, 2], 1))
     }
 }

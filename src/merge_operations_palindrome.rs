@@ -38,7 +38,7 @@ mod test {
 
     #[test]
     fn test_one() {
-        let result = Solution::minimum_operations(vec![4,3,2,1,2,3,1]);
+        let result = Solution::minimum_operations(vec![4, 3, 2, 1, 2, 3, 1]);
         assert_eq!(2, result);
     }
 }

@@ -53,7 +53,7 @@ mod test {
 
     #[test]
     fn test_one() {
-        let nums = vec![2,3,1,1,4];
+        let nums = vec![2, 3, 1, 1, 4];
         assert!(Solution::can_jump(nums));
     }
 }

@@ -7,8 +7,8 @@ impl Solution {
         let n = text1.len();
         let m = text2.len();
 
-        let text1 : Vec<char> = text1.chars().collect();
-        let text2 : Vec<char> = text2.chars().collect();
+        let text1: Vec<char> = text1.chars().collect();
+        let text2: Vec<char> = text2.chars().collect();
 
         let mut dp = vec![vec![0; m + 1]; n + 1];
 
@@ -34,6 +34,9 @@ mod tests {
         let string_one = "actgattag".to_string();
         let string_two = "gtgtgatcg".to_string();
 
-        assert_eq!(3, Solution::longest_common_subsequence(string_one, string_two));
+        assert_eq!(
+            3,
+            Solution::longest_common_subsequence(string_one, string_two)
+        );
     }
 }

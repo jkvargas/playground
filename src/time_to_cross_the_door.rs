@@ -6,7 +6,7 @@ struct Solution;
 pub enum DoorStatus {
     Entering,
     Existing,
-    Unused
+    Unused,
 }
 
 impl Solution {
@@ -18,7 +18,10 @@ impl Solution {
         let mut result = vec![0; arrival.len()];
 
         for (index, &value) in arrival.iter().enumerate() {
-            arrival_map.entry(value as usize).or_insert(Vec::new()).push(index);
+            arrival_map
+                .entry(value as usize)
+                .or_insert(Vec::new())
+                .push(index);
         }
 
         let mut time = 0;
@@ -80,6 +83,9 @@ mod tests {
 
     #[test]
     fn test_one() {
-        assert_eq!(vec![0, 3, 1, 2, 4], Solution::time_taken(vec![0, 1, 1, 2, 4], vec![0, 1, 0, 0, 1]));
+        assert_eq!(
+            vec![0, 3, 1, 2, 4],
+            Solution::time_taken(vec![0, 1, 1, 2, 4], vec![0, 1, 0, 0, 1])
+        );
     }
 }

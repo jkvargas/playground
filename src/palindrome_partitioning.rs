@@ -7,7 +7,12 @@ struct Solution;
 impl Solution {
     pub fn partition(s: String) -> Vec<Vec<String>> {
         let mut result = Vec::new();
-        calc(&mut result, s.chars().collect::<Vec<char>>().as_slice(), 0, &mut vec![]);
+        calc(
+            &mut result,
+            s.chars().collect::<Vec<char>>().as_slice(),
+            0,
+            &mut vec![],
+        );
 
         result
     }
@@ -47,7 +52,10 @@ mod tests {
 
     #[test]
     fn test_one() {
-        let compare_to = vec![vec!["a".to_string(), "a".to_string(), "b".to_string()], vec!["aa".to_string(), "b".to_string()]];
+        let compare_to = vec![
+            vec!["a".to_string(), "a".to_string(), "b".to_string()],
+            vec!["aa".to_string(), "b".to_string()],
+        ];
         let result = Solution::partition("aab".to_string());
         assert_eq!(compare_to, result);
     }

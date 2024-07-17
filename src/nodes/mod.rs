@@ -12,6 +12,7 @@ mod constructbinarytree;
 mod designsearchautocompletesystem;
 mod flattenbinarytree;
 mod houserobberiii;
+mod in_order_successor_bst;
 mod lca;
 mod maximumdepthbinarytree;
 mod rangesumbst;
@@ -19,7 +20,6 @@ mod removeduplicatessortedlisttwo;
 mod sametree;
 mod serializeanddeserializebinarytree;
 mod symmetrictree;
-mod in_order_successor_bst;
 
 #[derive(PartialEq, Eq, Clone, Debug)]
 pub struct ListNode {
