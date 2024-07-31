@@ -11,3 +11,4 @@ crate-type = ["dylib"]
 
 [dependencies]
 rand = "0.7.3"
+log = "0.4.22"

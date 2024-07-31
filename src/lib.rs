@@ -144,3 +144,6 @@ pub mod wordsearch;
 pub mod worldladder;
 pub mod worldladder2;
 mod combination_sum_iii;
+mod find_minimum_time_to_finish_all_jobs_ii;
+mod palindrome_iv;
+mod max_sum_distinct_subarrays;
