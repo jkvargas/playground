@@ -148,3 +148,4 @@ mod find_minimum_time_to_finish_all_jobs_ii;
 mod palindrome_iv;
 mod max_sum_distinct_subarrays;
 mod number_of_ways_select_buildings;
+mod pascal_triangle;
