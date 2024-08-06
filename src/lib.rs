@@ -151,3 +151,4 @@ mod number_of_ways_select_buildings;
 mod pascal_triangle;
 mod neighborsum;
 mod shortest_distance_after_road_addition_queries_i;
+mod unique_binary_search_trees;
