@@ -1,3 +1,5 @@
+// https://leetcode.com/problems/decode-string/description/
+
 use std::collections::VecDeque;
 
 struct Solution;
