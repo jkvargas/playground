@@ -27,11 +27,6 @@ fn calc(expression: &String, memo: &mut HashMap<String, Vec<i32>>) -> Vec<i32>{
         return results;
     }
 
-    if expr.len() == 2 && expr[0].is_digit(10) {
-        results.push(expr[0].to_string().parse::<i32>().unwrap());
-        return results;
-    }
-
     for i in 0..expr.len() {
         let current = expr[i];
         if current.is_digit(10) {
