@@ -2,8 +2,6 @@ use std::collections::HashMap;
 
 struct Solution;
 
-use std::collections::HashMap;
-
 impl Solution {
     pub fn knight_dialer(n: i32) -> i32 {
         let div = 1_000_000_007;

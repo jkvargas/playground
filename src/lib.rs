@@ -168,3 +168,4 @@ mod kth_largest_element_in_array;
 mod minimum_number_of_seconds_to_make_mountain_height_zero;
 mod different_ways_to_parentheses;
 mod knight_dialer;
+mod dota_senate;
