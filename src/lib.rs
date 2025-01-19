@@ -170,3 +170,4 @@ mod different_ways_to_parentheses;
 mod knight_dialer;
 mod dota_senate;
 mod keys_and_rooms;
+mod nearest_exit_from_entrance_in_maze;
