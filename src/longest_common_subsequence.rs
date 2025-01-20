@@ -30,6 +30,14 @@ mod tests {
     use crate::longest_common_subsequence::Solution;
 
     #[test]
+    fn test_two() {
+        let string_one = "abcde".to_string();
+        let string_two = "ace".to_string();
+
+        assert_eq!(Solution::longest_common_subsequence(string_one, string_two), 3);
+    }
+
+    #[test]
     fn test_one() {
         let string_one = "actgattag".to_string();
         let string_two = "gtgtgatcg".to_string();
