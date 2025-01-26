@@ -172,3 +172,5 @@ mod dota_senate;
 mod keys_and_rooms;
 mod nearest_exit_from_entrance_in_maze;
 mod buy_sell_stock_transaction_fee;
+mod sentence_screen_fitting;
+mod minimum_number_of_keypresses;
