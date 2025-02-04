@@ -21,7 +21,6 @@ impl Solution {
     }
 }
 
-
 #[test]
 fn test_one() {
     assert_eq!(7, Solution::find_maximum_score(vec![1, 3, 1, 5]));

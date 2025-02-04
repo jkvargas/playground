@@ -38,10 +38,10 @@ pub fn check(start: &Vec<i32>, d: i32, mid: i64) -> bool {
 
 #[test]
 fn test_one() {
-    assert_eq!(Solution::max_possible_score(vec![6,0,3], 2), 4);
+    assert_eq!(Solution::max_possible_score(vec![6, 0, 3], 2), 4);
 }
 
 #[test]
 fn test_two() {
-    assert_eq!(Solution::max_possible_score(vec![6,0,3], 2), 4);
+    assert_eq!(Solution::max_possible_score(vec![6, 0, 3], 2), 4);
 }

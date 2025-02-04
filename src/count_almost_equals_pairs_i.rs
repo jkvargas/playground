@@ -1,9 +1,9 @@
 // https://leetcode.com/problems/count-almost-equal-pairs-i/
 
-use std::{collections::HashMap, f32::MAX_EXP};
+use log::Level;
 use std::cmp::max;
 use std::collections::VecDeque;
-use log::Level;
+use std::{collections::HashMap, f32::MAX_EXP};
 
 struct Solution;
 
@@ -30,7 +30,6 @@ impl Solution {
             let sum = map.values().sum::<i32>();
             if sum < max_count {
                 *map.entry('0').or_insert(0) += max_count - sum;
-
             }
         }
 
@@ -46,6 +45,6 @@ mod test {
 
     #[test]
     fn test_one() {
-        assert_eq!(2, Solution::count_pairs(vec![3,12,30,17,21]))
+        assert_eq!(2, Solution::count_pairs(vec![3, 12, 30, 17, 21]))
     }
 }

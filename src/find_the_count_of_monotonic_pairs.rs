@@ -22,7 +22,7 @@ fn dp(index: i64, previous: i64, nums: &Vec<i32>, memo: &mut HashMap<(i64, i64),
 
     let mut c = 0;
 
-    for val in previous..nums[index as usize] as i64  {
+    for val in previous..nums[index as usize] as i64 {
         let k = nums[index as usize] as i64 - val;
 
         if index == 0 || k <= nums[index as usize - 1] as i64 - previous {

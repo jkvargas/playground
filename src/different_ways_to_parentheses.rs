@@ -12,13 +12,15 @@ impl Solution {
     }
 }
 
-fn calc(expression: &String, memo: &mut HashMap<String, Vec<i32>>) -> Vec<i32>{
+fn calc(expression: &String, memo: &mut HashMap<String, Vec<i32>>) -> Vec<i32> {
     if memo.contains_key(expression) {
         return memo[expression].clone();
     }
 
     let mut results = Vec::new();
-    if expression.len() == 0 { return results; }
+    if expression.len() == 0 {
+        return results;
+    }
 
     let expr = expression.chars().collect::<Vec<char>>();
 
@@ -34,7 +36,7 @@ fn calc(expression: &String, memo: &mut HashMap<String, Vec<i32>>) -> Vec<i32>{
         }
 
         let left = calc(&expr[0..i].iter().collect::<String>(), memo);
-        let right = calc(&expr[i+1..expr.len()].iter().collect::<String>(), memo);
+        let right = calc(&expr[i + 1..expr.len()].iter().collect::<String>(), memo);
 
         for lv in &left {
             for rv in &right {
@@ -43,13 +45,13 @@ fn calc(expression: &String, memo: &mut HashMap<String, Vec<i32>>) -> Vec<i32>{
                 match current {
                     '+' => {
                         computed = lv + rv;
-                    },
+                    }
                     '-' => {
                         computed = lv - rv;
-                    },
+                    }
                     '*' => {
                         computed = lv * rv;
-                    },
+                    }
                     _ => {}
                 }
 
@@ -61,7 +63,6 @@ fn calc(expression: &String, memo: &mut HashMap<String, Vec<i32>>) -> Vec<i32>{
     memo.insert(expression.clone(), results.clone());
     results
 }
-
 
 #[cfg(test)]
 mod tests {

@@ -28,8 +28,15 @@ impl Solution {
     }
 }
 
-fn run_jump(jump_map: &HashMap<i32, Vec<i32>>, memo: &mut HashMap<(i32, i32), i32>, n: i32, starting: i32) -> i32 {
-    if n == 0 { return 1; }
+fn run_jump(
+    jump_map: &HashMap<i32, Vec<i32>>,
+    memo: &mut HashMap<(i32, i32), i32>,
+    n: i32,
+    starting: i32,
+) -> i32 {
+    if n == 0 {
+        return 1;
+    }
 
     if memo.contains_key(&(starting, n)) {
         return *memo.get(&(starting, n)).unwrap();

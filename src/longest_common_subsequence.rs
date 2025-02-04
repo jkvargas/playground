@@ -34,7 +34,10 @@ mod tests {
         let string_one = "abcde".to_string();
         let string_two = "ace".to_string();
 
-        assert_eq!(Solution::longest_common_subsequence(string_one, string_two), 3);
+        assert_eq!(
+            Solution::longest_common_subsequence(string_one, string_two),
+            3
+        );
     }
 
     #[test]

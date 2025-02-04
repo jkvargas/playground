@@ -10,11 +10,13 @@ impl SparseVector {
     fn new(nums: Vec<i32>) -> Self {
         let mut map = HashMap::new();
 
-        nums.iter().enumerate().for_each(|(ind, &val)| if val != 0 { map.insert(ind, val); });
+        nums.iter().enumerate().for_each(|(ind, &val)| {
+            if val != 0 {
+                map.insert(ind, val);
+            }
+        });
 
-        Self {
-            map
-        }
+        Self { map }
     }
 
     // Return the dotProduct of two sparse vectors

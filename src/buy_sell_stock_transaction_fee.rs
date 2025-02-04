@@ -10,7 +10,13 @@ impl Solution {
     }
 }
 
-fn dp(prices: &Vec<i32>, index: usize, fee: i32, has_share: bool, memo: &mut HashMap<(usize, bool), i32>) -> i32 {
+fn dp(
+    prices: &Vec<i32>,
+    index: usize,
+    fee: i32,
+    has_share: bool,
+    memo: &mut HashMap<(usize, bool), i32>,
+) -> i32 {
     if index == prices.len() {
         return 0;
     }
@@ -21,9 +27,15 @@ fn dp(prices: &Vec<i32>, index: usize, fee: i32, has_share: bool, memo: &mut Has
 
     let skip_stock = dp(prices, index + 1, fee, has_share, memo);
     let result = if has_share {
-        max(dp(prices, index + 1, fee, false, memo) - fee + prices[index], skip_stock)
+        max(
+            dp(prices, index + 1, fee, false, memo) - fee + prices[index],
+            skip_stock,
+        )
     } else {
-        max(dp(prices, index + 1, fee, true, memo) - prices[index], skip_stock)
+        max(
+            dp(prices, index + 1, fee, true, memo) - prices[index],
+            skip_stock,
+        )
     };
 
     memo.insert((index, has_share), result);
@@ -36,6 +48,6 @@ mod tests {
 
     #[test]
     fn test() {
-        assert_eq!(8, Solution::max_profit(vec![1,3,2,8,4,9], 2));
+        assert_eq!(8, Solution::max_profit(vec![1, 3, 2, 8, 4, 9], 2));
     }
 }

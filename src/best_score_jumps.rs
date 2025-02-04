@@ -12,12 +12,22 @@ impl Solution {
     }
 }
 
-fn dp(memo: &mut HashMap<(usize, usize), i32>, vec: &Vec<i32>, last_index: usize, current_index: usize) -> i32 {
-    if current_index >= vec.len() { return 0; }
+fn dp(
+    memo: &mut HashMap<(usize, usize), i32>,
+    vec: &Vec<i32>,
+    last_index: usize,
+    current_index: usize,
+) -> i32 {
+    if current_index >= vec.len() {
+        return 0;
+    }
 
-    if memo.contains_key(&(current_index, last_index)) { return memo[&(current_index, last_index)]; }
+    if memo.contains_key(&(current_index, last_index)) {
+        return memo[&(current_index, last_index)];
+    }
 
-    let land = ((current_index - last_index) as i32 * vec[current_index]) + dp(memo, vec, current_index, current_index + 1);
+    let land = ((current_index - last_index) as i32 * vec[current_index])
+        + dp(memo, vec, current_index, current_index + 1);
     let do_not_land = dp(memo, vec, last_index, current_index + 1);
     let result = land.max(do_not_land);
 

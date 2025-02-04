@@ -20,7 +20,11 @@ impl Solution {
             let (x, y, jumps) = queue.pop_front().unwrap();
             for step in &steps {
                 let pos = (x + step[0], y + step[1], jumps + 1);
-                if (pos.0 < 0 || pos.0 == x_bound + 1 || pos.1 < 0 || pos.1 == y_bound + 1) || maze[pos.0 as usize][pos.1 as usize] == '+' { continue; }
+                if (pos.0 < 0 || pos.0 == x_bound + 1 || pos.1 < 0 || pos.1 == y_bound + 1)
+                    || maze[pos.0 as usize][pos.1 as usize] == '+'
+                {
+                    continue;
+                }
 
                 if pos.0 == x_bound || pos.1 == y_bound || pos.0 == 0 || pos.1 == 0 {
                     min_to_leave = std::cmp::min(min_to_leave, pos.2);
@@ -39,7 +43,6 @@ impl Solution {
     }
 }
 
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -51,11 +54,33 @@ mod tests {
     // '+','+','+','+','+','*','+'
     #[test]
     fn example_2() {
-        assert_eq!(12, Solution::nearest_exit(vec![vec!['+','.','+','+','+','+','+'],vec!['+','.','+','.','.','.','+'],vec!['+','.','+','.','+','.','+'],vec!['+','.','.','.','+','.','+'],vec!['+','+','+','+','+','.','+']], vec![0, 1]))
+        assert_eq!(
+            12,
+            Solution::nearest_exit(
+                vec![
+                    vec!['+', '.', '+', '+', '+', '+', '+'],
+                    vec!['+', '.', '+', '.', '.', '.', '+'],
+                    vec!['+', '.', '+', '.', '+', '.', '+'],
+                    vec!['+', '.', '.', '.', '+', '.', '+'],
+                    vec!['+', '+', '+', '+', '+', '.', '+']
+                ],
+                vec![0, 1]
+            )
+        )
     }
 
     #[test]
     fn example_1() {
-        assert_eq!(1, Solution::nearest_exit(vec![vec!['+','+','.','+'],vec!['.','.','.','+'],vec!['+','+','+','.']], vec![1, 2]));
+        assert_eq!(
+            1,
+            Solution::nearest_exit(
+                vec![
+                    vec!['+', '+', '.', '+'],
+                    vec!['.', '.', '.', '+'],
+                    vec!['+', '+', '+', '.']
+                ],
+                vec![1, 2]
+            )
+        );
     }
 }

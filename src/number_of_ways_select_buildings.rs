@@ -1,6 +1,5 @@
 // https://leetcode.com/problems/number-of-ways-to-select-buildings/?envType=study-plan-v2&envId=amazon-spring-23-high-frequency
 
-
 // Step1. Count total number if zeros and ones in string. (count0 and count1)
 // Step2. Iterate the string from left and keep count of zeroes and ones in till current index.(cur0 and cur1)
 // Step3. There is only two case is possible 101 and 010.
@@ -28,24 +27,23 @@ impl Solution {
             }
         }
 
-        let mut cur1= 0;
+        let mut cur1 = 0;
         let mut ans = 0;
         let mut cur0 = 0;
 
         for i in 0..letters.len() {
             if letters[i] == '1' {
                 cur1 += 1;
-                ans += cur0*(count0-cur0);
+                ans += cur0 * (count0 - cur0);
             } else {
                 cur0 += 1;
-                ans += cur1*(count1-cur1);
+                ans += cur1 * (count1 - cur1);
             }
         }
 
         ans
     }
 }
-
 
 #[cfg(test)]
 mod tests {

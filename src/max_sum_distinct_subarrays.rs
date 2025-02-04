@@ -51,21 +51,30 @@ mod tests {
 
     #[test]
     fn test_one() {
-        assert_eq!(15, Solution::maximum_subarray_sum(vec![1,5,4,2,9,9,9], 3));
+        assert_eq!(
+            15,
+            Solution::maximum_subarray_sum(vec![1, 5, 4, 2, 9, 9, 9], 3)
+        );
     }
 
     #[test]
     fn test_two() {
-        assert_eq!(12, Solution::maximum_subarray_sum(vec![9,9,9,1,2,3], 3));
+        assert_eq!(
+            12,
+            Solution::maximum_subarray_sum(vec![9, 9, 9, 1, 2, 3], 3)
+        );
     }
 
     #[test]
     fn test_three() {
-        assert_eq!(0, Solution::maximum_subarray_sum(vec![5,3,3,1,1], 3));
+        assert_eq!(0, Solution::maximum_subarray_sum(vec![5, 3, 3, 1, 1], 3));
     }
 
     #[test]
     fn test_four() {
-        assert_eq!(21, Solution::maximum_subarray_sum(vec![14,7,7,7,12,7], 2));
+        assert_eq!(
+            21,
+            Solution::maximum_subarray_sum(vec![14, 7, 7, 7, 12, 7], 2)
+        );
     }
 }

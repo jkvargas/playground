@@ -3,8 +3,13 @@
 struct Solution;
 
 impl Solution {
-    pub fn spiral_matrix_iii(rows: i32, cols: i32, mut r_start: i32, mut c_start: i32) -> Vec<Vec<i32>> {
-        let directions = vec![vec![0,1],vec![1,0],vec![0,-1], vec![-1,0]];
+    pub fn spiral_matrix_iii(
+        rows: i32,
+        cols: i32,
+        mut r_start: i32,
+        mut c_start: i32,
+    ) -> Vec<Vec<i32>> {
+        let directions = vec![vec![0, 1], vec![1, 0], vec![0, -1], vec![-1, 0]];
         let mut traversed = Vec::new();
         let mut direction = 0;
         let mut step = 1;
@@ -35,5 +40,8 @@ impl Solution {
 
 #[test]
 fn test_one() {
-    assert_eq!(vec![vec![0,0], vec![0,1],vec![0,2],vec![0,3]], Solution::spiral_matrix_iii(1, 4, 0, 0));
+    assert_eq!(
+        vec![vec![0, 0], vec![0, 1], vec![0, 2], vec![0, 3]],
+        Solution::spiral_matrix_iii(1, 4, 0, 0)
+    );
 }

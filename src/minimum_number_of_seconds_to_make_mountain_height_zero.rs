@@ -23,7 +23,7 @@ impl Solution {
 
     pub fn min_number_of_seconds(mountain_height: i32, worker_times: Vec<i32>) -> i64 {
         let mut vec = vec![vec![-1i64; worker_times.len()]; mountain_height as usize];
-        let mut ptrs : Vec<Option<(usize, usize)>> = vec![None; worker_times.len()];
+        let mut ptrs: Vec<Option<(usize, usize)>> = vec![None; worker_times.len()];
 
         let mut climb = 0;
         let mut result = i64::MIN;
@@ -84,11 +84,16 @@ fn can_find(t: i64, h: i32, wt: &Vec<i32>) -> bool {
 
 fn cost(worker_time: i32, amount: i32) -> i64 {
     let mut sum = 0i64;
-    for i in 1..=amount { sum += ( worker_time * i ) as i64; }
+    for i in 1..=amount {
+        sum += (worker_time * i) as i64;
+    }
     sum
 }
 
 #[test]
 fn test_one() {
-    assert_eq!(3, Solution::min_number_of_seconds_from_web(4, vec![2, 1, 1]));
+    assert_eq!(
+        3,
+        Solution::min_number_of_seconds_from_web(4, vec![2, 1, 1])
+    );
 }

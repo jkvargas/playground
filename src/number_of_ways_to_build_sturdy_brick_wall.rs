@@ -1,8 +1,7 @@
 use std::collections::{HashMap, HashSet};
 use std::hash::{DefaultHasher, Hash, Hasher};
 
-const MOD : i64 = 1_000_000_007;
-
+const MOD: i64 = 1_000_000_007;
 
 // My solution
 // Too slow...
@@ -19,9 +18,13 @@ impl Solution {
     }
 }
 
-
-
-fn generate_all_possible_for_row(pos: i32, width: i32, bricks: &Vec<i32>, placed: &mut HashSet<i32>, result: &mut Vec<HashSet<i32>>) {
+fn generate_all_possible_for_row(
+    pos: i32,
+    width: i32,
+    bricks: &Vec<i32>,
+    placed: &mut HashSet<i32>,
+    result: &mut Vec<HashSet<i32>>,
+) {
     if pos == width {
         result.push(placed.clone());
         return;
@@ -45,7 +48,14 @@ fn generate_all_possible_for_row(pos: i32, width: i32, bricks: &Vec<i32>, placed
     }
 }
 
-fn dp(mut line: i32, height: i32, width: i32, mut pos: i32, bricks: &Vec<i32>, placed: &mut Vec<HashSet<i32>>) -> i64 {
+fn dp(
+    mut line: i32,
+    height: i32,
+    width: i32,
+    mut pos: i32,
+    bricks: &Vec<i32>,
+    placed: &mut Vec<HashSet<i32>>,
+) -> i64 {
     if pos > width {
         return 0;
     }
@@ -65,7 +75,14 @@ fn dp(mut line: i32, height: i32, width: i32, mut pos: i32, bricks: &Vec<i32>, p
 
         placed[line as usize].insert(new_pos);
 
-        result += dp(if new_pos == width { line + 1 } else { line }, height, width, if new_pos == width { 0 } else { new_pos }, bricks, placed) % MOD;
+        result += dp(
+            if new_pos == width { line + 1 } else { line },
+            height,
+            width,
+            if new_pos == width { 0 } else { new_pos },
+            bricks,
+            placed,
+        ) % MOD;
 
         placed[line as usize].remove(&new_pos);
     }

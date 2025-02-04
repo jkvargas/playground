@@ -37,7 +37,6 @@ impl Solution {
 struct BestSolution;
 
 impl BestSolution {
-
     pub fn maximal_rectangle(matrix: Vec<Vec<char>>) -> i32 {
         let cnt_row = matrix.len();
         let cnt_col = matrix[0].len();
@@ -79,7 +78,6 @@ impl BestSolution {
 
         max_area
     }
-
 }
 
 #[cfg(test)]
@@ -88,7 +86,15 @@ mod test {
 
     #[test]
     fn test_one() {
-        assert_eq!(6, Solution::maximal_rectangle(vec![vec!['1','0','1','0','0'],vec!['1','0','1','1','1'],vec!['1','1','1','1','1'],vec!['1','0','0','1','0']]));
+        assert_eq!(
+            6,
+            Solution::maximal_rectangle(vec![
+                vec!['1', '0', '1', '0', '0'],
+                vec!['1', '0', '1', '1', '1'],
+                vec!['1', '1', '1', '1', '1'],
+                vec!['1', '0', '0', '1', '0']
+            ])
+        );
     }
 
     #[test]
@@ -98,6 +104,13 @@ mod test {
 
     #[test]
     fn test_three() {
-        assert_eq!(3, Solution::maximal_rectangle(vec![vec!['0','0','0'],vec!['0','0','0'],vec!['1','1','1']]));
+        assert_eq!(
+            3,
+            Solution::maximal_rectangle(vec![
+                vec!['0', '0', '0'],
+                vec!['0', '0', '0'],
+                vec!['1', '1', '1']
+            ])
+        );
     }
 }

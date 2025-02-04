@@ -4,7 +4,7 @@ struct Solution;
 
 impl Solution {
     pub fn generate(num_rows: i32) -> Vec<Vec<i32>> {
-        let mut result : Vec<Vec<i32>> = Vec::new();
+        let mut result: Vec<Vec<i32>> = Vec::new();
 
         for row in 0..num_rows as usize {
             let row_size = row + 1;
@@ -12,9 +12,9 @@ impl Solution {
 
             for col in 0..row_size {
                 vec[col] = if row == 0 || col == 0 || result[row - 1].len() - 1 < col {
-                     1
+                    1
                 } else {
-                    result[row-1][col - 1] + result[row-1][col]
+                    result[row - 1][col - 1] + result[row - 1][col]
                 }
             }
 
@@ -31,6 +31,15 @@ mod tests {
 
     #[test]
     fn test_one() {
-        assert_eq!(vec![vec![1],vec![1,1],vec![1,2,1],vec![1,3,3,1],vec![1,4,6,4,1]], Solution::generate(5));
+        assert_eq!(
+            vec![
+                vec![1],
+                vec![1, 1],
+                vec![1, 2, 1],
+                vec![1, 3, 3, 1],
+                vec![1, 4, 6, 4, 1]
+            ],
+            Solution::generate(5)
+        );
     }
 }

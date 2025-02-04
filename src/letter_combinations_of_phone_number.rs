@@ -5,7 +5,7 @@ struct Solution;
 impl Solution {
     pub fn letter_combinations(digits: String) -> Vec<String> {
         if digits.is_empty() {
-            return vec![]
+            return vec![];
         }
 
         let numbers = digits.chars().collect::<Vec<char>>();

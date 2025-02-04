@@ -10,7 +10,13 @@ impl Solution {
     }
 }
 
-fn bt(results: &mut Vec<Vec<i32>>, current: &mut Vec<i32>, remain: i32,  start_from: i32, how_many: usize) {
+fn bt(
+    results: &mut Vec<Vec<i32>>,
+    current: &mut Vec<i32>,
+    remain: i32,
+    start_from: i32,
+    how_many: usize,
+) {
     if current.len() == how_many && remain == 0 {
         results.push(current.clone());
         return;
@@ -27,5 +33,5 @@ fn bt(results: &mut Vec<Vec<i32>>, current: &mut Vec<i32>, remain: i32,  start_f
 
 #[test]
 fn test_one() {
-    assert_eq!(vec![vec![1,2,4]], Solution::combination_sum3(3, 7));
+    assert_eq!(vec![vec![1, 2, 4]], Solution::combination_sum3(3, 7));
 }

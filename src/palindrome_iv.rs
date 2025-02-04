@@ -6,7 +6,9 @@ struct Solution;
 
 impl Solution {
     pub fn make_palindrome(s: String) -> bool {
-        if s.is_empty() { return true; }
+        if s.is_empty() {
+            return true;
+        }
 
         let letters = s.chars().collect::<Vec<char>>();
         let mut ops = 2;

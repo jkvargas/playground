@@ -4,7 +4,10 @@ struct Solution;
 
 impl Solution {
     pub fn convert_date_to_binary(date: String) -> String {
-        let split = date.split("-").map(|s| s.to_string()).collect::<Vec<String>>();
+        let split = date
+            .split("-")
+            .map(|s| s.to_string())
+            .collect::<Vec<String>>();
 
         let year = split[0].parse::<u32>().unwrap();
         let month = split[1].parse::<u32>().unwrap();
@@ -24,6 +27,9 @@ mod test {
 
     #[test]
     fn test_one() {
-        assert_eq!("100000100000-10-11101".to_string(), Solution::convert_date_to_binary("2080-02-29".to_string()));
+        assert_eq!(
+            "100000100000-10-11101".to_string(),
+            Solution::convert_date_to_binary("2080-02-29".to_string())
+        );
     }
 }

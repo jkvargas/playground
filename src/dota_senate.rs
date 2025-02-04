@@ -12,7 +12,7 @@ impl Solution {
         senate.chars().enumerate().for_each(|(i, c)| {
             match c {
                 'R' => radiant.push_front(i),
-                _ => { dire.push_front(i)},
+                _ => dire.push_front(i),
             };
         });
 
