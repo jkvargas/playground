@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/evaluate-division/description/?envType=study-plan-v2&envId=top-interview-150
 
-use std::collections::HashMap;
+use std::collections::{HashMap, HashSet};
 
 struct Solution;
 
@@ -18,18 +18,37 @@ impl Solution {
         }
 
         let mut result = Vec::new();
-        
-        for i in 0..queries.len() {
-            
-        }
+
+        queries.iter().for_each(|query| result.push(if let Some(from_calc) = calc(&query[0], &query[1], &map, &mut HashSet::new()) {
+            from_calc
+        } else {
+            -1.0
+        }));
         
         result
     }
 }
 
-fn calc(starting_value: f64, element: &String, map: &HashMap<String, HashMap<String, f64>>) -> Option<f64> {
-    if map.contains_key(element) {
-        return starting_value * map.get(element).unwrap();
+fn calc(a: &String, b: &String, map: &HashMap<String, HashMap<String, f64>>, visited: &mut HashSet<String>) -> Option<f64> {
+    if !map.contains_key(a) { return None; }
+    if !map.contains_key(b) { return None; }
+    if visited.contains(a) { return None; } else { visited.insert(a.clone()); }
+    if a == b { return Some(1.0); }
+    let from_key = map.get(a).unwrap();
+
+    if from_key.contains_key(b) {
+        Some(*from_key.get(b).unwrap())
+    } else {
+        let mut result = None;
+
+        for key in from_key.keys() {
+            if let Some(nested) = calc(key, b, map, visited) {
+                result = Some(*from_key.get(key).unwrap() * nested);
+                break;
+            }
+        }
+
+        result
     }
 }
 
