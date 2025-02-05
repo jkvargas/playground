@@ -20,14 +20,16 @@ impl Solution {
         let mut result = Vec::new();
         
         for i in 0..queries.len() {
-            if let Some(first) = map.get(&queries[i][0]) {
-                
-            } else {
-               result.push(-1.0);  
-            }
+            
         }
         
         result
+    }
+}
+
+fn calc(starting_value: f64, element: &String, map: &HashMap<String, HashMap<String, f64>>) -> Option<f64> {
+    if map.contains_key(element) {
+        return starting_value * map.get(element).unwrap();
     }
 }
 
