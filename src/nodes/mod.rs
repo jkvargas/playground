@@ -9,6 +9,7 @@ mod binarytreezigzag;
 mod bstiterator;
 mod constructbinarypreorder;
 mod constructbinarytree;
+mod palindrome_linked_list;
 mod designsearchautocompletesystem;
 mod flattenbinarytree;
 mod houserobberiii;
