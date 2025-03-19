@@ -176,3 +176,5 @@ pub mod worldladder2;
 mod gas_station;
 mod reordered_power_of_two;
 mod longest_consecutive_sequence;
+mod jump_game_viii;
+mod rotate_array;
