@@ -1,3 +1,5 @@
+// https://leetcode.com/explore/interview/card/facebook/5/array-and-strings/285/
+
 use std::collections::{HashMap, HashSet};
 
 struct Solution;
