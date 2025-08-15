@@ -185,3 +185,4 @@ pub mod worldladder2;
 mod validate_ip_address;
 mod minimum_window_substring;
 mod find_first_and_last_position_of_element;
+mod maximum_distance_in_arrays;
