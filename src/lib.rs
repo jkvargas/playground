@@ -188,3 +188,4 @@ mod find_first_and_last_position_of_element;
 mod maximum_distance_in_arrays;
 mod one_edit_distance;
 mod delete_and_earn;
+mod paint_fence;
