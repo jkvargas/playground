@@ -189,3 +189,5 @@ mod maximum_distance_in_arrays;
 mod one_edit_distance;
 mod delete_and_earn;
 mod paint_fence;
+mod missing_elements_in_sorted_array;
+mod brace_expansion;
