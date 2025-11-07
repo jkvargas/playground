@@ -191,3 +191,4 @@ mod delete_and_earn;
 mod paint_fence;
 mod missing_elements_in_sorted_array;
 mod brace_expansion;
+mod walls_and_gates;
