@@ -23,8 +23,8 @@ impl Solution {
 
         for num in 2..=max_number {
             let gain = *points.get(&num).unwrap_or(&0);
-            max_points[num as usize] = max_points[(num - 1) as usize]
-                .max(max_points[(num - 2) as usize] + gain);
+            max_points[num as usize] =
+                max_points[(num - 1) as usize].max(max_points[(num - 2) as usize] + gain);
         }
 
         max_points[max_number as usize]
@@ -35,7 +35,7 @@ impl Solution {
 mod tests {
     #[test]
     fn test_one() {
-        let result = super::Solution::delete_and_earn(vec![2,2,3,3,3,4]);
+        let result = super::Solution::delete_and_earn(vec![2, 2, 3, 3, 3, 4]);
         assert_eq!(result, 9);
     }
 }

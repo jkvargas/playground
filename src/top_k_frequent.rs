@@ -11,10 +11,14 @@ impl Solution {
         }
 
         let mut bh = BinaryHeap::new();
-        map.iter().map(|(&num, &count)| Occurrence { n: num, o: count }).for_each(|ocurrence| bh.push(ocurrence));
+        map.iter()
+            .map(|(&num, &count)| Occurrence { n: num, o: count })
+            .for_each(|ocurrence| bh.push(ocurrence));
 
         let mut result = Vec::new();
-        (0..k as usize).for_each(|i| { result.push( bh.pop().unwrap().n); });
+        (0..k as usize).for_each(|i| {
+            result.push(bh.pop().unwrap().n);
+        });
         result
     }
 }
@@ -50,6 +54,9 @@ mod tests {
 
     #[test]
     fn it_works() {
-        assert_eq!(vec![1,2], Solution::top_k_frequent(vec![1,1,1,2,2,3], 2));
+        assert_eq!(
+            vec![1, 2],
+            Solution::top_k_frequent(vec![1, 1, 1, 2, 2, 3], 2)
+        );
     }
 }

@@ -5,6 +5,46 @@ struct Solution;
 
 impl Solution {
     pub fn find_order(num_courses: i32, prerequisites: Vec<Vec<i32>>) -> Vec<i32> {
+        let mut map = HashMap::new();
+        let mut value = vec![0; num_courses as usize];
+        let mut queue = VecDeque::new();
+        let mut result = vec![];
+
+        for i in 0..prerequisites.len() {
+            map.entry(prerequisites[i][1])
+                .or_insert(Vec::new())
+                .push(prerequisites[i][0]);
+            value[prerequisites[i][0] as usize] += 1;
+        }
+
+        for i in 0..num_courses {
+            if value[i as usize] == 0 {
+                queue.push_back(i);
+            }
+        }
+
+        while let Some(i) = queue.pop_front() {
+            result.push(i);
+
+            if let Some(list) = map.get(&i) {
+                for &j in list {
+                    value[j as usize] -= 1;
+
+                    if value[j as usize] == 0 {
+                        queue.push_back(j);
+                    }
+                }
+            }
+        }
+
+        if result.len() == num_courses as usize {
+            return result;
+        }
+
+        vec![]
+    }
+
+    pub fn find_order_old(num_courses: i32, prerequisites: Vec<Vec<i32>>) -> Vec<i32> {
         let mut stack: VecDeque<i32> = VecDeque::new();
         let mut map: HashMap<i32, Vec<i32>> = HashMap::new();
         let mut visited = vec![false; num_courses as usize];

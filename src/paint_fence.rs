@@ -12,7 +12,9 @@ impl Solution {
 }
 
 fn total_ways(memo: &mut HashMap<i32, i32>, i: i32, k: i32) -> i32 {
-    if i == 0 { return 0;}
+    if i == 0 {
+        return 0;
+    }
 
     if i == 1 {
         return k;

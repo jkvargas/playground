@@ -30,10 +30,12 @@ impl Solution {
             head = item.next;
         }
 
-        if list.len() == 1 { return true; }
+        if list.len() == 1 {
+            return true;
+        }
 
-        let mut beg : i32 = 0;
-        let mut end : i32 = list.len() as i32 - 1;
+        let mut beg: i32 = 0;
+        let mut end: i32 = list.len() as i32 - 1;
 
         loop {
             if list[beg as usize] != list[end as usize] {
@@ -52,12 +54,12 @@ impl Solution {
 
 #[cfg(test)]
 mod tests {
-    use crate::nodes::ListNode;
     use crate::nodes::palindrome_linked_list::Solution;
+    use crate::nodes::ListNode;
 
     #[test]
     fn test_is_palindrome() {
-        assert!(Solution::is_palindrome(ListNode::from(vec![1,2,2,1])));
+        assert!(Solution::is_palindrome(ListNode::from(vec![1, 2, 2, 1])));
     }
 
     #[test]

@@ -13,27 +13,52 @@ impl Solution {
         let mut map: HashMap<String, HashMap<String, f64>> = HashMap::new();
 
         for i in 0..equations.len() {
-            map.entry(equations[i][0].clone()).or_insert(HashMap::new()).entry(equations[i][1].clone()).or_insert(values[i]);
-            map.entry(equations[i][1].clone()).or_insert(HashMap::new()).entry(equations[i][0].clone()).or_insert(1. / values[i]);
+            map.entry(equations[i][0].clone())
+                .or_insert(HashMap::new())
+                .entry(equations[i][1].clone())
+                .or_insert(values[i]);
+            map.entry(equations[i][1].clone())
+                .or_insert(HashMap::new())
+                .entry(equations[i][0].clone())
+                .or_insert(1. / values[i]);
         }
 
         let mut result = Vec::new();
 
-        queries.iter().for_each(|query| result.push(if let Some(from_calc) = calc(&query[0], &query[1], &map, &mut HashSet::new()) {
-            from_calc
-        } else {
-            -1.0
-        }));
-        
+        queries.iter().for_each(|query| {
+            result.push(
+                if let Some(from_calc) = calc(&query[0], &query[1], &map, &mut HashSet::new()) {
+                    from_calc
+                } else {
+                    -1.0
+                },
+            )
+        });
+
         result
     }
 }
 
-fn calc(a: &String, b: &String, map: &HashMap<String, HashMap<String, f64>>, visited: &mut HashSet<String>) -> Option<f64> {
-    if !map.contains_key(a) { return None; }
-    if !map.contains_key(b) { return None; }
-    if visited.contains(a) { return None; } else { visited.insert(a.clone()); }
-    if a == b { return Some(1.0); }
+fn calc(
+    a: &String,
+    b: &String,
+    map: &HashMap<String, HashMap<String, f64>>,
+    visited: &mut HashSet<String>,
+) -> Option<f64> {
+    if !map.contains_key(a) {
+        return None;
+    }
+    if !map.contains_key(b) {
+        return None;
+    }
+    if visited.contains(a) {
+        return None;
+    } else {
+        visited.insert(a.clone());
+    }
+    if a == b {
+        return Some(1.0);
+    }
     let from_key = map.get(a).unwrap();
 
     if from_key.contains_key(b) {

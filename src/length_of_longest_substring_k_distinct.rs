@@ -7,16 +7,17 @@ struct Solution;
 
 impl Solution {
     pub fn length_of_longest_substring_k_distinct(s: String, k: i32) -> i32 {
-        if k == 0 { return 0; }
+        if k == 0 {
+            return 0;
+        }
         let letters = s.chars().collect::<Vec<char>>();
-        
+
         let mut a = 0;
         let mut b = 0;
         let mut cur_max = 0;
         let mut max_over = 0;
         let mut set = HashMap::new();
-        
-        
+
         while b < letters.len() {
             if set.contains_key(&letters[b]) || set.len() < k as usize {
                 set.entry(letters[b]).or_insert(HashSet::new()).insert(b);
@@ -26,12 +27,14 @@ impl Solution {
             } else {
                 let mut temp = set.get_mut(&letters[a]).unwrap();
                 temp.remove(&a);
-                if temp.is_empty() { set.remove(&letters[a]); }
+                if temp.is_empty() {
+                    set.remove(&letters[a]);
+                }
                 cur_max -= 1;
                 a += 1;
             }
         }
-        
+
         max_over
     }
 }

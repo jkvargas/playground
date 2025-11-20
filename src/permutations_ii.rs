@@ -1,6 +1,6 @@
 // https://leetcode.com/problems/permutations-ii/
 
-use std::collections::{HashMap};
+use std::collections::HashMap;
 
 pub struct Solution;
 
@@ -20,14 +20,22 @@ impl Solution {
     }
 }
 
-fn f(nums: &mut HashMap<i32, i32>, mut v: Vec<i32>, results: &mut Vec<Vec<i32>>, n: usize, keys: &Vec<i32>) {
+fn f(
+    nums: &mut HashMap<i32, i32>,
+    mut v: Vec<i32>,
+    results: &mut Vec<Vec<i32>>,
+    n: usize,
+    keys: &Vec<i32>,
+) {
     if v.len() == n {
         results.push(v.clone());
         return;
     }
 
     for i in keys {
-        if *nums.get(i).unwrap() == 0 { continue; }
+        if *nums.get(i).unwrap() == 0 {
+            continue;
+        }
 
         *nums.get_mut(i).unwrap() -= 1;
         v.push(*i);

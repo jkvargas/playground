@@ -9,7 +9,7 @@ impl Solution {
         let high = j(&nums, &costs, 0, &mut map, true);
 
         if low.is_some() && high.is_some() {
-           return std::cmp::max(low.unwrap(), high.unwrap());
+            return std::cmp::max(low.unwrap(), high.unwrap());
         }
 
         if low.is_some() {
@@ -20,7 +20,13 @@ impl Solution {
     }
 }
 
-fn j(nums: &Vec<i32>, cost: &Vec<i32>, starting_pos: usize, memo: &mut HashMap<usize, i64>, bigger: bool) -> Option<i64> {
+fn j(
+    nums: &Vec<i32>,
+    cost: &Vec<i32>,
+    starting_pos: usize,
+    memo: &mut HashMap<usize, i64>,
+    bigger: bool,
+) -> Option<i64> {
     if memo.contains_key(&starting_pos) {
         return Some(*memo.get(&starting_pos).unwrap());
     }
@@ -34,7 +40,7 @@ fn j(nums: &Vec<i32>, cost: &Vec<i32>, starting_pos: usize, memo: &mut HashMap<u
 
     let mut found_something = false;
     let mut min = i64::MAX;
-    for i in starting_pos+1..nums.len() {
+    for i in starting_pos + 1..nums.len() {
         if (bigger && follows_bigger(i)) || follows_lower(i) {
             if let Some(nj) = j(nums, cost, i, memo, bigger) {
                 min = std::cmp::min(min, cost[i] as i64 + nj);
@@ -43,7 +49,9 @@ fn j(nums: &Vec<i32>, cost: &Vec<i32>, starting_pos: usize, memo: &mut HashMap<u
         }
     }
 
-    if !found_something { return None; }
+    if !found_something {
+        return None;
+    }
 
     memo.insert(starting_pos, min);
     Some(min)
@@ -55,6 +63,9 @@ mod tests {
 
     #[test]
     fn it_works() {
-        assert_eq!(8, Solution::min_cost(vec![3,2,4,4,1], vec![3,7,6,4,2]));
+        assert_eq!(
+            8,
+            Solution::min_cost(vec![3, 2, 4, 4, 1], vec![3, 7, 6, 4, 2])
+        );
     }
 }

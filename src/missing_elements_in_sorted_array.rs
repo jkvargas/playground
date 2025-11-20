@@ -32,16 +32,16 @@ mod tests {
 
     #[test]
     fn test_one() {
-        assert_eq!(5, Solution::missing_element(vec![4,7,9,10], 1));
+        assert_eq!(5, Solution::missing_element(vec![4, 7, 9, 10], 1));
     }
 
     #[test]
     fn two() {
-        assert_eq!(6, Solution::missing_element(vec![1,2,4], 3));
+        assert_eq!(6, Solution::missing_element(vec![1, 2, 4], 3));
     }
 
     #[test]
     fn three() {
-        assert_eq!(8, Solution::missing_element(vec![4,7,9,10], 3));
+        assert_eq!(8, Solution::missing_element(vec![4, 7, 9, 10], 3));
     }
 }

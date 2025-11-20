@@ -33,14 +33,15 @@ impl Solution {
     }
 }
 
-
 #[cfg(test)]
 mod find_first_and_last_position_of_element_tests {
     use crate::find_first_and_last_position_of_element::Solution;
 
     #[test]
     fn find_first_and_last_position_of_element_tests() {
-        assert_eq!(vec![3, 4], Solution::search_range(vec![5,7,7,8,8,10], 8));
+        assert_eq!(
+            vec![3, 4],
+            Solution::search_range(vec![5, 7, 7, 8, 8, 10], 8)
+        );
     }
 }
-

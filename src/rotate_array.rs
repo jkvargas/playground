@@ -10,7 +10,9 @@ impl Solution {
     }
 
     pub fn rotate_best(nums: &mut Vec<i32>, k: i32) {
-        if k == 0 { return; }
+        if k == 0 {
+            return;
+        }
         let n = k as usize % nums.len();
         nums.rotate_right(n);
     }
@@ -24,13 +26,13 @@ mod tests {
     fn test_rotate() {
         let mut arr = vec![1, 2, 3, 4, 5, 6, 7];
         Solution::rotate(&mut arr, 3);
-        assert_eq!(arr, vec![5,6,7,1,2,3,4]);
+        assert_eq!(arr, vec![5, 6, 7, 1, 2, 3, 4]);
     }
 
     #[test]
     fn test_rotate_2() {
-        let mut arr = vec![-1,-100,3,99];
+        let mut arr = vec![-1, -100, 3, 99];
         Solution::rotate(&mut arr, 2);
-        assert_eq!(arr, vec![3,99,-1,-100]);
+        assert_eq!(arr, vec![3, 99, -1, -100]);
     }
 }

@@ -8,7 +8,10 @@ impl Solution {
         let (m, n) = (s.len(), t.len());
 
         if m > n {
-            return Solution::is_one_edit_distance(t.into_iter().collect(), s.into_iter().collect());
+            return Solution::is_one_edit_distance(
+                t.into_iter().collect(),
+                s.into_iter().collect(),
+            );
         }
 
         if n - m > 1 {
@@ -37,6 +40,9 @@ mod tests {
 
     #[test]
     fn test_is_one_edit_distance() {
-        assert!(Solution::is_one_edit_distance("ab".to_string(), "acb".to_string()));
+        assert!(Solution::is_one_edit_distance(
+            "ab".to_string(),
+            "acb".to_string()
+        ));
     }
 }

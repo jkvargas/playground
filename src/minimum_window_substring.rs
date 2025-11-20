@@ -31,8 +31,7 @@ impl Solution {
                         end = b;
                     }
                 }
-            }
-            else {
+            } else {
                 map.entry(letters[b]).and_modify(|v| *v += 1).or_insert(1);
                 b += 1;
                 if is_valid(&map) {
@@ -62,6 +61,9 @@ mod tests {
 
     #[test]
     fn example_1() {
-        assert_eq!("BANC".to_string(), Solution::min_window("ADOBECODEBANC".to_owned(), "ABC".to_owned()))
+        assert_eq!(
+            "BANC".to_string(),
+            Solution::min_window("ADOBECODEBANC".to_owned(), "ABC".to_owned())
+        )
     }
 }

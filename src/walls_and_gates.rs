@@ -23,7 +23,12 @@ impl Solution {
                 let row = pos[0] + dir[0];
                 let col = pos[1] + dir[1];
 
-                if row >= 0 && col >= 0 && (row as usize) < rooms.len() && (col as usize) < rooms[0].len() && rooms[row as usize][col as usize] == 2147483647 {
+                if row >= 0
+                    && col >= 0
+                    && (row as usize) < rooms.len()
+                    && (col as usize) < rooms[0].len()
+                    && rooms[row as usize][col as usize] == 2147483647
+                {
                     rooms[row as usize][col as usize] = rooms[pos[0] as usize][pos[1] as usize] + 1;
                     queue.push_back(vec![row, col]);
                 }
@@ -38,8 +43,21 @@ mod tests {
 
     #[test]
     fn test_one() {
-        let mut vec : Vec<Vec<i32>> = vec![vec![2147483647,-1,0,2147483647],vec![2147483647,2147483647,2147483647,-1],vec![2147483647,-1,2147483647,-1],vec![0,-1,2147483647,2147483647]];
+        let mut vec: Vec<Vec<i32>> = vec![
+            vec![2147483647, -1, 0, 2147483647],
+            vec![2147483647, 2147483647, 2147483647, -1],
+            vec![2147483647, -1, 2147483647, -1],
+            vec![0, -1, 2147483647, 2147483647],
+        ];
         Solution::walls_and_gates(&mut vec);
-        assert_eq!(vec![vec![3,-1,0,1],vec![2,2,1,-1],vec![1,-1,2,-1],vec![0,-1,3,4]], vec);
+        assert_eq!(
+            vec![
+                vec![3, -1, 0, 1],
+                vec![2, 2, 1, -1],
+                vec![1, -1, 2, -1],
+                vec![0, -1, 3, 4]
+            ],
+            vec
+        );
     }
 }

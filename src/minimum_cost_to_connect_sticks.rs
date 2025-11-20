@@ -33,6 +33,6 @@ mod tests {
 
     #[test]
     fn test_one() {
-        assert_eq!(14, Solution::connect_sticks(vec![2,4,3]));
+        assert_eq!(14, Solution::connect_sticks(vec![2, 4, 3]));
     }
 }
