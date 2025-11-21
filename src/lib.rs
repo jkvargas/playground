@@ -194,3 +194,4 @@ mod words_data_structure;
 pub mod wordsearch;
 pub mod worldladder;
 pub mod worldladder2;
+mod minimum_speed_to_arrive_on_time;
